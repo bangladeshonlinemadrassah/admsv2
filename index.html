@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ALIM-25 BOM Admission Course 1.0</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:wght@400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* =========================
+    CSS VARIABLES - ENHANCED
+    ========================= */
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --primary-light: #4895ef;
+      --secondary: #06d6a0;
+      --secondary-dark: #05b589;
+      --accent: #7209b7;
+      --accent-light: #9b5de5;
+      --danger: #ef476f;
+      --warning: #ffd166;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f1f5f9;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --glass: rgba(15, 23, 42, 0.65);
+      --glass-border: rgba(255, 255, 255, 0.18);
+      --gradient-primary: linear-gradient(135deg, #4361ee 0%, #9b5de5 50%, #06d6a0 100%);
+      --gradient-secondary: linear-gradient(135deg, #7209b7 0%, #f72585 50%, #ffd166 100%);
+      --gradient-accent: linear-gradient(135deg, #4895ef 0%, #3a0ca3 100%);
+      --gradient-warning: linear-gradient(135deg, #ffd166 0%, #ef476f 100%);
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.15);
+      --shadow-md: 0 10px 20px -5px rgba(0, 0, 0, 0.25);
+      --shadow-lg: 0 20px 30px -10px rgba(0, 0, 0, 0.35);
+      --radius: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* =========================
+    BASE STYLES - ENHANCED
+    ========================= */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      background: var(--darker);
+      color: var(--text);
+      font-family: 'Poppins', 'Tiro Bangla', system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(67, 97, 238, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(155, 93, 229, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(6, 214, 160, 0.1) 0%, transparent 25%);
+    }
+
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    .bangla-font {
+      font-family: 'Tiro Bangla', 'Poppins', serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+    LAYOUT & CONTAINER - ENHANCED
+    ========================= */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* =========================
+    HEADER & NAVIGATION - ENHANCED
+    ========================= */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(10, 14, 26, 0.9);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      font-size: 1.6rem;
+      color: var(--text);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .brand:hover {
+      color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .tag {
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: var(--gradient-secondary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .searchbar {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      width: 100%;
+      max-width: 500px;
+      position: relative;
+    }
+
+    .searchbar input {
+      width: 100%;
+      padding: 14px 20px 14px 45px;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      color: var(--text);
+      outline: none;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      font-size: 0.95rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .searchbar input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3), var(--shadow-md);
+    }
+
+    .searchbar i {
+      position: absolute;
+      left: 18px;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* =========================
+    HERO SECTION - ENHANCED
+    ========================= */
+    .hero {
+      text-align: center;
+      padding: 80px 30px;
+      margin: 30px 0;
+      border-radius: var(--radius-lg);
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(67, 97, 238, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(6, 214, 160, 0.15) 0%, transparent 40%);
+      z-index: -1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, transparent 50%, rgba(6, 214, 160, 0.1) 100%);
+      z-index: -1;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      margin-bottom: 20px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 800;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* =========================
+    STATS SECTION - ENHANCED
+    ========================= */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 30px 20px;
+      text-align: center;
+      backdrop-filter: blur(15px);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gradient-primary);
+    }
+
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(30deg);
+      pointer-events: none;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+
+    .stat-number {
+      font-size: 3.2rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+      line-height: 1;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    /* =========================
+    TODAY'S CLASSES TABLE - ENHANCED
+    ========================= */
+    .today-classes-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 30px 0;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      font-size: 0.9rem;
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+    }
+
+    .today-classes-table th {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 14px 20px;
+      text-align: left;
+      font-weight: 500;
+      font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .today-classes-table th::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    }
+
+    .today-classes-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--glass-border);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .today-classes-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .today-classes-table tr:hover td {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .today-classes-table tr td:first-child {
+      border-top-left-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+    }
+
+    .today-classes-table tr td:last-child {
+      border-top-right-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
+    }
+
+    .subject-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: var(--gradient-accent);
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 500;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .class-info {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    /* =========================
+    CARDS & GRID - ENHANCED
+    ========================= */
+    .grid {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      margin-top: 30px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 25px;
+      backdrop-filter: blur(15px);
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      font-size: 0.95rem;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(30deg);
+      pointer-events: none;
+      transition: var(--transition);
+      opacity: 0;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .subject {
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #7ecbff;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .time {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: none;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 600;
+      transition: var(--transition);
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      font-size: 0.9rem;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:focus, .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+    }
+
+    .btn.disabled {
+      background: var(--text-muted);
+      cursor: not-allowed;
+      box-shadow: none;
+      opacity: 0.6;
+    }
+
+    .btn.disabled:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* =========================
+    SUBJECT LIST - ENHANCED
+    ========================= */
+    .subj-list {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      margin-top: 30px;
+    }
+
+    .pill {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      transition: var(--transition);
+      backdrop-filter: blur(15px);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      font-size: 0.95rem;
+    }
+
+    .pill::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .pill::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(30deg);
+      pointer-events: none;
+      transition: var(--transition);
+      opacity: 0;
+    }
+
+    .pill:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .pill:hover::before {
+      opacity: 1;
+    }
+
+    .pill:hover::after {
+      opacity: 1;
+    }
+
+    .pill .go {
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 600;
+      transition: var(--transition);
+      font-size: 0.85rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pill:hover .go {
+      transform: translateX(5px);
+    }
+
+    /* =========================
+    OWNER & DESIGNER BLOCK - ENHANCED
+    ========================= */
+    .owner-wrap {
+      max-width: 980px;
+      margin: 50px auto 20px;
+      padding: 30px;
+      border-radius: var(--radius);
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .owner-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+    }
+
+    .owner-message {
+      font-size: 15px;
+      color: rgba(226, 232, 240, 0.8);
+      margin-top: 5px;
+    }
+
+    .owner-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-top: 10px;
+      background: var(--gradient-secondary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 0.4px;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .owner-sub {
+      font-size: 15px;
+      color: rgba(226, 232, 240, 0.8);
+      margin-top: 5px;
+    }
+
+    .designer-credit {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 14px;
+      color: rgba(226, 232, 240, 0.9);
+      font-weight: 600;
+    }
+
+    .designer-credit .designer-name {
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* =========================
+    FOOTER - ENHANCED
+    ========================= */
+    .site-footer {
+      max-width: 980px;
+      margin: 20px auto 50px;
+      padding: 20px;
+      border-radius: var(--radius);
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--glass-border);
+      color: rgba(226, 232, 240, 0.8);
+      text-align: center;
+      font-size: 14px;
+      backdrop-filter: blur(15px);
+    }
+
+    /* =========================
+    LOGIN PAGE - ENHANCED
+    ========================= */
+    #login-page {
+      background: var(--darker);
+      color: var(--text);
+      font-family: 'Poppins', 'Tiro Bangla', system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(67, 97, 238, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(155, 93, 229, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(6, 214, 160, 0.1) 0%, transparent 25%);
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 450px;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 35px;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gradient-primary);
+    }
+
+    .login-container::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(30deg);
+      pointer-events: none;
+    }
+
+    .welcome-message h1 {
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 800;
+    }
+
+    .welcome-message p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .login-form .form-group {
+      margin-bottom: 25px;
+    }
+
+    .login-form .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .login-form .form-group input {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      color: var(--text);
+      outline: none;
+      transition: var(--transition);
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .login-form .form-group input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3), var(--shadow-sm);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      border: none;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 600;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-md);
+    }
+
+    .login-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+    }
+
+    .support-info {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .support-info p {
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+    }
+
+    .whatsapp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: #25D366;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .whatsapp-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    .error-message {
+      color: var(--danger);
+      text-align: center;
+      margin-top: 18px;
+      font-size: 0.95rem;
+      display: none;
+    }
+
+    /* =========================
+    WARNING MODAL - ENHANCED
+    ========================= */
+    .warning-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .warning-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 35px;
+      max-width: 500px;
+      width: 90%;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .modal-content::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(30deg);
+      pointer-events: none;
+    }
+
+    .modal-header h2 {
+      font-size: 1.6rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    .modal-body p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .modal-footer .modal-ok-btn {
+      padding: 14px 35px;
+      border-radius: 12px;
+      border: none;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-md);
+    }
+
+    .modal-ok-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+    }
+
+    /* =========================
+    NOTIFICATION - ENHANCED
+    ========================= */
+    .notification {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 18px 25px;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s, transform 0.3s;
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 350px;
+      font-size: 0.95rem;
+    }
+
+    .notification.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .notification.error {
+      border-left: 5px solid var(--danger);
+    }
+
+    .notification.success {
+      border-left: 5px solid var(--secondary);
+    }
+
+    .notification.warning {
+      border-left: 5px solid var(--warning);
+    }
+
+    /* =========================
+    ANIMATIONS
+    ========================= */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+    RESPONSIVE DESIGN - ENHANCED
+    ========================= */
+    @media (max-width: 968px) {
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+
+      .hero h1 {
+        font-size: 2.7rem;
+      }
+
+      .hero p {
+        font-size: 1.15rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .searchbar {
+        max-width: 100%;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .subj-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 50px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .today-classes-table {
+        display: block;
+        overflow-x: auto;
+      }
+
+      .pill {
+        padding: 16px 20px;
+      }
+
+      .owner-wrap {
+        padding: 25px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 25px 20px;
+      }
+
+      .welcome-message h1 {
+        font-size: 1.6rem;
+      }
+
+      .modal-content {
+        padding: 25px 20px;
+      }
+
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .stat-number {
+        font-size: 2.8rem;
+      }
+    }
+
+    /* =========================
+    CUSTOM STYLES FOR CORRECTIONS
+    ========================= */
+    
+    /* সর্ট অপশনের জন্য সাদা কালার */
+    #sort {
+      background: var(--glass);
+      color: var(--text);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    #sort option {
+      background: var(--card-bg);
+      color: var(--text);
+    }
+    
+    /* ছোট ঘড়ির আইকন */
+    .empty-state .fas.fa-clock {
+      font-size: 2rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+    
+    /* ফিল্টার বার স্টাইল */
+    .filter-bar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 500px;
+      margin: 15px auto 0;
+    }
+
+    .filter-bar input {
+      width: 100%;
+      max-width: 400px;
+      padding: 12px 18px 12px 40px;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      color: var(--text);
+      outline: none;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+      font-size: 0.95rem;
+    }
+
+    .filter-bar input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3), var(--shadow-sm);
+    }
+
+    .filter-bar i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .filter-bar select#sort {
+      width: auto;
+      min-width: 150px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      color: var(--text);
+      outline: none;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      font-size: 0.85rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-bar select#sort:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3), var(--shadow-sm);
+    }
+
+    /* ব্যাক বোতামের স্টাইল */
+    .back-button {
+      padding: 10px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .back-button:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ক্লাস কার্ডের পারফেক্ট সাইজ */
+    #classGrid .card {
+      min-height: 220px; /* Changed: Increased min-height for taller cards */
+      height: auto; /* Changed: Allow dynamic height to fit content */
+      max-width: 380px;
+      margin: 0 auto;
+      padding: 25px; /* Changed: Increased padding for better spacing */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px; /* Changed: Slightly increased gap for better content spacing */
+    }
+
+    #classGrid .card .subject {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    #classGrid .card .time {
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    #classGrid .card .btn {
+      padding: 10px 18px;
+      font-size: 0.9rem;
+    }
+
+    #classGrid .card .card-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--glass);
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--glass-border);
+    }
+
+    /* New: Style for class title in cards */
+    #classGrid .card .class-title {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.5;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+  <!-- লগইন পৃষ্ঠা (ডিফল্টভাবে দেখাবে) -->
+  <div id="login-page">
+    <div class="login-container">
+      <div class="welcome-message">
+        <h1 class="bangla-font">ALIM-25 BOM Admission Course 1.0</h1>
+        <p class="bangla-font">DU, CU, RU, SUST, GST, NU, JU, IU সহ সব বিশ্ববিদ্যালয়ের জন্য গুরুত্বপূর্ণ সাবজেক্টের উপর একসাথে গোছানো প্রস্তুতি</p>
+      </div>
+      <div class="login-form">
+        <div class="form-group">
+          <label for="password" class="bangla-font">সিকিউরিটি কোড লিখুন</label>
+          <input type="password" id="password" placeholder="এখানে কোডটি লিখুন" class="bangla-font">
+        </div>
+        <button class="login-btn bangla-font" onclick="checkPassword()">লগইন করুন</button>
+        <div id="error-message" class="error-message bangla-font">সিকিউরিটি কোডটি ভুল হয়েছে। আবার চেষ্টা করুন।</div>
+      </div>
+      <div class="support-info">
+        <p class="bangla-font">এক্সেস পাসওয়ার্ড পেতে BOM এর এডমিনের সাথে যোগাযোগ করুন</p>
+        <a href="https://wa.me/8801806262745" class="whatsapp-link" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- মেইন ইনডেক্স পৃষ্ঠা (প্রথমে লুকানো) -->
+  <div id="main-page" style="display: none;">
+    <header>
+      <nav class="nav container">
+        <div class="brand">
+          <i class="fas fa-graduation-cap"></i>
+          <span>ALIM-25 <br>
+            <span class="tag">"BOM Admission Course 1.0"</span></span>
+        </div>
+        <div class="searchbar">
+          <i class="fas fa-search"></i>
+          <input id="search-subjects" type="search" placeholder="সাবজেক্ট খুঁজুন...">
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <!-- হিরো সেকশন -->
+      <div class="hero fade-in">
+        <h1 class="bangla-font">ALIM-25 BOM Admission Course 1.0</h1>
+        <p class="bangla-font">DU, CU, RU, SUST, GST, NU, JU, IU সহ সব বিশ্ববিদ্যালয়ের জন্য গুরুত্বপূর্ণ সাবজেক্টের উপর একসাথে গোছানো প্রস্তুতি</p>
+      </div>
+      <!-- স্ট্যাটস সেকশন -->
+      <div class="stats">
+        <div class="stat-card fade-in">
+          <div class="stat-number">90+</div>
+          <div class="stat-label bangla-font">ক্লাস</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-number">05+</div>
+          <div class="stat-label bangla-font">Solve ক্লাস</div>
+        </div>
+        <div class="stat-card fade-in" id="exam-stats">
+          <div class="stat-number">50+</div>
+          <div class="stat-label bangla-font">ইক্সাম</div>
+        </div>
+        <div class="stat-card fade-in" id="mission-stats">
+          <div class="stat-number">60+</div>
+          <div class="stat-label bangla-font">মিশন</div>
+        </div>
+      </div>
+      <!-- আজকের ক্লাস সেকশন -->
+      <div class="section-title">
+        <h2 class="bangla-font">আজকের ক্লাস</h2>
+      </div>
+      <div id="today-classes">
+        <table class="today-classes-table">
+          <thead>
+            <tr>
+              <th class="bangla-font">সাবজেক্ট</th>
+              <th class="bangla-font">ক্লাসের তথ্য</th>
+              <th class="bangla-font">সময়</th>
+            </tr>
+          </thead>
+          <tbody id="today-classes-body">
+            <tr>
+              <td colspan="3" class="bangla-font" style="text-align: center; padding: 20px;">
+                <div class="loading"></div> লোড হচ্ছে...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- সকল সাবজেক্ট সেকশন -->
+      <div class="section-title">
+        <h2 class="bangla-font">সব সাবজেক্ট</h2>
+      </div>
+      <div class="subj-list">
+        <a class="pill subject-link" href="#" data-name="বাংলা"><span><i class="fas fa-font"></i> <span class="bangla-font">বাংলা</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="ইংরেজি"><span><i class="fas fa-font"></i> <span class="bangla-font">ইংরেজি</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="জি.কে"><span><i class="fas fa-globe"></i> <span class="bangla-font">জি.কে</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="Solve ক্লাস"><span><i class="fas fa-square-root-alt"></i> <span class="bangla-font">Solve ক্লাস</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="ইক্সাম"><span><i class="fas fa-file-alt"></i> <span class="bangla-font">ইক্সাম</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="মিশন"><span><i class="fas fa-bullseye"></i> <span class="bangla-font">মিশন</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="রেজাল্ট"><span><i class="fas fa-chart-line"></i> <span class="bangla-font">রেজাল্ট</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="উত্তরপত্র ও শীট"><span><i class="fas fa-clipboard"></i> <span class="bangla-font">উত্তরপত্র ও শীট</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="অন্যান্য"><span><i class="fas fa-ellipsis-h"></i> <span class="bangla-font">অন্যান্য</span></span><span class="go bangla-font">খুলুন</span></a>
+      </div>
+    </main>
+    <!-- OWNER & DESIGNER BLOCK -->
+    <div class="owner-wrap">
+      <div class="owner-message">
+        The guiding force behind this platform is
+      </div>
+      <div class="owner-name bangla-font">MD. RIAD HASAN <span style="font-weight:600; font-size:0.86rem; color:rgba(226,232,240,0.85); margin-left:8px;"><br>(CEO & Founder)</span></div>
+      <div class="owner-sub">Committed to better education and brighter futures</div>
+      <div class="designer-credit">
+        <span class="bangla-font" style="opacity:0.9;">design by</span>
+        <span class="designer-name">SAHIBUL MUSA SIUM</span>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      © 2025 ALIM-25 BOM Admission Course 1.0 (BOM). All rights reserved.
+    </footer>
+  </div>
+  <!-- সাবজেক্ট পৃষ্ঠা (প্রথমে লুকানো) -->
+  <div id="subject-page" style="display: none;">
+    <header>
+      <nav class="nav container">
+        <a class="brand back-button" href="#"><i class="fas fa-arrow-left"></i> <span class="bangla-font">সব সাবজেক্ট</span></a>
+        <div class="filter-bar">
+          <div style="position: relative; width: 100%; max-width: 400px;">
+            <i class="fas fa-search"></i>
+            <input id="search" type="search" placeholder="সার্চ..." class="bangla-font">
+          </div>
+          <select id="sort">
+            <option value="desc" class="bangla-font">নতুন থেকে পুরানো</option>
+            <option value="asc" class="bangla-font">পুরানো থেকে নতুন</option>
+          </select>
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <h2 id="subject-title" class="bangla-font"><i class="fas fa-book"></i> সাবজেক্ট</h2>
+      <div id="classGrid" class="grid"></div>
+    </main>
+    <!-- OWNER & DESIGNER BLOCK -->
+    <div class="owner-wrap">
+      <div class="owner-message">
+         The guiding force behind this platform is
+      </div>
+      <div class="owner-name bangla-font">MD. RIAD HASAN <span style="font-weight:600; font-size:0.86rem; color:rgba(226,232,240,0.85); margin-left:8px;"><br>(CEO & Founder)</span></div>
+      <div class="owner-sub">Committed to better education and brighter futures</div>
+      <div class="designer-credit">
+        <span class="bangla-font" style="opacity:0.9;">design by</span>
+        <span class="designer-name">SAHIBUL MUSA SIUM</span>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      © 2025 ALIM25 BOM Admission Course 1.0 (BOM). All rights reserved.
+    </footer>
+  </div>
+  <!-- ওয়ার্নিং মোডাল -->
+  <div id="warning-modal" class="warning-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="bangla-font">লগইন সফল হয়েছে!</h2>
+      </div>
+      <div class="modal-body">
+        <p class="bangla-font">অনুগ্রহ করে নোট করুন:<br>BOM এর ওয়েবসাইটের এক্সেস তথ্য সর্বদা গোপনীয় রাখুন এবং কারোর সাথে পাসওয়ার্ড শেয়ার করবেন না।</p>
+        <p class="bangla-font">যদি কোনো ব্যবহারকারীর পাসওয়ার্ড শেয়ার করতে দেখা যায়, তাহলে তাকে এই ওয়েবসাইট থেকে স্থায়ীভাবে নিষিদ্ধ করা হবে।</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-ok-btn bangla-font" onclick="closeWarningModal()">ঠিক আছে</button>
+      </div>
+    </div>
+  </div>
+  <div id="notification" class="notification"></div>
+  <script>
+    // =========================
+    // JavaScript কোড - Google Sheets সংযোগ সহ
+    // =========================
+    const API_URL = "https://script.google.com/macros/s/AKfycbwZnb6Lr-_IN1FzgvhQ-em6NjaqVIWWpmEKHinchUbY4Bt8NhOssIx_dRJ4MiSFmfKJ4g/exec";
+
+    // DOM হেল্পার ফাংশন
+    function $(sel, root = document) { return root.querySelector(sel); }
+    function $all(sel, root = document) { return Array.from(root.querySelectorAll(sel)); }
+
+    // পেজ স্টেট ম্যানেজমেন্ট
+    let currentSubject = null;
+    const loginPage = $('#login-page');
+    const mainPage = $('#main-page');
+    const subjectPage = $('#subject-page');
+    const warningModal = $('#warning-modal');
+    let allClasses = [];
+
+    // সাবজেক্টের তালিকা (Dakhil-26 এর জন্য)
+    const availableSubjects = [
+      "কুরআন মাজীদ ও তাজভীদ", "হাদিস শরীফ", "আরবি প্রথম পত্র", "আরবি দ্বিতীয় পত্র",
+      "আকাইদ ও ফিকহ", "বাংলা প্রথম পত্র", "বাংলা দ্বিতীয় পত্র", "ইংরেজি প্রথম পত্র",
+      "ইংরেজি দ্বিতীয় পত্র", "গণিত", "ইসলামের ইতিহাস", "তথ্য ও যোগাযোগ প্রযুক্তি",
+      "পদার্থবিজ্ঞান", "রসায়ন", "উচ্চতর গণিত", "জীববিজ্ঞান",
+      "বাংলাদেশ ও বিশ্বপরিচয়", "কৃষি শিক্ষা",
+      "মানতিক", "গার্হস্থ্য বিজ্ঞান", "পৌরনীতি ও নাগরিকতা", "মিশন",
+      "ইক্সাম", "অন্যান্য"
+    ];
+
+    // localStorage keys
+    const LOGIN_EXPIRY_KEY = 'dakhil26_login_expiry';
+    const IS_LOGGED_IN_KEY = 'dakhil26_is_logged_in';
+
+    // পেজ উপরে স্ক্রল করার ফাংশন
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // লগইন expiry তারিখ সেট করা
+    function setLoginExpiry() {
+      const now = new Date();
+      const oneMonthFromNow = new Date(now.setMonth(now.getMonth() + 1));
+      localStorage.setItem(LOGIN_EXPIRY_KEY, oneMonthFromNow.getTime());
+      localStorage.setItem(IS_LOGGED_IN_KEY, 'true');
+    }
+
+    // লগইন expiry চেক করা
+    function checkLoginExpiry() {
+      const expiryTime = localStorage.getItem(LOGIN_EXPIRY_KEY);
+      const isLoggedIn = localStorage.getItem(IS_LOGGED_IN_KEY);
+      
+      if (!expiryTime || !isLoggedIn) {
+        return false;
+      }
+      
+      const now = new Date().getTime();
+      return now < parseInt(expiryTime);
+    }
+
+    // লগআউট করা
+    function logout() {
+      localStorage.removeItem(LOGIN_EXPIRY_KEY);
+      localStorage.removeItem(IS_LOGGED_IN_KEY);
+      loginPage.style.display = 'flex';
+      mainPage.style.display = 'none';
+      subjectPage.style.display = 'none';
+    }
+
+    // ওয়ার্নিং মোডাল দেখানোর ফাংশন
+    function showWarningModal() {
+      warningModal.classList.add('show');
+    }
+
+    // ওয়ার্নিং মোডাল বন্ধ করার ফাংশন
+    function closeWarningModal() {
+      warningModal.classList.remove('show');
+    }
+
+    // নোটিফিকেশন দেখানোর ফাংশন
+    function showNotification(message, isError = false, isWarning = false) {
+      const notification = $('#notification');
+      notification.innerHTML = `<i class="${isError ? 'fas fa-exclamation-circle' : isWarning ? 'fas fa-exclamation-triangle' : 'fas fa-check-circle'}"></i> ${message}`;
+      notification.className = 'notification ' + (isError ? 'error' : isWarning ? 'warning' : 'success');
+      notification.classList.add('show');
+
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+    }
+
+    // পাসওয়ার্ড চেক করার ফাংশন
+    function checkPassword() {
+      const password = document.getElementById('password').value;
+      const errorElement = document.getElementById('error-message');
+      
+      if (password === 'USERDAKHIL26') {
+        loginPage.style.display = 'none';
+        mainPage.style.display = 'block';
+        setLoginExpiry();
+        showWarningModal();
+        loadInitialData();
+        scrollToTop();
+      } else {
+        errorElement.style.display = 'block';
+        setTimeout(() => {
+          errorElement.style.display = 'none';
+        }, 3000);
+      }
+    }
+
+    // Enter কী চাপলে check password
+    document.getElementById('password').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        checkPassword();
+      }
+    });
+
+    // টাইমস্ট্যাম্প থেকে তারিখ বের করা
+    function getDateFromTimestamp(timestamp) {
+      if (!timestamp) return getTodayDate();
+
+      try {
+        if (typeof timestamp === 'string') {
+          const date = new Date(timestamp);
+          if (!isNaN(date)) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+          }
+        }
+        return getTodayDate();
+      } catch (error) {
+        console.error("Timestamp parsing error:", error, timestamp);
+        return getTodayDate();
+      }
+    }
+
+    // টাইমস্ট্যাম্প থেকে সময় বের করা
+    function getTimeFromTimestamp(timestamp) {
+      if (!timestamp) return '3:37 PM';
+
+      try {
+        const date = new Date(timestamp);
+        if (!isNaN(date)) {
+          const hours = date.getHours();
+          const minutes = String(date.getMinutes()).padStart(2, '0');
+          const period = hours >= 12 ? 'PM' : 'AM';
+          const hour12 = hours % 12 || 12;
+          return `${hour12}:${minutes} ${period}`;
+        }
+        return '3:37 PM';
+      } catch (error) {
+        console.error("Time parsing error:", error, timestamp);
+        return '3:37 PM';
+      }
+    }
+
+    // আজকের তারিখ ফরম্যাট করা
+    function getTodayDate() {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    // বাংলা মাসের নাম
+    const banglaMonths = [
+      'জানুয়ারী', 'ফেব্রুয়ারী', 'মার্চ', 'এপ্রিল', 'মে', 'জুন',
+      'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'
+    ];
+
+    // তারিখ ফরম্যাট করা (বাংলা ফরম্যাটে)
+    function formatDateToBangla(dateStr) {
+      if (!dateStr) return '';
+
+      try {
+        if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+          const [year, month, day] = dateStr.split('-');
+          return `${parseInt(day)} ${banglaMonths[parseInt(month) - 1]}, ${year}`;
+        }
+        return dateStr;
+      } catch (error) {
+        console.error("Date formatting error:", error, dateStr);
+        return dateStr;
+      }
+    }
+
+    // সাবজেক্ট ম্যাচিং ফাংশন
+    function findBestMatchingSubject(subjectFromSheet) {
+      if (!subjectFromSheet) return null;
+
+      const cleanSubject = subjectFromSheet.toString().trim();
+      for (const availableSubject of availableSubjects) {
+        if (cleanSubject === availableSubject) {
+          return availableSubject;
+        }
+      }
+      return cleanSubject;
+    }
+
+    // ডেটা ফেচ করা
+    async function fetchData() {
+      try {
+        showNotification("ডেটা লোড হচ্ছে...", false);
+        const res = await fetch(API_URL, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        if (data && data.ok) {
+          showNotification("ডেটা সফলভাবে লোড হয়েছে!");
+          console.log("API Response:", data);
+          return data.rows || [];
+        } else {
+          throw new Error(data.error || "ডেটা লোড করতে সমস্যা");
+        }
+      } catch (error) {
+        console.error("ডেটা লোড করতে সমস্যা:", error);
+        showNotification("ডেটা লোড করা যায়নি: " + error.message, true);
+        return [];
+      }
+    }
+
+    // ডেটা নরমালাইজ করা
+    function normalizeRow(row, index) {
+      try {
+        const timestamp = row.timestamp || '';
+        const subjectFromSheet = row.subject || 'Unknown Subject';
+        const link = row.link || '#';
+        const title = row.title || 'ক্লাস ভিডিও';
+        const date = getDateFromTimestamp(timestamp);
+        const time = getTimeFromTimestamp(timestamp);
+        const matchedSubject = findBestMatchingSubject(subjectFromSheet) || subjectFromSheet;
+
+        return {
+          subject: matchedSubject,
+          originalSubject: subjectFromSheet,
+          link: link,
+          title: title,
+          date: date,
+          time: time,
+          serial: index + 1,
+          timestamp: timestamp
+        };
+      } catch (error) {
+        console.error("Row normalization error:", error, row);
+        return null;
+      }
+    }
+
+    // Check if exam link is expired (10 hours = 36,000,000 milliseconds)
+    function isExamLinkExpired(timestamp) {
+      if (!timestamp) return false;
+      try {
+        const examTime = new Date(timestamp).getTime();
+        const now = new Date().getTime();
+        const tenHoursInMs = 10 * 60 * 60 * 1000; // 10 hours in milliseconds
+        return (now - examTime) > tenHoursInMs;
+      } catch (error) {
+        console.error("Exam expiry check error:", error, timestamp);
+        return false;
+      }
+    }
+
+    // কার্ড রেন্ডার করা
+    function renderCards(rows, root) {
+      if (!rows || rows.length === 0) {
+        root.innerHTML = '<div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><p class="bangla-font">কোন ক্লাস পাওয়া যায়নি</p></div>';
+        return;
+      }
+
+      root.innerHTML = '';
+      rows.forEach(r => {
+        if (!r) return;
+
+        let buttonText;
+        let isDisabled = false;
+        let link = r.link;
+        if (r.subject === "মিশন") {
+          buttonText = "মিশন সম্পন্ন করুন";
+        } else if (r.subject === "ইক্সাম") {
+          if (isExamLinkExpired(r.timestamp)) {
+            buttonText = "পরীক্ষায় অংশগ্রহণ করার সময় শেষ হয়ে গেছে";
+            isDisabled = true;
+            link = "#";
+          } else {
+            buttonText = "পরীক্ষায় অংশগ্রহণ করুন";
+          }
+        } else {
+          buttonText = "ক্লাস দেখুন";
+        }
+
+        const card = document.createElement('div');
+        card.className = 'card fade-in';
+        card.innerHTML = `
+          <span class="card-badge">#${r.serial}</span>
+          <div class="subject"><i class="fas fa-book"></i> <span class="bangla-font">${r.subject}</span></div>
+          <div class="video-title bangla-font">${r.title}</div>
+          <div class="time"><i class="fas fa-clock"></i> ${r.time} | <span class="bangla-font">${formatDateToBangla(r.date)}</span></div>
+          <a class="btn${isDisabled ? ' disabled' : ''}" ${isDisabled ? '' : 'target="_blank" rel="noopener"'} href="${link}"><i class="fas fa-play-circle"></i> <span class="bangla-font">${buttonText}</span></a>
+        `;
+        root.appendChild(card);
+      });
+    }
+
+    // আজকের ক্লাস ফিল্টার করা
+    function filterTodayClasses(classes) {
+      const today = getTodayDate();
+      return classes.filter(cls => cls && cls.date === today);
+    }
+
+    // আজকের ক্লাসের সারাংশ দেখানো
+    function renderTodayClassesSummary(classes) {
+      const today = getTodayDate();
+      const todayClasses = filterTodayClasses(classes);
+      const container = $('#today-classes-body');
+
+      if (!todayClasses || todayClasses.length === 0) {
+        container.innerHTML = `<tr><td colspan="3" class="bangla-font" style="text-align: center; padding: 20px;">আজকের জন্য কোন ক্লাস পাওয়া যায়নি</td></tr>`;
+        return;
+      }
+
+      let tableHTML = '';
+      todayClasses.forEach(cls => {
+        if (!cls) return;
+        tableHTML += `
+          <tr>
+            <td><span class="subject-badge bangla-font">${cls.subject}</span></td>
+            <td class="class-info bangla-font">${cls.title}</td>
+            <td class="bangla-font">${cls.time}</td>
+          </tr>
+        `;
+      });
+      container.innerHTML = tableHTML;
+    }
+
+    // সময় অনুযায়ী সাজানো
+    function sortByTime(rows, order = 'desc') {
+      if (!rows) return [];
+      return rows.filter(r => r).slice().sort((a, b) => {
+        const timeA = new Date(a.timestamp).getTime();
+        const timeB = new Date(b.timestamp).getTime();
+        return order === 'asc' ? timeA - timeB : timeB - timeA;
+      });
+    }
+
+    // সাবজেক্ট পৃষ্ঠা দেখানো
+    function showSubjectPage(subject) {
+      currentSubject = subject;
+      $('#subject-title').innerHTML = `<i class="fas fa-book"></i> <span class="bangla-font">${subject}</span>`;
+      mainPage.style.display = 'none';
+      subjectPage.style.display = 'block';
+      scrollToTop();
+      loadSubjectData(subject);
+    }
+
+    // মেইন পৃষ্ঠায় ফিরে যাওয়া
+    function showMainPage() {
+      subjectPage.style.display = 'none';
+      mainPage.style.display = 'block';
+      currentSubject = null;
+      scrollToTop();
+    }
+
+    // সাবজেক্ট ডেটা লোড করা
+    function loadSubjectData(subject) {
+      const grid = $('#classGrid');
+      const searchInput = $('#search');
+      const sortSelect = $('#sort');
+
+      grid.innerHTML = '<div class="card"><div class="subject bangla-font">লোড হচ্ছে... <span class="loading"></span></div></div>';
+
+      let rows = allClasses.filter(r => r && String(r.subject).trim() === subject);
+      rows = sortByTime(rows, 'desc'); // Default to newest first
+      renderCards(rows, grid);
+
+      searchInput.addEventListener('input', () => {
+        const q = searchInput.value.toLowerCase();
+        const filtered = rows.filter(r =>
+          (r.subject || '').toLowerCase().includes(q) ||
+          (r.title || '').toLowerCase().includes(q)
+        );
+        renderCards(filtered, grid);
+      });
+
+      sortSelect.addEventListener('change', () => {
+        const order = sortSelect.value;
+        const sorted = sortByTime(rows, order);
+        renderCards(sorted, grid);
+      });
+    }
+
+    // ইভেন্ট লিসেনার সেটআপ
+    function setupEventListeners() {
+      $all('.subject-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const subject = link.getAttribute('data-name');
+          showSubjectPage(subject);
+        });
+      });
+
+      $('.back-button').addEventListener('click', (e) => {
+        e.preventDefault();
+        showMainPage();
+      });
+
+      const searchInput = $('#search-subjects');
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          const q = searchInput.value.trim().toLowerCase();
+          $all('.pill').forEach(p => {
+            const name = p.dataset.name.toLowerCase();
+            p.style.display = name.includes(q) ? '' : 'none';
+          });
+        });
+      }
+
+      $('#mission-stats').addEventListener('click', () => {
+        showSubjectPage('মিশন');
+      });
+
+      $('#exam-stats').addEventListener('click', () => {
+        showSubjectPage('ইক্সাম');
+      });
+    }
+
+    // প্রাথমিক ডেটা লোড
+    async function loadInitialData() {
+      try {
+        const data = await fetchData();
+        allClasses = data.map((row, index) => normalizeRow(row, index)).filter(r => r);
+        console.log("Processed classes:", allClasses);
+        renderTodayClassesSummary(allClasses);
+        setupEventListeners();
+      } catch (error) {
+        console.error("Initial data loading error:", error);
+        showNotification("ডেটা লোড করতে সমস্যা হয়েছে", true);
+      }
+    }
+
+    // পেজ লোড হলে ইনিশিয়ালাইজেশন
+    document.addEventListener('DOMContentLoaded', () => {
+      const isLoggedIn = checkLoginExpiry();
+      
+      if (isLoggedIn) {
+        loginPage.style.display = 'none';
+        mainPage.style.display = 'block';
+        loadInitialData();
+      } else {
+        loginPage.style.display = 'flex';
+        mainPage.style.display = 'none';
+        subjectPage.style.display = 'none';
+        localStorage.removeItem(LOGIN_EXPIRY_KEY);
+        localStorage.removeItem(IS_LOGGED_IN_KEY);
+      }
+
+      scrollToTop();
+
+      setTimeout(() => {
+        document.querySelectorAll('.fade-in').forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      }, 100);
+    });
+  </script>
+</body>
+</html>
