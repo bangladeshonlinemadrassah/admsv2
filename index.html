@@ -1,4 +1,4 @@
-  DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8" />
@@ -379,7 +379,7 @@
 
     .class-info {
       font-size: 0.9rem;
-      color: var(--text);
+      color: var(-<-text);
     }
 
     /* =========================
@@ -1397,7 +1397,7 @@
     // =========================
     // JavaScript কোড - Google Sheets সংযোগ সহ
     // =========================
-    const API_URL = "https://script.google.com/macros/s/AKfycbwZnb6Lr-_IN1FzgvhQ-em6NjaqVIWWpmEKHinchUbY4Bt8NhOssIx_dRJ4MiSFmfKJ4g/exec";
+    const API_URL = "https://script.google.com/macros/s/AKfycbzLWkqUJGkGNP5k3bCYM7mSbEbe6SVorTTQu-NpWa4VB2ZSpY_4N4VbIoxcW5EGSPHW3A/exec";
 
     // DOM হেল্পার ফাংশন
     function $(sel, root = document) { return root.querySelector(sel); }
@@ -1411,16 +1411,9 @@
     const warningModal = $('#warning-modal');
     let allClasses = [];
 
-    // সাবজেক্টের তালিকা (Dakhil-26 এর জন্য)
-    const availableSubjects = [
-      "কুরআন মাজীদ ও তাজভীদ", "হাদিস শরীফ", "আরবি প্রথম পত্র", "আরবি দ্বিতীয় পত্র",
-      "আকাইদ ও ফিকহ", "বাংলা প্রথম পত্র", "বাংলা দ্বিতীয় পত্র", "ইংরেজি প্রথম পত্র",
-      "ইংরেজি দ্বিতীয় পত্র", "গণিত", "ইসলামের ইতিহাস", "তথ্য ও যোগাযোগ প্রযুক্তি",
-      "পদার্থবিজ্ঞান", "রসায়ন", "উচ্চতর গণিত", "জীববিজ্ঞান",
-      "বাংলাদেশ ও বিশ্বপরিচয়", "কৃষি শিক্ষা",
-      "মানতিক", "গার্হস্থ্য বিজ্ঞান", "পৌরনীতি ও নাগরিকতা", "মিশন",
-      "ইক্সাম", "অন্যান্য"
-    ];
+   // সাবজেক্টের তালিকা
+    const availableSubjects = ["বাংলা", "ইংরেজি", "জি.কে", "Solve ক্লাস", "ইক্সাম", "মিশন", "রেজাল্ট", "উত্তরপত্র ও শীট", "অন্যান্য"];
+  }
 
     // localStorage keys
     const LOGIN_EXPIRY_KEY = 'dakhil26_login_expiry';
