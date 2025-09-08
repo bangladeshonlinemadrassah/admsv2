@@ -403,6 +403,10 @@
       position: relative;
       overflow: hidden;
       font-size: 0.95rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
     }
 
     .card::before {
@@ -496,114 +500,6 @@
       box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
     }
     
-/* =========================
-    CARDS & GRID
-    ========================= */
-    .grid {
-      display: grid;
-      gap: 25px;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      margin-top: 30px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 20px;
-      backdrop-filter: blur(12px);
-      transition: var(--transition);
-      box-shadow: var(--shadow-sm);
-      position: relative;
-      overflow: hidden;
-      font-size: 0.9rem;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--primary), transparent);
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: var(--primary);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .subject {
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #7ecbff;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .time {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: 10px;
-      border: none;
-      background: var(--gradient-primary);
-      color: white;
-      font-weight: 600;
-      transition: var(--transition);
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
-      position: relative;
-      overflow: hidden;
-      font-size: 0.85rem;
-    }
-
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: 0.5s;
-    }
-
-    .btn:hover::before {
-      left: 100%;
-    }
-
-    .btn:focus, .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
-    }
-
-    .btn.disabled {
-      background: var(--text-muted);
-      cursor: not-allowed;
-      box-shadow: none;
-      opacity: 0.6;
-    }
-
-    .btn.disabled:hover {
-      transform: none;
-      box-shadow: none;
-    }
-
     /* =========================
     SUBJECT LIST - ENHANCED
     ========================= */
@@ -1263,15 +1159,15 @@
 
     /* ক্লাস কার্ডের পারফেক্ট সাইজ */
     #classGrid .card {
-      min-height: 220px; /* Changed: Increased min-height for taller cards */
-      height: auto; /* Changed: Allow dynamic height to fit content */
+      min-height: 220px;
+      height: auto;
       max-width: 380px;
       margin: 0 auto;
-      padding: 25px; /* Changed: Increased padding for better spacing */
+      padding: 25px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 12px; /* Changed: Slightly increased gap for better content spacing */
+      gap: 12px;
     }
 
     #classGrid .card .subject {
@@ -1302,7 +1198,7 @@
     }
 
     /* New: Style for class title in cards */
-    #classGrid .card .class-title {
+    #classGrid .card .video-title {
       font-size: 0.95rem;
       color: var(--text);
       margin-bottom: 12px;
@@ -1311,6 +1207,49 @@
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+    
+    /* New: Empty state styling */
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-muted);
+      grid-column: 1 / -1;
+    }
+    
+    .empty-state svg {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+      color: var(--text-muted);
+    }
+    
+    /* Loading animation */
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: var(--primary);
+      animation: spin 1s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Section title styling */
+    .section-title {
+      margin: 40px 0 20px;
+    }
+    
+    .section-title h2 {
+      font-size: 1.8rem;
+      color: var(--text);
+      font-weight: 700;
+      border-left: 4px solid var(--primary);
+      padding-left: 15px;
     }
   </style>
 </head>
@@ -1479,7 +1418,7 @@
         <h2 class="bangla-font">লগইন সফল হয়েছে!</h2>
       </div>
       <div class="modal-body">
-        <p class="bangla-font">অনুগ্রহ করে নোট করুন:<br>BOM এর ওয়েবসাইটের এক্সেস তথ্য সর্বদা গোপনীয় রাখুন এবং কারোর সাথে পাসওয়ার্ড শেয়ার করবেন না।</p>
+        <p class="bangla-font">অনুগ্রহ করে নোট করুন:<br>BOM এর ওয়েবসাইটের এক্সেস তথ্য সর্বদা গোপনীয় রাখুন এবং কারোর সাথে পাসওয়ার্ড শেয়ার করবেন না。</p>
         <p class="bangla-font">যদি কোনো ব্যবহারকারীর পাসওয়ার্ড শেয়ার করতে দেখা যায়, তাহলে তাকে এই ওয়েবসাইট থেকে স্থায়ীভাবে নিষিদ্ধ করা হবে।</p>
       </div>
       <div class="modal-footer">
@@ -1661,7 +1600,7 @@
       'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'
     ];
 
-    // তারিখ ফরম্যাট করা (বাংলা ফরম্যাটে)
+    // তারিখ ফরম্যাট করা (বাংলা फরম্যাটে)
     function formatDateToBangla(dateStr) {
       if (!dateStr) return '';
 
