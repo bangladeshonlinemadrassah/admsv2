@@ -1114,7 +1114,7 @@
 
     .filter-bar input:focus {
       border-color: var(--primary);
-      box-shadow: 0 极狐 0 3px rgba(67, 97, 238, 0.3), var(--shadow-sm);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3), var(--shadow-sm);
     }
 
     .filter-bar i {
@@ -1137,7 +1137,7 @@
       outline: none;
       transition: var(--transition);
       backdrop-filter: blur(10px);
-      font-size: 极狐.85rem;
+      font-size: 0.85rem;
       box-shadow: var(--shadow-sm);
     }
 
@@ -1150,7 +1150,7 @@
     .back-button {
       padding: 10px 20px;
       border-radius: 12px;
-     极狐 border: 1px solid var(--glass-border);
+      border: 1px solid var(--glass-border);
       background: var(--glass);
       backdrop-filter: blur(10px);
       transition: var(--transition);
@@ -1178,7 +1178,7 @@
       gap: 12px; /* Changed: Slightly increased gap for better content spacing */
     }
 
-    #classGrid .极狐 .subject {
+    #classGrid .card .subject {
       font-size: 1rem;
       margin-bottom: 8px;
     }
@@ -1261,10 +1261,10 @@
     <main class="container">
       <!-- হিরো সেকশন -->
       <div class="hero fade-in">
-        <极狐h1 class="bangla-font">ALIM-25 BOM Admission Course 1.0</h1>
+        <h1 class="bangla-font">ALIM-25 BOM Admission Course 1.0</h1>
         <p class="bangla-font">DU, CU, RU, SUST, GST, NU, JU, IU সহ সব বিশ্ববিদ্যালয়ের জন্য গুরুত্বপূর্ণ সাবজেক্টের উপর একসাথে গোছানো প্রস্তুতি</p>
       </div>
-      <!-- স্ট্যাট스 সেকশন -->
+      <!-- স্ট্যাটস সেকশন -->
       <div class="stats">
         <div class="stat-card fade-in">
           <div class="stat-number">90+</div>
@@ -1307,11 +1307,11 @@
       </div>
       <!-- সকল সাবজেক্ট সেকশন -->
       <div class="section-title">
-        <h2 class="bangla-font">সব সাবজেক্ট</极狐>
+        <h2 class="bangla-font">সব সাবজেক্ট</h2>
       </div>
       <div class="subj-list">
         <a class="pill subject-link" href="#" data-name="বাংলা"><span><i class="fas fa-font"></i> <span class="bangla-font">বাংলা</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="ইংরেজি"><span><i class="fas fa-font"></极狐> <span class="bangla-font">ইংরেজি</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="ইংরেজি"><span><i class="fas fa-font"></i> <span class="bangla-font">ইংরেজি</span></span><span class="go bangla-font">খুলুন</span></a>
         <a class="pill subject-link" href="#" data-name="জি.কে"><span><i class="fas fa-globe"></i> <span class="bangla-font">জি.কে</span></span><span class="go bangla-font">খুলুন</span></a>
         <a class="pill subject-link" href="#" data-name="Solve ক্লাস"><span><i class="fas fa-square-root-alt"></i> <span class="bangla-font">Solve ক্লাস</span></span><span class="go bangla-font">খুলুন</span></a>
         <a class="pill subject-link" href="#" data-name="ইক্সাম"><span><i class="fas fa-file-alt"></i> <span class="bangla-font">ইক্সাম</span></span><span class="go bangla-font">খুলুন</span></a>
@@ -1344,7 +1344,7 @@
       <nav class="nav container">
         <a class="brand back-button" href="#"><i class="fas fa-arrow-left"></i> <span class="bangla-font">সব সাবজেক্ট</span></a>
         <div class="filter-bar">
-          <div style="position: relative; width: 100%;极狐 max-width: 400px;">
+          <div style="position: relative; width: 100%; max-width: 400px;">
             <i class="fas fa-search"></i>
             <input id="search" type="search" placeholder="সার্চ..." class="bangla-font">
           </div>
@@ -1361,10 +1361,10 @@
     </main>
     <!-- OWNER & DESIGNER BLOCK -->
     <div class="owner-wrap">
-      <div class极狐="owner-message">
+      <div class="owner-message">
          The guiding force behind this platform is
       </div>
-      <div class="owner-name bangla-font">MD. RIAD HASAN <span style="font-weight:600; font-size:0.86rem; color:rgba(226,232,240,极狐0.85); margin-left:8px;"><br>(CEO & Founder)</span></div>
+      <div class="owner-name bangla-font">MD. RIAD HASAN <span style="font-weight:600; font-size:0.86rem; color:rgba(226,232,240,0.85); margin-left:8px;"><br>(CEO & Founder)</span></div>
       <div class="owner-sub">Committed to better education and brighter futures</div>
       <div class="designer-credit">
         <span class="bangla-font" style="opacity:0.9;">design by</span>
@@ -1410,7 +1410,7 @@
 
     // localStorage keys
     const LOGIN_EXPIRY_KEY = 'alim25_login_expiry';
-    const IS极狐_LOGGED_IN_KEY = 'alim25_is_logged_in';
+    const IS_LOGGED_IN_KEY = 'alim25_is_logged_in';
 
     // পেজ উপরে স্ক্রল করার ফাংশন
     function scrollToTop() {
@@ -1428,9 +1428,9 @@
     // লগইন expiry চেক করা
     function checkLoginExpiry() {
       const expiryTime = localStorage.getItem(LOGIN_EXPIRY_KEY);
-      const isLogged极狐In = localStorage.getItem(IS_LOGGED_IN_KEY);
+      const isLoggedIn = localStorage.getItem(IS_LOGGED_IN_KEY);
       if (!expiryTime || !isLoggedIn) return false;
-      const now极狐 = new Date().getTime();
+      const now = new Date().getTime();
       return now < parseInt(expiryTime);
     }
 
@@ -1484,69 +1484,35 @@
       if (e.key === 'Enter') checkPassword();
     });
 
-    // Google Sheets Timestamp থেকে তারিখ বের করার ফাংশন
-    function getDateFromTimestamp(timestamp) {
-      if (!timestamp) return new Date().toISOString().split('T')[0];
-      
+    // Timestamp থেকে তারিখ এবং সময় এক্সট্র্যাক্ট করার ফাংশন
+    function parseTimestamp(timestampStr) {
       try {
-        // Parse the timestamp string into a Date object
-        const date = new Date(timestamp);
-        
-        // Check if the date is valid
+        // Parse the timestamp string to Date object
+        const date = new Date(timestampStr);
         if (isNaN(date.getTime())) {
-          return new Date().toISOString().split('T')[0];
+          throw new Error('Invalid date');
         }
-        
-        // Format as YYYY-MM-DD
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        
-        return `${year}-${month}-${day}`;
+        return date;
       } catch (error) {
-        console.error("Error parsing timestamp:", error);
-        return new Date().toISOString().split('T')[0];
+        console.error('Timestamp parse error:', error);
+        return new Date(); // Fallback to current date if invalid
       }
     }
 
-    // Google Sheets Timestamp থেকে সময় বের করার ফাংশন
-    function getTimeFromTimestamp(timestamp) {
-      if (!timestamp) {
-        const now = new Date();
-        const hours = now.getHours() % 12 || 12;
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const period = now.getHours() >= 12 ? 'PM' : 'AM';
-        return `${hours}:${minutes} ${period}`;
-      }
-      
-      try {
-        // Parse the timestamp string into a Date object
-        const date = new Date(timestamp);
-        
-        // Check if the date is valid
-        if (isNaN(date.getTime())) {
-          const now = new Date();
-          const hours = now.getHours() % 12 || 12;
-          const minutes = String(now.getMinutes()).padStart(2, '0');
-          const period = now.getHours() >= 12 ? 'PM' : 'AM';
-          return `${hours}:${minutes} ${period}`;
-        }
-        
-        // Format time in 12-hour format
-        let hours = date.getHours();
-        const minutes = String(date.getMinutes()).padStart(2, '0');
-        const period = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12 || 12;
-        
-        return `${hours}:${minutes} ${period}`;
-      } catch (error) {
-        console.error("Error parsing timestamp:", error);
-        const now = new Date();
-        const hours = now.getHours() % 12 || 12;
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const period = now.getHours() >= 12 ? 'PM' : 'AM';
-        return `${hours}:${minutes} ${period}`;
-      }
+    function getDateFromTimestamp(timestampStr) {
+      const date = parseTimestamp(timestampStr);
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    function getTimeFromTimestamp(timestampStr) {
+      const date = parseTimestamp(timestampStr);
+      const hours = date.getHours() % 12 || 12;
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      const period = date.getHours() >= 12 ? 'PM' : 'AM';
+      return `${hours}:${minutes} ${period}`;
     }
 
     function formatDateToBangla(dateStr) {
@@ -1555,12 +1521,12 @@
       return `${parseInt(day)} ${banglaMonths[parseInt(month) - 1]}, ${year}`;
     }
 
-    // সাবজেক্ট ম্যাচিং
+    // সাবজেক্ট ম্যাচিং (প্লেসহোল্ডার)
     function findBestMatchingSubject(subjectFromSheet) {
       return availableSubjects.includes(subjectFromSheet) ? subjectFromSheet : subjectFromSheet;
     }
 
-    // ডেটা ফেচ করা
+    // ডেটা ফেচ করা (প্লেসহোল্ডার API URL, কাস্টমাইজেশন প্রয়োজন)
     async function fetchData() {
       showNotification("ডেটা লোড হচ্ছে...", false);
       try {
@@ -1577,19 +1543,20 @@
       }
     }
 
-    // ডেটা নরমালাইজ
+    // ডেটা নরমালাইজ (এখন timestamp থেকে সঠিক তারিখ/সময় নেয়)
     function normalizeRow(row, index) {
       return {
         subject: findBestMatchingSubject(row.subject || 'Unknown'),
         link: row.link || '#',
-        title: row.title || 'ক্লাস',
+        title: row.title || 'ক্লাস', // Ensure title is always present
         date: getDateFromTimestamp(row.timestamp),
         time: getTimeFromTimestamp(row.timestamp),
+        timestampObj: parseTimestamp(row.timestamp), // Store parsed Date for sorting
         serial: index + 1
       };
     }
 
-    // কার্ড রেন্ডার
+    // কার্ড রেন্ডার (প্লেসহোল্ডার)
     function renderCards(rows, root) {
       if (!rows || rows.length === 0) {
         root.innerHTML = '<div class="empty-state" style="text-align: center; padding: 40px;"><i class="fas fa-clock" style="font-size: 2rem; color: var(--text-muted); margin-bottom: 15px;"></i><p class="bangla-font">কোন ক্লাস পাওয়া যায়নি</p></div>';
@@ -1610,21 +1577,23 @@
           buttonText = 'দেখুন';
         }
         
+        // Changed: Added class-title div to display the title
         card.innerHTML = `
           <span class="card-badge">#${r.serial}</span>
           <div class="subject"><i class="fas fa-book"></i> <span class="bangla-font">${r.subject}</span></div>
           <div class="class-title bangla-font"><i class="fas fa-info-circle"></i> ${r.title}</div>
-          <div class="time"><极狐i class="fas fa-clock"></i> ${r.time} | <span class="bangla-font">${formatDateToBangla(r.date)}</span></div>
+          <div class="time"><i class="fas fa-clock"></i> ${r.time} | <span class="bangla-font">${formatDateToBangla(r.date)}</span></div>
           <a class="btn" href="${r.link}" target="_blank"><i class="fas fa-play-circle"></i> <span class="bangla-font">${buttonText}</span></a>
         `;
         root.appendChild(card);
+        // Ensure card is visible by adding 'visible' class after appending
         setTimeout(() => card.classList.add('visible'), 100);
       });
     }
 
     // আজকের ক্লাস ফিল্টার
     function filterTodayClasses(classes) {
-      const today = new Date().toISOString().split('T')[0];
+      const today = getDateFromTimestamp(new Date().toString()); // Current date as string
       return classes.filter(cls => cls && cls.date === today);
     }
 
@@ -1649,29 +1618,13 @@
       container.innerHTML = tableHTML;
     }
 
-    // সময় অনুযায়ী সাজানো
+    // সময় অনুযায়ী সাজানো (timestampObj ব্যবহার করে)
     function sortByTime(rows, order = 'desc') {
       return rows.slice().sort((a, b) => {
-        const dateA = new Date(a.date + 'T' + convertTo24Hour(a.time));
-        const dateB = new Date(b.date + 'T' + convertTo24Hour(b.time));
-        return order === 'asc' ? dateA - dateB : dateB - dateA;
+        const timeA = a.timestampObj.getTime();
+        const timeB = b.timestampObj.getTime();
+        return order === 'asc' ? timeA - timeB : timeB - timeA;
       });
-    }
-
-    // 12-hour format to 24-hour format conversion helper
-    function convertTo24Hour(time12h) {
-      if (!time12h) return '00:00';
-      
-      const [time, period] = time12h.split(' ');
-      let [hours, minutes] = time.split(':');
-      
-      hours = parseInt(hours);
-      minutes = parseInt(minutes || '0');
-      
-      if (period === 'PM' && hours < 12) hours += 12;
-      if (period === 'AM' && hours === 12) hours = 0;
-      
-      return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:00`;
     }
 
     // সাবজেক্ট পৃষ্ঠা দেখানো
@@ -1679,7 +1632,7 @@
       currentSubject = subject;
       $('#subject-title').innerHTML = `<i class="fas fa-book"></i> <span class="bangla-font">${subject}</span>`;
       mainPage.style.display = 'none';
-      subject极狐Page.style.display = 'block';
+      subjectPage.style.display = 'block';
       scrollToTop();
       loadSubjectData(subject);
     }
