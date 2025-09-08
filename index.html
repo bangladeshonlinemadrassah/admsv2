@@ -858,87 +858,90 @@ header, .card, .hero, .login-container, .modal-content {
     }
 
     /* =========================
-    WARNING MODAL - ENHANCED
-    ========================= */
-    .warning-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s;
-      backdrop-filter: blur(10px);
-    }
+WARNING MODAL - FLOATING POPUP CENTER (Ultra Simple)
+========================= */
+.warning-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  backdrop-filter: blur(10px);
+}
 
-    .warning-modal.show {
-      opacity: 1;
-      visibility: visible;
-    }
+.warning-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
 
-    .modal-content {
-      background: var(--card-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius);
-      padding: 35px;
-      max-width: 500px;
-      width: 90%;
-      backdrop-filter: blur(20px);
-      box-shadow: var(--shadow-lg);
-      position: relative;
-    }
+.modal-content {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 35px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  /* No extra padding or margin - pure center floating */
+}
 
-    .modal-content::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
-      transform: rotate(30deg);
-      pointer-events: none;
-    }
+.modal-content::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+  transform: rotate(30deg);
+  pointer-events: none;
+}
 
-    .modal-header h2 {
-      font-size: 1.6rem;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 15px;
-      font-weight: 800;
-    }
+.modal-header h2 {
+  font-size: 1.6rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
 
-    .modal-body p {
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 18px;
-    }
+.modal-body p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
 
-    .modal-footer .modal-ok-btn {
-      padding: 14px 35px;
-      border-radius: 12px;
-      border: none;
-      background: var(--gradient-primary);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: var(--shadow-md);
-    }
+.modal-footer .modal-ok-btn {
+  padding: 14px 35px;
+  border-radius: 12px;
+  border: none;
+  background: var(--gradient-primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+}
 
-    .modal-ok-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
-    }
-
+.modal-ok-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+  }
+    
     /* =========================
     NOTIFICATION - ENHANCED
     ========================= */
