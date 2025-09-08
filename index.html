@@ -1396,6 +1396,36 @@ header, .card, .hero, .login-container, .modal-content {
       © 2025 ALIM25 BOM Admission Course 1.0 (BOM). All rights reserved.
     </footer>
   </div>
+  <!-- মিশন সাব-সাবজেক্ট পেজ (নতুন যোগ করা) -->
+  <div id="mission-subjects-page" style="display: none;">
+    <header>
+      <nav class="nav container">
+        <a class="brand back-button" href="#" onclick="showMainPage()"><i class="fas fa-arrow-left"></i> <span class="bangla-font">সব সাবজেক্ট</span></a>
+      </nav>
+    </header>
+    <main class="container">
+      <h2 id="mission-title" class="bangla-font"><i class="fas fa-bullseye"></i> মিশন</h2>
+      <div class="subj-list" id="mission-subjects-list">
+        <!-- JS দিয়ে রেন্ডার হবে -->
+      </div>
+    </main>
+    <!-- OWNER & DESIGNER BLOCK -->
+    <div class="owner-wrap">
+      <div class="owner-message">
+         The guiding force behind this platform is
+      </div>
+      <div class="owner-name bangla-font">MD. RIAD HASAN <span style="font-weight:600; font-size:0.86rem; color:rgba(226,232,240,0.85); margin-left:8px;"><br>(CEO & Founder)</span></div>
+      <div class="owner-sub">Committed to better education and brighter futures</div>
+      <div class="designer-credit">
+        <span class="bangla-font" style="opacity:0.9;">design by</span>
+        <span class="designer-name">SAHIBUL MUSA SIUM</span>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      © 2025 ALIM25 BOM Admission Course 1.0 (BOM). All rights reserved.
+    </footer>
+  </div>
   <!-- ওয়ার্নিং মোডাল -->
   <div id="warning-modal" class="warning-modal">
     <div class="modal-content">
@@ -1422,11 +1452,20 @@ header, .card, .hero, .login-container, .modal-content {
     const loginPage = $('#login-page');
     const mainPage = $('#main-page');
     const subjectPage = $('#subject-page');
+    const missionSubjectsPage = $('#mission-subjects-page');
     const warningModal = $('#warning-modal');
     let allClasses = [];
 
-    // সাবজেক্টের তালিকা
+    // সাবজেক্টের তালিকা (মিশন এখানে আছে, কিন্তু সাব-সাবজেক্ট আলাদা)
     const availableSubjects = ["বাংলা", "ইংরেজি", "জি.কে", "Solve ক্লাস", "ইক্সাম", "মিশন", "রেজাল্ট", "উত্তরপত্র ও শীট", "অন্যান্য"];
+
+    // মিশনের সাব-সাবজেক্টগুলো
+    const missionSubSubjects = [
+      "মিশন: DU,CU,RU,JNU,GST,NU",
+      "মিশন: Dhaka University Written",
+      "মিশন: ইসলামী বিশ্ববিদ্যালয়ের কুষ্টিয়া (ধর্মতত্ত্ব)",
+      "মিশন: চট্টগ্রাম বিশ্ববিদ্যালয় বি-২-উপ ইউনিট"
+    ];
 
     // localStorage keys
     const LOGIN_EXPIRY_KEY = 'alim25_login_expiry';
@@ -1461,6 +1500,7 @@ header, .card, .hero, .login-container, .modal-content {
       loginPage.style.display = 'flex';
       mainPage.style.display = 'none';
       subjectPage.style.display = 'none';
+      missionSubjectsPage.style.display = 'none';
     }
 
     // ওয়ার্নিং মোডাল দেখানোর ফাংশন
@@ -1541,8 +1581,11 @@ header, .card, .hero, .login-container, .modal-content {
       return `${parseInt(day)} ${banglaMonths[parseInt(month) - 1]}, ${year}`;
     }
 
-    // সাবজেক্ট ম্যাচিং (প্লেসহোল্ডার)
+    // সাবজেক্ট ম্যাচিং (মিশনের সাব-সাবজেক্টগুলো চেক করে)
     function findBestMatchingSubject(subjectFromSheet) {
+      if (missionSubSubjects.includes(subjectFromSheet)) {
+        return subjectFromSheet;
+      }
       return availableSubjects.includes(subjectFromSheet) ? subjectFromSheet : subjectFromSheet;
     }
 
@@ -1591,7 +1634,7 @@ header, .card, .hero, .login-container, .modal-content {
         let buttonText = 'ক্লাস দেখুন';
         if (r.subject === 'ইক্সাম') {
           buttonText = 'পরীক্ষায় অংশগ্রহণ করুন';
-        } else if (r.subject === 'মিশন') {
+        } else if (missionSubSubjects.includes(r.subject)) {
           buttonText = 'মিশন সম্পন্ন করুন';
         } else if (['রেজাল্ট', 'উত্তরপত্র ও শীট', 'অন্যান্য'].includes(r.subject)) {
           buttonText = 'দেখুন';
@@ -1611,7 +1654,7 @@ header, .card, .hero, .login-container, .modal-content {
       });
     }
 
-    // আজকের ক্লাস ফিল্টার
+    // আজকের ক্লাস ফিল্টার (মিশন সাব-সাবজেক্টগুলো অন্তর্ভুক্ত)
     function filterTodayClasses(classes) {
       const today = getDateFromTimestamp(new Date().toString()); // Current date as string
       return classes.filter(cls => cls && cls.date === today);
@@ -1647,11 +1690,43 @@ header, .card, .hero, .login-container, .modal-content {
       });
     }
 
-    // সাবজেক্ট পৃষ্ঠা দেখানো
+    // মিশন সাব-সাবজেক্ট পেজ দেখানো
+    function showMissionSubPage() {
+      $('#mission-title').innerHTML = `<i class="fas fa-bullseye"></i> <span class="bangla-font">মিশন</span>`;
+      mainPage.style.display = 'none';
+      missionSubjectsPage.style.display = 'block';
+      scrollToTop();
+      renderMissionSubList();
+    }
+
+    // মিশন সাব-লিস্ট রেন্ডার
+    function renderMissionSubList() {
+      const container = $('#mission-subjects-list');
+      container.innerHTML = '';
+      missionSubSubjects.forEach(subSubject => {
+        const pill = document.createElement('a');
+        pill.className = 'pill subject-link';
+        pill.href = '#';
+        pill.setAttribute('data-name', subSubject);
+        pill.innerHTML = `<span><i class="fas fa-bullseye"></i> <span class="bangla-font">${subSubject}</span></span><span class="go bangla-font">খুলুন</span>`;
+        pill.addEventListener('click', (e) => {
+          e.preventDefault();
+          showSubjectPage(subSubject);
+        });
+        container.appendChild(pill);
+      });
+    }
+
+    // সাবজেক্ট পৃষ্ঠা দেখানো (মিশন চেক করে)
     function showSubjectPage(subject) {
+      if (subject === 'মিশন') {
+        showMissionSubPage();
+        return;
+      }
       currentSubject = subject;
       $('#subject-title').innerHTML = `<i class="fas fa-book"></i> <span class="bangla-font">${subject}</span>`;
       mainPage.style.display = 'none';
+      missionSubjectsPage.style.display = 'none';
       subjectPage.style.display = 'block';
       scrollToTop();
       loadSubjectData(subject);
@@ -1660,12 +1735,13 @@ header, .card, .hero, .login-container, .modal-content {
     // মেইন পৃষ্ঠায় ফিরে যাওয়া
     function showMainPage() {
       subjectPage.style.display = 'none';
+      missionSubjectsPage.style.display = 'none';
       mainPage.style.display = 'block';
       currentSubject = null;
       scrollToTop();
     }
 
-    // সাবজেক্ট ডেটা লোড
+    // সাবজেক্ট ডেটা লোড (মিশন সাব-সাবজেক্ট সাপোর্ট করে)
     function loadSubjectData(subject) {
       const grid = $('#classGrid');
       const searchInput = $('#search');
@@ -1709,7 +1785,7 @@ header, .card, .hero, .login-container, .modal-content {
           });
         });
       }
-      $('#mission-stats').addEventListener('click', () => showSubjectPage('মিশন'));
+      $('#mission-stats').addEventListener('click', () => showMissionSubPage());
       $('#exam-stats').addEventListener('click', () => showSubjectPage('ইক্সাম'));
     }
 
@@ -1736,6 +1812,7 @@ header, .card, .hero, .login-container, .modal-content {
         loginPage.style.display = 'flex';
         mainPage.style.display = 'none';
         subjectPage.style.display = 'none';
+        missionSubjectsPage.style.display = 'none';
         localStorage.removeItem(LOGIN_EXPIRY_KEY);
         localStorage.removeItem(IS_LOGGED_IN_KEY);
       }
