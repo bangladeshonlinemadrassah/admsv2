@@ -1204,9 +1204,6 @@
       margin-bottom: 12px;
       line-height: 1.5;
       font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
     
     /* New: Empty state styling */
@@ -1250,6 +1247,18 @@
       font-weight: 700;
       border-left: 4px solid var(--primary);
       padding-left: 15px;
+    }
+    
+    /* Button disabled state */
+    .btn.disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+    
+    .btn.disabled:hover {
+      transform: none;
+      box-shadow: var(--shadow-md);
     }
   </style>
 </head>
@@ -1320,7 +1329,7 @@
       </div>
       <!-- আজকের ক্লাস সেকশন -->
       <div class="section-title">
-        <h2 class="bangla-font">আজকের ক্লাস</h2>
+        <h2 class="bangla-font">আজকের ক্লاس</h2>
       </div>
       <div id="today-classes">
         <table class="today-classes-table">
@@ -1418,7 +1427,7 @@
         <h2 class="bangla-font">লগইন সফল হয়েছে!</h2>
       </div>
       <div class="modal-body">
-        <p class="bangla-font">অনুগ্রহ করে নোট করুন:<br>BOM এর ওয়েবসাইটের এক্সেস তথ্য সর্বদা গোপনীয় রাখুন এবং কারোর সাথে পাসওয়ার্ড শেয়ার করবেন না。</p>
+        <p class="bangla-font">অনুগ্রহ করে নোট করুন:<br>BOM এর ওয়েবসাইটের এক্সেস তথ্য সর্বদা গোপনীয় রাখুন এবং কারোর সাথে পাসওয়ার্ড শেয়ার করবেন না।</p>
         <p class="bangla-font">যদি কোনো ব্যবহারকারীর পাসওয়ার্ড শেয়ার করতে দেখা যায়, তাহলে তাকে এই ওয়েবসাইট থেকে স্থায়ীভাবে নিষিদ্ধ করা হবে।</p>
       </div>
       <div class="modal-footer">
@@ -1450,7 +1459,7 @@
       "কুরআন মাজীদ ও তাজভীদ", "হাদিস শরীফ", "আরবি প্রথম পত্র", "আরবি দ্বিতীয় পত্র",
       "আকাইদ ও ফিকহ", "বাংলা প্রথম পত্র", "বাংলা দ্বিতীয় পত্র", "ইংরেজি প্রথম পত্র",
       "ইংরেজি দ্বিতীয় পত্র", "গণিত", "ইসলামের ইতিহাস", "তথ্য ও যোগাযোগ প্রযুক্তি",
-      "পদার্থবিজ্ঞান", "রসায়ন", "উচ্চতর গণিত", "জীববিজ্ঞান",
+      "পদার্থবিজ্ঞান", "রসায়ন", "উচ্চতর গণিত", "জীবব�্ঞান",
       "বাংলাদেশ ও বিশ্বপরিচয়", "কৃষি শিক্ষা",
       "মানতিক", "গার্হস্থ্য বিজ্ঞান", "পৌরনীতি ও নাগরিকতা", "মিশন",
       "ইক্সাম", "অন্যান্য"
@@ -1600,7 +1609,7 @@
       'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'
     ];
 
-    // তারিখ ফরম্যাট করা (বাংলা फরম্যাটে)
+    // তারিখ ফরম্যাট করা (বাংলা ফরম্যাটে)
     function formatDateToBangla(dateStr) {
       if (!dateStr) return '';
 
@@ -1703,7 +1712,7 @@
     // কার্ড রেন্ডার করা
     function renderCards(rows, root) {
       if (!rows || rows.length === 0) {
-        root.innerHTML = '<div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><p class="bangla-font">কোন ক্লাস পাওয়া যায়নি</p></div>';
+        root.innerHTML = '<div class="empty-state"><i class="fas fa-clock" style="font-size: 3rem; margin-bottom: 15px;"></i><p class="bangla-font">কোন ক্লাস পাওয়া যায়নি</p></div>';
         return;
       }
 
@@ -1800,7 +1809,7 @@
       scrollToTop();
     }
 
-    // সাবজেক্ট ডেটা লোড করা
+    // সাবজেক্ট ডেটا লোড করা
     function loadSubjectData(subject) {
       const grid = $('#classGrid');
       const searchInput = $('#search');
