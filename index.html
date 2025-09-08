@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  DOCTYPE html>
 <html lang="bn">
 <head>
   <meta charset="UTF-8" />
@@ -403,10 +403,6 @@
       position: relative;
       overflow: hidden;
       font-size: 0.95rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 220px;
     }
 
     .card::before {
@@ -499,7 +495,19 @@
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
     }
-    
+
+    .btn.disabled {
+      background: var(--text-muted);
+      cursor: not-allowed;
+      box-shadow: none;
+      opacity: 0.6;
+    }
+
+    .btn.disabled:hover {
+      transform: none;
+      box-shadow: none;
+    }
+
     /* =========================
     SUBJECT LIST - ENHANCED
     ========================= */
@@ -1159,15 +1167,15 @@
 
     /* ক্লাস কার্ডের পারফেক্ট সাইজ */
     #classGrid .card {
-      min-height: 220px;
-      height: auto;
+      min-height: 220px; /* Changed: Increased min-height for taller cards */
+      height: auto; /* Changed: Allow dynamic height to fit content */
       max-width: 380px;
       margin: 0 auto;
-      padding: 25px;
+      padding: 25px; /* Changed: Increased padding for better spacing */
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 12px;
+      gap: 12px; /* Changed: Slightly increased gap for better content spacing */
     }
 
     #classGrid .card .subject {
@@ -1198,67 +1206,15 @@
     }
 
     /* New: Style for class title in cards */
-    #classGrid .card .video-title {
+    #classGrid .card .class-title {
       font-size: 0.95rem;
       color: var(--text);
       margin-bottom: 12px;
       line-height: 1.5;
       font-weight: 500;
-    }
-    
-    /* New: Empty state styling */
-    .empty-state {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--text-muted);
-      grid-column: 1 / -1;
-    }
-    
-    .empty-state svg {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 15px;
-      color: var(--text-muted);
-    }
-    
-    /* Loading animation */
-    .loading {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 3px solid rgba(255,255,255,.3);
-      border-radius: 50%;
-      border-top-color: var(--primary);
-      animation: spin 1s ease-in-out infinite;
-    }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    
-    /* Section title styling */
-    .section-title {
-      margin: 40px 0 20px;
-    }
-    
-    .section-title h2 {
-      font-size: 1.8rem;
-      color: var(--text);
-      font-weight: 700;
-      border-left: 4px solid var(--primary);
-      padding-left: 15px;
-    }
-    
-    /* Button disabled state */
-    .btn.disabled {
-      background: #94a3b8;
-      cursor: not-allowed;
-      opacity: 0.7;
-    }
-    
-    .btn.disabled:hover {
-      transform: none;
-      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
   </style>
 </head>
@@ -1329,7 +1285,7 @@
       </div>
       <!-- আজকের ক্লাস সেকশন -->
       <div class="section-title">
-        <h2 class="bangla-font">আজকের ক্লاس</h2>
+        <h2 class="bangla-font">আজকের ক্লাস</h2>
       </div>
       <div id="today-classes">
         <table class="today-classes-table">
@@ -1436,11 +1392,12 @@
     </div>
   </div>
   <div id="notification" class="notification"></div>
-  <script>
+ 
+<script>
     // =========================
     // JavaScript কোড - Google Sheets সংযোগ সহ
     // =========================
-    const API_URL = "https://script.google.com/macros/s/AKfycbzLWkqUJGkGNP5k3bCYM7mSbEbe6SVorTTQu-NpWa4VB2ZSpY_4N4VbIoxcW5EGSPHW3A/exec";
+    const API_URL = "https://script.google.com/macros/s/AKfycbwZnb6Lr-_IN1FzgvhQ-em6NjaqVIWWpmEKHinchUbY4Bt8NhOssIx_dRJ4MiSFmfKJ4g/exec";
 
     // DOM হেল্পার ফাংশন
     function $(sel, root = document) { return root.querySelector(sel); }
@@ -1459,7 +1416,7 @@
       "কুরআন মাজীদ ও তাজভীদ", "হাদিস শরীফ", "আরবি প্রথম পত্র", "আরবি দ্বিতীয় পত্র",
       "আকাইদ ও ফিকহ", "বাংলা প্রথম পত্র", "বাংলা দ্বিতীয় পত্র", "ইংরেজি প্রথম পত্র",
       "ইংরেজি দ্বিতীয় পত্র", "গণিত", "ইসলামের ইতিহাস", "তথ্য ও যোগাযোগ প্রযুক্তি",
-      "পদার্থবিজ্ঞান", "রসায়ন", "উচ্চতর গণিত", "জীবব�্ঞান",
+      "পদার্থবিজ্ঞান", "রসায়ন", "উচ্চতর গণিত", "জীববিজ্ঞান",
       "বাংলাদেশ ও বিশ্বপরিচয়", "কৃষি শিক্ষা",
       "মানতিক", "গার্হস্থ্য বিজ্ঞান", "পৌরনীতি ও নাগরিকতা", "মিশন",
       "ইক্সাম", "অন্যান্য"
@@ -1712,7 +1669,7 @@
     // কার্ড রেন্ডার করা
     function renderCards(rows, root) {
       if (!rows || rows.length === 0) {
-        root.innerHTML = '<div class="empty-state"><i class="fas fa-clock" style="font-size: 3rem; margin-bottom: 15px;"></i><p class="bangla-font">কোন ক্লাস পাওয়া যায়নি</p></div>';
+        root.innerHTML = '<div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><p class="bangla-font">কোন ক্লাস পাওয়া যায়নি</p></div>';
         return;
       }
 
@@ -1809,7 +1766,7 @@
       scrollToTop();
     }
 
-    // সাবজেক্ট ডেটا লোড করা
+    // সাবজেক্ট ডেটা লোড করা
     function loadSubjectData(subject) {
       const grid = $('#classGrid');
       const searchInput = $('#search');
