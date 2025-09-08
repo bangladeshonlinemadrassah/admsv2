@@ -41,6 +41,25 @@
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+    /* স্ক্রলিং মসৃণ করার জন্য */
+html {
+  scroll-behavior: smooth; /* স্ক্রল মসৃণ করবে */
+  -webkit-overflow-scrolling: touch; /* মোবাইলে স্মুথ স্ক্রল */
+}
+
+body, header, .card, .hero, .pill, .stat-card {
+  will-change: transform; /* ব্রাউজারকে দ্রুত রেন্ডার করতে বলে */
+  transform: translateZ(0); /* হার্ডওয়্যার ত্বরণ (GPU) ব্যবহার করে */
+}
+
+header, .card, .hero, .login-container, .modal-content {
+  backdrop-filter: blur(8px); /* ব্লার কমিয়ে স্ক্রল দ্রুত করা */
+}
+
+.card, .btn, .pill, .stat-card {
+  transition: transform 0.2s, box-shadow 0.2s; /* অ্যানিমেশন সিম্পল করা */
+}
+
     /* =========================
     BASE STYLES - ENHANCED
     ========================= */
