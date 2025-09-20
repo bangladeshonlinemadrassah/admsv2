@@ -1327,6 +1327,56 @@
       transform: translateY(-2px);
       box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
     }
+
+    .modal-content {
+      overflow-y: auto;
+      max-height: 80vh;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .modal-content::-webkit-scrollbar {
+      display: none;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .badge-sticker {
+      font-size: 1.2rem;
+      margin-left: 5px;
+    }
+
+    .category-stats {
+      margin-top: 20px;
+    }
+
+    .category-stat {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .category-stat h4 {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .category-stat p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
   </style>
 </head>
 <body>
@@ -1522,14 +1572,12 @@
   </div>
   <div id="dashboard-modal" class="dashboard-modal">
     <div class="modal-content">
+      <button class="modal-close" id="close-dashboard">&times;</button>
       <div class="modal-header">
         <h2 class="bangla-font">আপনার ড্যাশবোর্ড</h2>
       </div>
       <div class="modal-body" id="dashboard-body">
         <!-- ডাইনামিক কনটেন্ট এখানে লোড হবে -->
-      </div>
-      <div class="modal-footer">
-        <button class="modal-ok-btn bangla-font" id="close-dashboard">বন্ধ করুন</button>
       </div>
     </div>
   </div>
@@ -2034,12 +2082,49 @@ function renderDashboard() {
   const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
 
   const daysSinceJoin = Math.floor((new Date() - joinDate) / (1000 * 60 * 60 * 24));
-  const classesBeforeJoin = allClasses.filter(cls => new Date(cls.timestamp) < joinDate).length;
-  const classesAfterJoin = allClasses.filter(cls => new Date(cls.timestamp) >= joinDate).length;
+
+  // ক্যাটাগরি স্ট্যাটস ক্যালকুলেট
+  const categories = {
+    'ক্লাস': allClasses.filter(cls => !['মিশন', 'ইক্সাম'].includes(cls.subject)),
+    'মিশন': allClasses.filter(cls => cls.subject === 'মিশন'),
+    'পরীক্ষা': allClasses.filter(cls => cls.subject === 'ইক্সাম')
+  };
+
+  let categoryStatsHTML = '';
+  Object.keys(categories).forEach(cat => {
+    const items = categories[cat];
+    if (items.length === 0) {
+      categoryStatsHTML += `
+        <div class="category-stat">
+          <h4 class="bangla-font">${cat}</h4>
+          <p class="bangla-font">এখনো শুরু হয়নি</p>
+        </div>
+      `;
+      return;
+    }
+
+    const oldItems = items.filter(cls => new Date(cls.timestamp) < joinDate).length;
+    const newItems = items.filter(cls => new Date(cls.timestamp) >= joinDate).length;
+    const completed = items.filter(cls => completedItems.includes(cls.timestamp)).length;
+    const remaining = items.length - completed;
+
+    categoryStatsHTML += `
+      <div class="category-stat">
+        <h4 class="bangla-font">${cat}</h4>
+        <p class="bangla-font">পুরাতন: ${oldItems}</p>
+        <p class="bangla-font">নতুন: ${newItems}</p>
+        <p class="bangla-font">সম্পন্ন: ${completed}</p>
+        <p class="bangla-font">বাকি: ${remaining}</p>
+      </div>
+    `;
+  });
 
   dashboardBody.innerHTML = `
     <div class="dashboard-section">
-      <h3 class="bangla-font">স্বাগতম, ${studentName}!</h3>
+      <h3 class="bangla-font">স্বাগতম, ${studentName}${earnedBadges.map(b => {
+        const badge = badgeThresholds.find(bd => bd.name === b);
+        return badge ? `<span class="badge-sticker">${badge.icon}</span>` : '';
+      }).join('')}!</h3>
       <p class="bangla-font">${randomQuote}</p>
     </div>
     <div class="dashboard-section">
@@ -2051,16 +2136,6 @@ function renderDashboard() {
           <div class="stat-description bangla-font">দিন যোগদানের পর</div>
         </div>
         <div class="stat-card">
-          <i class="fas fa-book stat-icon"></i>
-          <div class="stat-value">${classesBeforeJoin}</div>
-          <div class="stat-description bangla-font">যোগদানের আগে ক্লাস</div>
-        </div>
-        <div class="stat-card">
-          <i class="fas fa-book-open stat-icon"></i>
-          <div class="stat-value">${classesAfterJoin}</div>
-          <div class="stat-description bangla-font">যোগদানের পর ক্লাস</div>
-        </div>
-        <div class="stat-card">
           <i class="fas fa-check-circle stat-icon"></i>
           <div class="stat-value">${completedItems.length}</div>
           <div class="stat-description bangla-font">সম্পন্ন আইটেম</div>
@@ -2070,6 +2145,12 @@ function renderDashboard() {
         <div class="progress-bar-fill" style="width: ${completionPercentage}%"></div>
       </div>
       <p class="bangla-font">${completionPercentage.toFixed(2)}% সম্পন্ন</p>
+    </div>
+    <div class="dashboard-section">
+      <h3 class="bangla-font">ক্যাটাগরি স্ট্যাটস</h3>
+      <div class="category-stats">
+        ${categoryStatsHTML}
+      </div>
     </div>
     <div class="dashboard-section highlight">
       <h3 class="bangla-font">আপনার ব্যাজ</h3>
