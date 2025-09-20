@@ -1143,54 +1143,152 @@
       gap: 6px;
     }
 
-    /* নতুন ড্যাশবোর্ড স্টাইল */
-    .class-table {
+    /* নতুন CSS: ড্যাশবোর্ডের জন্য */
+    .dashboard-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
     }
 
-    .class-table th,
-    .class-table td {
-      border: 1px solid var(--card-border);
-      padding: 10px;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-
-    .class-table th {
-      background: var(--gradient-primary);
-      color: white;
-    }
-
-    .class-table td {
-      background: var(--card-bg);
-    }
-
-    .class-table tr:nth-child(even) td {
-      background: var(--card-bg-alt, rgba(30, 41, 59, 0.9));
+    .dashboard-modal.show {
+      opacity: 1;
+      visibility: visible;
     }
 
     .dashboard-section {
       margin-bottom: 30px;
+      padding: 20px;
+      border-radius: 12px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-md);
     }
 
-    .dashboard-section h3 {
-      font-size: 1.2rem;
+    .dashboard-section.highlight {
+      background: rgba(37, 99, 235, 0.1);
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-icon {
+      font-size: 2rem;
       margin-bottom: 10px;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
       background: var(--gradient-primary);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
+    .stat-description {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .alert-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--warning);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: pulse 2s infinite;
+    }
+
+    .alert-box i {
+      font-size: 1.2rem;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .badge-item {
+      text-align: center;
+      padding: 15px;
+      border-radius: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      transition: var(--transition);
+    }
+
+    .badge-item.unlocked {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: var(--secondary);
+    }
+
+    .badge-item.locked {
+      opacity: 0.6;
+    }
+
+    .badge-icon {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .badge-name {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .badge-progress {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
     .progress-bar {
-      width: 100%;
       height: 8px;
       background: var(--card-border);
       border-radius: 4px;
       overflow: hidden;
-      margin: 15px 0;
+      margin-top: 10px;
     }
 
     .progress-bar-fill {
@@ -1199,88 +1297,35 @@
       transition: width 0.5s ease;
     }
 
-    .card.completed .btn {
-      background: var(--secondary);
-    }
-
-    .card.completed .btn i {
-      color: white;
-    }
-
-    .alert-box {
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.9rem;
-    }
-
-    .alert-box.success {
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid var(--secondary);
-      color: var(--secondary);
-    }
-
-    .alert-box.warning {
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid var(--warning);
-      color: var(--warning);
-    }
-
     .name-input-form {
       display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
     }
 
     .name-input-form input {
-      flex: 1;
       padding: 12px;
       border-radius: 10px;
       border: 1px solid var(--card-border);
       background: var(--glass);
       color: var(--text);
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     .name-input-form button {
-      padding: 12px 20px;
+      padding: 12px;
       border-radius: 10px;
+      border: none;
       background: var(--gradient-primary);
       color: white;
-      border: none;
+      font-weight: 600;
       cursor: pointer;
-      font-size: 0.9rem;
-      transition: var(--transition);
     }
 
     .name-input-form button:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
-      margin: 20px 0;
-    }
-
-    .stat-item {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      transition: var(--transition);
-    }
-
-    .stat-item:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
     }
   </style>
 </head>
@@ -1322,6 +1367,7 @@
         </div>
         <div class="controls">
           <button class="btn" id="refresh-data-btn"><i class="fas fa-sync-alt"></i> <span class="bangla-font">ডেটা রিফ্রেশ করুন</span></button>
+          <button class="btn" id="dashboard-btn" style="display: none;"><i class="fas fa-tachometer-alt"></i> <span class="bangla-font">ড্যাশবোর্ড</span></button>
           <a class="btn" id="add-class-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfL0sFmx3IiTXCiFFraymOe65ITt6TqtTJVgjQln5dpAgk1oQ/viewform?usp=header" target="_blank" rel="noopener" style="display: none;"><i class="fas fa-plus-circle"></i> <span class="bangla-font">ক্লাস যুক্ত করুন</span></a>
         </div>
       </nav>
@@ -1474,16 +1520,16 @@
       </div>
     </div>
   </div>
-  <div id="dashboard-modal" class="warning-modal" style="display: none;">
+  <div id="dashboard-modal" class="dashboard-modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="bangla-font">ড্যাশবোর্ড</h2>
+        <h2 class="bangla-font">আপনার ড্যাশবোর্ড</h2>
       </div>
       <div class="modal-body" id="dashboard-body">
-        <p class="bangla-font">লোড হচ্ছে...</p>
+        <!-- ডাইনামিক কনটেন্ট এখানে লোড হবে -->
       </div>
       <div class="modal-footer">
-        <button class="modal-ok-btn bangla-font" onclick="closeDashboardModal()">বন্ধ করুন</button>
+        <button class="modal-ok-btn bangla-font" id="close-dashboard">বন্ধ করুন</button>
       </div>
     </div>
   </div>
@@ -1491,561 +1537,574 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycbwZnb6Lr-_IN1FzgvhQ-em6NjaqVIWWpmEKHinchUbY4Bt8NhOssIx_dRJ4MiSFmfKJ4g/exec";
 
-    function $(sel, root = document) { return root.querySelector(sel); }
-    function $all(sel, root = document) { return Array.from(root.querySelectorAll(sel)); }
+function $(sel, root = document) { return root.querySelector(sel); }
+function $all(sel, root = document) { return Array.from(root.querySelectorAll(sel)); }
 
-    let currentSubject = null;
-    let highlightedClassTimestamp = null;
-    const loginPage = $('#login-page');
-    const mainPage = $('#main-page');
-    const subjectPage = $('#subject-page');
-    const warningModal = $('#warning-modal');
-    let allClasses = [];
-    let groupedClassesCache = {};
+let currentSubject = null;
+let highlightedClassTimestamp = null;
+const loginPage = $('#login-page');
+const mainPage = $('#main-page');
+const subjectPage = $('#subject-page');
+const warningModal = $('#warning-modal');
+const dashboardModal = $('#dashboard-modal');
+const dashboardBody = $('#dashboard-body');
+const closeDashboardBtn = $('#close-dashboard');
+const dashboardBtn = $('#dashboard-btn');
+let allClasses = [];
+let groupedClassesCache = {};
 
-    const availableSubjects = [
-      "কুরআন মাজীদ ও তাজভীদ", "হাদিস শরীফ", "আরবি প্রথম পত্র", "আরবি দ্বিতীয় পত্র",
-      "আকাইদ ও ফিকহ", "বাংলা প্রথম পত্র", "বাংলা দ্বিতীয় পত্র", "ইংরেজি প্রথম পত্র",
-      "ইংরেজি দ্বিতীয় পত্র", "গণিত", "ইসলামের ইতিহাস", "তথ্য ও যোগাযোগ প্রযুক্তি",
-      "পদার্থবিজ্ঞান", "রসায়ন", "উচ্চতর গণিত", "জীববিজ্ঞান",
-      "বাংলাদেশ ও বিশ্বপরিচয়", "কৃষি শিক্ষা",
-      "মানতিক", "গার্হস্থ্য বিজ্ঞান", "পৌরনীতি ও নাগরিকতা", "মিশন",
-      "ইক্সাম", "ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "অন্যান্য"
-    ];
+const availableSubjects = [
+  "কুরআন মাজীদ ও তাজভীদ", "হাদিস শরীফ", "আরবি প্রথম পত্র", "আরবি দ্বিতীয় পত্র",
+  "আকাইদ ও ফিকহ", "বাংলা প্রথম পত্র", "বাংলা দ্বিতীয় পত্র", "ইংরেজি প্রথম পত্র",
+  "ইংরেজি দ্বিতীয় পত্র", "গণিত", "ইসলামের ইতিহাস", "তথ্য ও যোগাযোগ প্রযুক্তি",
+  "পদার্থবিজ্ঞান", "রসায়ন", "উচ্চতর গণিত", "জীববিজ্ঞান",
+  "বাংলাদেশ ও বিশ্বপরিচয়", "কৃষি শিক্ষা",
+  "মানতিক", "গার্হস্থ্য বিজ্ঞান", "পৌরনীতি ও নাগরিকতা", "মিশন",
+  "ইক্সাম", "ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "অন্যান্য"
+];
 
-    const LOGIN_EXPIRY_KEY = 'dakhil26_login_expiry';
-    const IS_LOGGED_IN_KEY = 'dakhil26_is_logged_in';
-    const USER_ROLE_KEY = 'dakhil26_user_role';
-    const STORAGE_KEYS = {
-      STUDENT_NAME: 'dakhil26_student_name',
-      COMPLETED_CLASSES: 'dakhil26_completed_classes',
-      TOTAL_CLASSES: 'dakhil26_total_classes',
-      TRACKED_CLASSES: 'dakhil26_tracked_classes',
-      LAST_LOGIN: 'dakhil26_last_login',
-      OLD_COMPLETED_CLASSES: 'dakhil26_old_completed_classes',
-      OLD_TRACKED_CLASSES: 'dakhil26_old_tracked_classes'
-    };
+const LOGIN_EXPIRY_KEY = 'dakhil26_login_expiry';
+const IS_LOGGED_IN_KEY = 'dakhil26_is_logged_in';
+const USER_ROLE_KEY = 'dakhil26_user_role';
+const STORAGE_KEYS = {
+  STUDENT_NAME: 'dakhil26_student_name',
+  JOIN_DATE: 'dakhil26_join_date',
+  COMPLETED_ITEMS: 'dakhil26_completed_items',
+  LAST_ACTIVITY: 'dakhil26_last_activity',
+  EARNED_BADGES: 'dakhil26_earned_badges'
+};
 
-    const DASHBOARD_SETUP_DATE = new Date('2025-09-20T00:00:00+06:00');
+const motivationalQuotes = [
+  "প্রতিদিন একটি ক্লাস করুন, সাফল্য আপনার কাছে আসবে! 🌟",
+  "ছোট ছোট পদক্ষেপই বড় সাফল্যের পথ তৈরি করে! 💪",
+  "নিয়মিত পড়াশোনা আপনাকে লক্ষ্যের কাছে নিয়ে যাবে! 🚀",
+  "আজকের পরিশ্রম আগামীকালের সাফল্য! 🔥",
+  "প্রতিটি ক্লাস আপনাকে এক ধাপ এগিয়ে নেয়! 🏆"
+];
 
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+const badgeThresholds = [
+  { threshold: 30, name: 'Bronze Learner', icon: '🥉', description: '30% অগ্রগতি অর্জন করেছেন!' },
+  { threshold: 50, name: 'Silver Scholar', icon: '🥈', description: '50% অগ্রগতি অর্জন করেছেন!' },
+  { threshold: 65, name: 'Gold Achiever', icon: '🥇', description: '65% অগ্রগতি অর্জন করেছেন!' },
+  { threshold: 80, name: 'Platinum Master', icon: '🏆', description: '80%+ অগ্রগতি অর্জন করেছেন!' }
+];
 
-    function setLoginExpiry(role) {
-      const now = new Date();
-      const oneMonthFromNow = new Date(now.setMonth(now.getMonth() + 1));
-      localStorage.setItem(LOGIN_EXPIRY_KEY, oneMonthFromNow.getTime());
-      localStorage.setItem(IS_LOGGED_IN_KEY, 'true');
-      localStorage.setItem(USER_ROLE_KEY, role);
-    }
-
-    function checkLoginExpiry() {
-      const expiryTime = localStorage.getItem(LOGIN_EXPIRY_KEY);
-      const isLoggedIn = localStorage.getItem(IS_LOGGED_IN_KEY);
-      
-      if (!expiryTime || !isLoggedIn || isLoggedIn !== 'true') {
-        return false;
-      }
-      
-      const now = new Date().getTime();
-      return now < parseInt(expiryTime);
-    }
-
-    function getUserRole() {
-      return localStorage.getItem(USER_ROLE_KEY) || 'user';
-    }
-
-    function logout() {
-      localStorage.removeItem(LOGIN_EXPIRY_KEY);
-      localStorage.removeItem(IS_LOGGED_IN_KEY);
-      localStorage.removeItem(USER_ROLE_KEY);
-      loginPage.style.display = 'flex';
-      mainPage.style.display = 'none';
-      subjectPage.style.display = 'none';
-    }
-
-    function showWarningModal() {
-      warningModal.classList.add('show');
-    }
-
-    function closeWarningModal() {
-      warningModal.classList.remove('show');
-    }
-
-    function showNotification(message, isError = false, isWarning = false) {
-      const notification = $('#notification');
-      notification.innerHTML = `<i class="${isError ? 'fas fa-exclamation-circle' : isWarning ? 'fas fa-exclamation-triangle' : 'fas fa-check-circle'}"></i> ${message}`;
-      notification.className = 'notification ' + (isError ? 'error' : isWarning ? 'warning' : 'success');
-      notification.classList.add('show');
-
-      setTimeout(() => {
-        notification.classList.remove('show');
-      }, 3000);
-    }
-
-    function closeDashboardModal() {
-      $('#dashboard-modal').classList.remove('show');
-    }
-
-    function saveStudentData(name, completedClasses, totalClasses, trackedClasses, lastLogin, oldCompletedClasses, oldTrackedClasses) {
-      localStorage.setItem(STORAGE_KEYS.STUDENT_NAME, name || 'শিক্ষার্থী');
-      localStorage.setItem(STORAGE_KEYS.COMPLETED_CLASSES, completedClasses || '0');
-      localStorage.setItem(STORAGE_KEYS.TOTAL_CLASSES, totalClasses || '0');
-      localStorage.setItem(STORAGE_KEYS.TRACKED_CLASSES, JSON.stringify(trackedClasses || {}));
-      localStorage.setItem(STORAGE_KEYS.LAST_LOGIN, lastLogin || new Date().toISOString());
-      localStorage.setItem(STORAGE_KEYS.OLD_COMPLETED_CLASSES, oldCompletedClasses || '0');
-      localStorage.setItem(STORAGE_KEYS.OLD_TRACKED_CLASSES, JSON.stringify(oldTrackedClasses || {}));
-    }
-
-    function getStudentData() {
-      return {
-        name: localStorage.getItem(STORAGE_KEYS.STUDENT_NAME) || 'শিক্ষার্থী',
-        completedClasses: parseInt(localStorage.getItem(STORAGE_KEYS.COMPLETED_CLASSES)) || 0,
-        totalClasses: parseInt(localStorage.getItem(STORAGE_KEYS.TOTAL_CLASSES)) || 0,
-        trackedClasses: JSON.parse(localStorage.getItem(STORAGE_KEYS.TRACKED_CLASSES)) || {},
-        lastLogin: localStorage.getItem(STORAGE_KEYS.LAST_LOGIN) || new Date().toISOString(),
-        oldCompletedClasses: parseInt(localStorage.getItem(STORAGE_KEYS.OLD_COMPLETED_CLASSES)) || 0,
-        oldTrackedClasses: JSON.parse(localStorage.getItem(STORAGE_KEYS.OLD_TRACKED_CLASSES)) || {}
-      };
-    }
-
-    function formatDateToBangla(date) {
-      const months = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
-      return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
-    }
-
-    function trackClass(classId, linkElement, isOldClass) {
-      const studentData = getStudentData();
-      const trackedClasses = isOldClass ? studentData.oldTrackedClasses : studentData.trackedClasses;
-      const specialFolders = ["ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "অন্যান্য"];
-
-      if (!trackedClasses[classId] && !specialFolders.includes(linkElement.parentElement.querySelector('.subject').textContent)) {
-        trackedClasses[classId] = true;
-        if (isOldClass) {
-          studentData.oldCompletedClasses += 1;
-        } else {
-          studentData.completedClasses += 1;
-        }
-        linkElement.innerHTML = `<i class="fas fa-check-circle"></i> <span class="bangla-font">সম্পন্ন</span>`;
-        linkElement.parentElement.classList.add('completed');
-        showNotification('ক্লাস সম্পন্ন হিসেবে চিহ্নিত হয়েছে!', false);
-      } else if (trackedClasses[classId]) {
-        delete trackedClasses[classId];
-        if (isOldClass) {
-          studentData.oldCompletedClasses -= 1;
-        } else {
-          studentData.completedClasses -= 1;
-        }
-        const buttonText = linkElement.parentElement.querySelector('.subject').textContent.includes('মিশন') ? 'মিশন সম্পন্ন করুন' : linkElement.parentElement.querySelector('.subject').textContent.includes('ইক্সাম') ? 'পরীক্ষায় অংশগ্রহণ করুন' : 'ক্লাস দেখুন';
-        linkElement.innerHTML = `<i class="fas fa-play-circle"></i> <span class="bangla-font">${buttonText}</span>`;
-        linkElement.parentElement.classList.remove('completed');
-        showNotification('ক্লাস সম্পন্ন তালিকা থেকে সরানো হয়েছে!', true);
-      }
-
-      saveStudentData(
-        studentData.name,
-        studentData.completedClasses,
-        studentData.totalClasses,
-        studentData.trackedClasses,
-        studentData.lastLogin,
-        studentData.oldCompletedClasses,
-        studentData.oldTrackedClasses
-      );
-
-      if ($('#dashboard-modal').classList.contains('show')) {
-        showDashboard();
-      }
-    }
-
-    function calculateProgress(rows, trackedClasses, period) {
-      const now = new Date();
-      let startDate;
-      if (period === 'weekly') {
-        startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-      } else if (period === 'monthly') {
-        startDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-      }
-
-      const filteredRows = rows.filter(r => new Date(r.timestamp) >= startDate && new Date(r.timestamp) >= DASHBOARD_SETUP_DATE);
-      const total = filteredRows.length;
-      const completed = filteredRows.filter(r => trackedClasses[r.timestamp || r.link]).length;
-      return { total, completed, remaining: total - completed };
-    }
-
-    async function showDashboard() {
-  const studentData = getStudentData();
-  const isNewUser = !localStorage.getItem(STORAGE_KEYS.STUDENT_NAME);
-  const rows = await fetchData();
-  
-  const oldClasses = rows.filter(r => new Date(r.timestamp) < DASHBOARD_SETUP_DATE);
-  const newClasses = rows.filter(r => new Date(r.timestamp) >= DASHBOARD_SETUP_DATE);
-  
-  const newRegularClasses = newClasses.filter(r => !["মিশন", "ইক্সাম", "ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "অন্যান্য"].includes(r.subject));
-  const newExams = newClasses.filter(r => r.subject === "ইক্সাম");
-  const newMissions = newClasses.filter(r => r.subject === "মিশন");
-
-  const weeklyProgress = calculateProgress(newClasses, studentData.trackedClasses, 'weekly');
-  const monthlyProgress = calculateProgress(newClasses, studentData.trackedClasses, 'monthly');
-
-  const dashboardBody = $('#dashboard-body');
-  dashboardBody.innerHTML = `
-    ${isNewUser ? `
-      <div class="alert-box success bangla-font">
-        <i class="fas fa-info-circle"></i> আপনার নাম লিখুন এবং ড্যাশবোর্ডে অগ্রগতি ট্র্যাক করুন!
-      </div>
-      <div class="name-input-form">
-        <input type="text" id="student-name-input" placeholder="আপনার নাম লিখুন" class="bangla-font">
-        <button onclick="saveStudentName()" class="bangla-font">সংরক্ষণ করুন</button>
-      </div>
-    ` : `
-      <div class="alert-box success bangla-font">
-        <i class="fas fa-user"></i> স্বাগতম, ${studentData.name}!
-      </div>
-    `}
-    <div class="dashboard-section">
-      <h3 class="bangla-font">ড্যাশবোর্ড সেটআপের আগের তথ্য</h3>
-      <table class="class-table">
-        <thead>
-          <tr>
-            <th class="bangla-font">বিষয়</th>
-            <th class="bangla-font">মোট ক্লাস</th>
-            <th class="bangla-font">সম্পন্ন ক্লাস</th>
-            <th class="bangla-font">অগ্রগতি</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="bangla-font">সকল ক্লাস</td>
-            <td>${oldClasses.length}</td>
-            <td>${studentData.oldCompletedClasses}</td>
-            <td>
-              <div class="progress-bar">
-                <div class="progress-bar-fill" style="width: ${(studentData.oldCompletedClasses / oldClasses.length * 100) || 0}%"></div>
-              </div>
-              ${Math.round((studentData.oldCompletedClasses / oldClasses.length * 100) || 0)}%
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="dashboard-section">
-      <h3 class="bangla-font">ড্যাশবোর্ড সেটআপের পরের তথ্য</h3>
-      <table class="class-table">
-        <thead>
-          <tr>
-            <th class="bangla-font">বিষয়</th>
-            <th class="bangla-font">মোট ক্লাস</th>
-            <th class="bangla-font">সম্পন্ন ক্লাস</th>
-            <th class="bangla-font">অগ্রগতি</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="bangla-font">নিয়মিত ক্লাস</td>
-            <td>${newRegularClasses.length}</td>
-            <td>${newRegularClasses.filter(r => studentData.trackedClasses[r.timestamp || r.link]).length}</td>
-            <td>
-              <div class="progress-bar">
-                <div class="progress-bar-fill" style="width: ${(newRegularClasses.filter(r => studentData.trackedClasses[r.timestamp || r.link]).length / newRegularClasses.length * 100) || 0}%"></div>
-              </div>
-              ${Math.round((newRegularClasses.filter(r => studentData.trackedClasses[r.timestamp || r.link]).length / newRegularClasses.length * 100) || 0)}%
-            </td>
-          </tr>
-          <tr>
-            <td class="bangla-font">পরীক্ষা</td>
-            <td>${newExams.length}</td>
-            <td>${newExams.filter(r => studentData.trackedClasses[r.timestamp || r.link]).length}</td>
-            <td>
-              <div class="progress-bar">
-                <div class="progress-bar-fill" style="width: ${(newExams.filter(r => studentData.trackedClasses[r.timestamp || r.link]).length / newExams.length * 100) || 0}%"></div>
-              </div>
-              ${Math.round((newExams.filter(r => studentData.trackedClasses[r.timestamp || r.link]).length / newExams.length * 100) || 0)}%
-            </td>
-          </tr>
-          <tr>
-            <td class="bangla-font">মিশন</td>
-            <td>${newMissions.length}</td>
-            <td>${newMissions.filter(r => studentData.trackedClasses[r.timestamp || r.link]).length}</td>
-            <td>
-              <div class="progress-bar">
-                <div class="progress-bar-fill" style="width: ${(newMissions.filter(r => studentData.trackedClasses[r.timestamp || r.link]).length / newMissions.length * 100) || 0}%"></div>
-              </div>
-              ${Math.round((newMissions.filter(r => studentData.trackedClasses[r.timestamp || r.link]).length / newMissions.length * 100) || 0)}%
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="dashboard-section">
-      <h3 class="bangla-font">সাপ্তাহিক এবং মাসিক অগ্রগতি</h3>
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-number">${weeklyProgress.completed}/${weeklyProgress.total}</div>
-          <div class="stat-label bangla-font">সাপ্তাহিক সম্পন্ন</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">${weeklyProgress.remaining}</div>
-          <div class="stat-label bangla-font">সাপ্তাহিক বাকি</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">${monthlyProgress.completed}/${monthlyProgress.total}</div>
-          <div class="stat-label bangla-font">মাসিক সম্পন্ন</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">${monthlyProgress.remaining}</div>
-          <div class="stat-label bangla-font">মাসিক বাকি</div>
-        </div>
-      </div>
-    </div>
-    ${newRegularClasses.length === 0 && newExams.length === 0 && newMissions.length === 0 ? `
-      <div class="alert-box warning bangla-font">
-        <i class="fas fa-exclamation-triangle"></i> কোনো নতুন ক্লাস, পরীক্ষা বা মিশন পাওয়া যায়নি!
-      </div>
-    ` : ''}
-  `;
-
-  $('#dashboard-modal').classList.add('show');
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function saveStudentName() {
-  const nameInput = $('#student-name-input');
-  const name = nameInput.value.trim();
-  if (name) {
-    const studentData = getStudentData();
-    saveStudentData(name, studentData.completedClasses, studentData.totalClasses, studentData.trackedClasses, studentData.lastLogin, studentData.oldCompletedClasses, studentData.oldTrackedClasses);
-    showNotification('নাম সংরক্ষণ করা হয়েছে!', false);
-    showDashboard();
-  } else {
-    showNotification('অনুগ্রহ করে একটি বৈধ নাম লিখুন!', true);
-  }
-}
-
-function checkPassword() {
-  const passwordInput = $('#password').value;
-  const errorMessage = $('#error-message');
-  fetch(`${API_URL}?action=checkPassword&password=${encodeURIComponent(passwordInput)}`)
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        setLoginExpiry(data.role);
-        loginPage.style.display = 'none';
-        mainPage.style.display = 'block';
-        showWarningModal();
-        loadInitialData();
-        if (data.role === 'admin') {
-          $('#add-class-btn').style.display = 'inline-flex';
-        }
-      } else {
-        errorMessage.style.display = 'block';
-      }
-    })
-    .catch(() => {
-      showNotification('লগইন করতে সমস্যা হয়েছে। পরে আবার চেষ্টা করুন।', true);
-    });
-}
-
-async function fetchData() {
-  try {
-    const response = await fetch(`${API_URL}?action=getClasses`);
-    const data = await response.json();
-    return data.classes || [];
-  } catch (error) {
-    showNotification('ডেটা লোড করতে সমস্যা হয়েছে।', true);
-    return [];
-  }
-}
-
-function formatDate(timestamp) {
-  if (!timestamp) return 'N/A';
-  const date = new Date(timestamp);
-  const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
-  return date.toLocaleString('bn-BD', options);
-}
-
-function renderCards(rows, sortOrder = 'desc', searchQuery = '') {
-  const grid = $('#classGrid');
-  grid.innerHTML = '';
-
-  const filteredRows = rows
-    .filter(row => row.subject === currentSubject && (!searchQuery || 
-      row.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-      row.subject.toLowerCase().includes(searchQuery.toLowerCase())))
-    .sort((a, b) => {
-      const dateA = new Date(a.timestamp || 0);
-      const dateB = new Date(b.timestamp || 0);
-      return sortOrder === 'desc' ? dateB - dateA : dateA - dateB;
-    });
-
-  if (filteredRows.length === 0) {
-    grid.innerHTML = `
-      <div class="empty-state">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-        <p class="bangla-font">কোনো ক্লাস পাওয়া যায়নি</p>
-      </div>
-    `;
-    return;
-  }
-
-  filteredRows.forEach(row => {
-    const isOldClass = new Date(row.timestamp) < DASHBOARD_SETUP_DATE;
-    const isCompleted = isOldClass 
-      ? (getStudentData().oldTrackedClasses[row.timestamp || row.link] || false)
-      : (getStudentData().trackedClasses[row.timestamp || row.link] || false);
-    const buttonText = row.subject.includes('মিশন') ? 'মিশন সম্পন্ন করুন' : row.subject.includes('ইক্সাম') ? 'পরীক্ষায় অংশগ্রহণ করুন' : 'ক্লাস দেখুন';
-    const card = document.createElement('div');
-    card.className = `card ${row.timestamp === highlightedClassTimestamp ? 'highlight' : ''} ${isCompleted ? 'completed' : ''}`;
-    card.innerHTML = `
-      <div class="subject"><i class="fas ${row.subject.includes('কুরআন') ? 'fa-book-quran' : row.subject.includes('হাদিস') ? 'fa-book' : 'fa-book-open'}"></i> ${row.subject}</div>
-      <div class="video-title bangla-font">${row.title}</div>
-      <div class="time"><i class="fas fa-clock"></i> ${formatDate(row.timestamp)}</div>
-      ${row.expiry ? `<div class="exam-expiry-notice"><i class="fas fa-exclamation-triangle"></i> মেয়াদ শেষ: ${formatDate(row.expiry)}</div>` : ''}
-      <button class="btn" onclick="window.open('${row.link}', '_blank'); trackClass('${row.timestamp || row.link}', this, ${isOldClass});">
-        ${isCompleted ? '<i class="fas fa-check-circle"></i> <span class="bangla-font">সম্পন্ন</span>' : `<i class="fas fa-play-circle"></i> <span class="bangla-font">${buttonText}</span>`}
-      </button>
-      ${row.isNew ? '<div class="card-badge bangla-font">নতুন</div>' : ''}
-    `;
-    grid.appendChild(card);
-  });
-
-  const studentData = getStudentData();
-  studentData.totalClasses = filteredRows.length;
-  saveStudentData(studentData.name, studentData.completedClasses, studentData.totalClasses, studentData.trackedClasses, studentData.lastLogin, studentData.oldCompletedClasses, studentData.oldTrackedClasses);
-}
-
-function renderTodayClasses(rows, period = 'today') {
-  const tbody = $('#today-classes-body');
-  tbody.innerHTML = '';
-
+function setLoginExpiry(role) {
   const now = new Date();
-  let filteredRows;
-
-  if (period === 'today') {
-    filteredRows = rows.filter(row => {
-      const rowDate = new Date(row.timestamp);
-      return rowDate.toDateString() === now.toDateString() && !['ক্লাসের লেকচার শীট', 'পরীক্ষার রেজাল্ট শীট', 'অন্যান্য'].includes(row.subject);
-    });
-  } else if (period === 'week') {
-    const startOfWeek = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-    filteredRows = rows.filter(row => new Date(row.timestamp) >= startOfWeek && !['ক্লাসের লেকচার শীট', 'পরীক্ষার রেজাল্ট শীট', 'অন্যান্য'].includes(row.subject));
-  } else if (period === 'month') {
-    const startOfMonth = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-    filteredRows = rows.filter(row => new Date(row.timestamp) >= startOfMonth && !['ক্লাসের লেকচার শীট', 'পরীক্ষার রেজাল্ট শীট', 'অন্যান্য'].includes(row.subject));
-  }
-
-  filteredRows.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-
-  if (filteredRows.length === 0) {
-    tbody.innerHTML = `
-      <tr>
-        <td colspan="3" class="bangla-font" style="text-align: center; padding: 20px;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-          <p>কোনো ক্লাস পাওয়া যায়নি</p>
-        </td>
-      </tr>
-    `;
-    return;
-  }
-
-  filteredRows.forEach(row => {
-    const isOldClass = new Date(row.timestamp) < DASHBOARD_SETUP_DATE;
-    const isCompleted = isOldClass 
-      ? (getStudentData().oldTrackedClasses[row.timestamp || row.link] || false)
-      : (getStudentData().trackedClasses[row.timestamp || row.link] || false);
-    const rowElement = document.createElement('tr');
-    rowElement.innerHTML = `
-      <td><span class="subject-badge bangla-font">${row.subject}</span></td>
-      <td class="bangla-font">${row.title}</td>
-      <td><span class="class-info bangla-font">${formatDate(row.timestamp)}</span></td>
-    `;
-    tbody.appendChild(rowElement);
-  });
-
-  $('#exam-stats').querySelector('.stat-number').textContent = rows.filter(r => r.subject === 'ইক্সাম').length + '+';
-  $('#mission-stats').querySelector('.stat-number').textContent = rows.filter(r => r.subject === 'মিশন').length + '+';
+  const oneMonthFromNow = new Date(now.setMonth(now.getMonth() + 1));
+  localStorage.setItem(LOGIN_EXPIRY_KEY, oneMonthFromNow.getTime());
+  localStorage.setItem(IS_LOGGED_IN_KEY, 'true');
+  localStorage.setItem(USER_ROLE_KEY, role);
 }
 
-async function loadInitialData() {
-  const rows = await fetchData();
-  allClasses = rows;
-
-  renderTodayClasses(rows, $('#sort-classes').value);
-
-  $('#sort-classes').addEventListener('change', (e) => {
-    renderTodayClasses(allClasses, e.target.value);
-  });
-
-  $('#search-subjects').addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase();
-    const pills = $all('.subject-link');
-    pills.forEach(pill => {
-      const subject = pill.dataset.name.toLowerCase();
-      pill.style.display = subject.includes(query) ? '' : 'none';
-    });
-  });
-
-  $all('.subject-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      currentSubject = link.dataset.name;
-      $('#subject-title').innerHTML = `<i class="fas ${currentSubject.includes('কুরআন') ? 'fa-book-quran' : currentSubject.includes('হাদিস') ? 'fa-book' : 'fa-book-open'}"></i> ${currentSubject}`;
-      mainPage.style.display = 'none';
-      subjectPage.style.display = 'block';
-      renderCards(allClasses);
-      scrollToTop();
-    });
-  });
-
-  $('#search').addEventListener('input', (e) => {
-    renderCards(allClasses, $('#sort').value, e.target.value);
-  });
-
-  $('#sort').addEventListener('change', (e) => {
-    renderCards(allClasses, e.target.value, $('#search').value);
-  });
-
-  $('.back-button').addEventListener('click', (e) => {
-    e.preventDefault();
-    subjectPage.style.display = 'none';
-    mainPage.style.display = 'block';
-    scrollToTop();
-  });
-
-  $('#refresh-data-btn').addEventListener('click', async () => {
-    const rows = await fetchData();
-    allClasses = rows;
-    renderTodayClasses(rows, $('#sort-classes').value);
-    if (subjectPage.style.display === 'block') {
-      renderCards(rows, $('#sort').value, $('#search').value);
-    }
-    showNotification('ডেটা রিফ্রেশ করা হয়েছে!', false);
-  });
+function checkLoginExpiry() {
+  const expiryTime = localStorage.getItem(LOGIN_EXPIRY_KEY);
+  const isLoggedIn = localStorage.getItem(IS_LOGGED_IN_KEY);
+  
+  if (!expiryTime || !isLoggedIn || isLoggedIn !== 'true') {
+    return false;
+  }
+  
+  const now = new Date().getTime();
+  return now < parseInt(expiryTime);
 }
 
-if (checkLoginExpiry()) {
-  loginPage.style.display = 'none';
-  mainPage.style.display = 'block';
-  loadInitialData();
-  if (getUserRole() === 'admin') {
-    $('#add-class-btn').style.display = 'inline-flex';
-  }
-} else {
+function getUserRole() {
+  return localStorage.getItem(USER_ROLE_KEY) || 'user';
+}
+
+function logout() {
+  localStorage.removeItem(LOGIN_EXPIRY_KEY);
+  localStorage.removeItem(IS_LOGGED_IN_KEY);
+  localStorage.removeItem(USER_ROLE_KEY);
   loginPage.style.display = 'flex';
   mainPage.style.display = 'none';
   subjectPage.style.display = 'none';
 }
 
-// Add Dashboard Button Event Listener
-const navControls = $('.controls');
-const dashboardButton = document.createElement('button');
-dashboardButton.className = 'btn';
-dashboardButton.innerHTML = `<i class="fas fa-chart-line"></i> <span class="bangla-font">ড্যাশবোর্ড</span>`;
-dashboardButton.addEventListener('click', showDashboard);
-navControls.insertBefore(dashboardButton, $('#refresh-data-btn'));
+function showWarningModal() {
+  warningModal.classList.add('show');
+}
+
+function closeWarningModal() {
+  warningModal.classList.remove('show');
+}
+
+function showNotification(message, isError = false, isWarning = false) {
+  const notification = $('#notification');
+  notification.innerHTML = `<i class="${isError ? 'fas fa-exclamation-circle' : isWarning ? 'fas fa-exclamation-triangle' : 'fas fa-check-circle'}"></i> ${message}`;
+  notification.className = 'notification ' + (isError ? 'error' : isWarning ? 'warning' : 'success');
+  notification.classList.add('show');
+
+  setTimeout(() => {
+    notification.classList.remove('show');
+  }, 3000);
+}
+
+function checkPassword() {
+  const password = $('#password').value.trim();
+  const errorElement = $('#error-message');
+  
+  if (password === 'USERDAKHIL26') {
+    setLoginExpiry('user');
+    loginPage.style.display = 'none';
+    mainPage.style.display = 'block';
+    showWarningModal();
+    loadInitialData();
+    scrollToTop();
+  } else if (password === 'OWNERDAKHIL26') {
+    setLoginExpiry('owner');
+    loginPage.style.display = 'none';
+    mainPage.style.display = 'block';
+    showWarningModal();
+    showAddClassButton();
+    loadInitialData();
+    scrollToTop();
+  } else {
+    errorElement.style.display = 'block';
+    setTimeout(() => {
+      errorElement.style.display = 'none';
+    }, 3000);
+  }
+}
+
+function showAddClassButton() {
+  const addClassBtn = $('#add-class-btn');
+  if (addClassBtn && getUserRole() === 'owner') {
+    addClassBtn.style.display = 'inline-flex';
+  }
+}
+
+function showAddClassButton() {
+  const addClassBtn = $('#add-class-btn');
+  if (addClassBtn && getUserRole() === 'owner') {
+    addClassBtn.style.display = 'inline-flex';
+  }
+}
+
+function showDashboardButton() {
+  if (getUserRole() === 'user') {
+    dashboardBtn.style.display = 'inline-flex';
+  }
+}
+
+$('#password').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    checkPassword();
+  }
+});
+
+async function loadInitialData() {
+  try {
+    showDashboardButton();
+    await fetchClasses();
+    renderTodayClasses();
+    initializeDashboard();
+    checkAlarms();
+  } catch (error) {
+    console.error('Error loading initial data:', error);
+    showNotification('ডেটা লোড করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।', true);
+  }
+}
+
+async function fetchClasses() {
+  const response = await fetch(API_URL);
+  allClasses = await response.json();
+  
+  groupedClassesCache = {};
+  allClasses.forEach(cls => {
+    if (!groupedClassesCache[cls.subject]) {
+      groupedClassesCache[cls.subject] = [];
+    }
+    groupedClassesCache[cls.subject].push(cls);
+  });
+
+  updateStats();
+}
+
+function updateStats() {
+  const examCount = allClasses.filter(cls => cls.subject === 'ইক্সাম').length;
+  const missionCount = allClasses.filter(cls => cls.subject === 'মিশন').length;
+  $('#exam-stats .stat-number').textContent = `${examCount}+`;
+  $('#mission-stats .stat-number').textContent = `${missionCount}+`;
+}
+
+function formatTime(timestamp) {
+  const date = new Date(timestamp);
+  return date.toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' });
+}
+
+function formatDate(timestamp) {
+  const date = new Date(timestamp);
+  return date.toLocaleDateString('bn-BD');
+}
+
+function renderTodayClasses() {
+  const tbody = $('#today-classes-body');
+  const sortSelect = $('#sort-classes').value;
+  let filteredClasses = [];
+
+  const now = new Date();
+  const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const weekStart = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay());
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+
+  if (sortSelect === 'today') {
+    filteredClasses = allClasses.filter(cls => {
+      const classDate = new Date(cls.timestamp);
+      return classDate >= todayStart && classDate < new Date(todayStart.getTime() + 24 * 60 * 60 * 1000);
+    });
+  } else if (sortSelect === 'week') {
+    filteredClasses = allClasses.filter(cls => {
+      const classDate = new Date(cls.timestamp);
+      return classDate >= weekStart && classDate < new Date(todayStart.getTime() + 24 * 60 * 60 * 1000);
+    });
+  } else if (sortSelect === 'month') {
+    filteredClasses = allClasses.filter(cls => {
+      const classDate = new Date(cls.timestamp);
+      return classDate >= monthStart && classDate < new Date(todayStart.getTime() + 24 * 60 * 60 * 1000);
+    });
+  }
+
+  if (filteredClasses.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="3" class="bangla-font empty-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v20m8-8H4"></path>
+          </svg>
+          কোনো ক্লাস পাওয়া যায়নি
+        </td>
+      </tr>`;
+    return;
+  }
+
+  filteredClasses.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+  tbody.innerHTML = filteredClasses.map(cls => `
+    <tr>
+      <td><span class="subject-badge bangla-font">${cls.subject}</span></td>
+      <td class="bangla-font">${cls.title}</td>
+      <td class="class-info">${formatTime(cls.timestamp)}</td>
+    </tr>
+  `).join('');
+}
+
+$('#sort-classes').addEventListener('change', renderTodayClasses);
+
+$('#search-subjects').addEventListener('input', (e) => {
+  const query = e.target.value.trim().toLowerCase();
+  const subjectLinks = $all('.subject-link');
+  
+  subjectLinks.forEach(link => {
+    const subjectName = link.dataset.name.toLowerCase();
+    link.style.display = subjectName.includes(query) ? 'flex' : 'none';
+  });
+});
+
+$all('.subject-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    currentSubject = link.dataset.name;
+    mainPage.style.display = 'none';
+    subjectPage.style.display = 'block';
+    $('#subject-title').innerHTML = `<i class="fas fa-book"></i> ${currentSubject}`;
+    renderCards(currentSubject);
+    scrollToTop();
+  });
+});
+
+$('#subject-page .back-button').addEventListener('click', (e) => {
+  e.preventDefault();
+  subjectPage.style.display = 'none';
+  mainPage.style.display = 'block';
+  scrollToTop();
+});
+
+$('#search').addEventListener('input', () => {
+  renderCards(currentSubject);
+});
+
+$('#sort').addEventListener('change', () => {
+  renderCards(currentSubject);
+});
+
+$('#refresh-data-btn').addEventListener('click', async () => {
+  try {
+    await fetchClasses();
+    if (currentSubject) {
+      renderCards(currentSubject);
+    }
+    renderTodayClasses();
+    showNotification('ডেটা সফলভাবে রিফ্রেশ করা হয়েছে!', false);
+  } catch (error) {
+    console.error('Error refreshing data:', error);
+    showNotification('ডেটা রিফ্রেশ করতে সমস্যা হয়েছে।', true);
+  }
+});
+
+function renderCards(subject) {
+  const grid = $('#classGrid');
+  const searchQuery = $('#search').value.trim().toLowerCase();
+  const sortOrder = $('#sort').value;
+
+  let classes = groupedClassesCache[subject] || [];
+  
+  if (searchQuery) {
+    classes = classes.filter(cls => 
+      cls.title.toLowerCase().includes(searchQuery) || 
+      cls.description.toLowerCase().includes(searchQuery)
+    );
+  }
+
+  classes.sort((a, b) => {
+    const dateA = new Date(a.timestamp);
+    const dateB = new Date(b.timestamp);
+    return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+  });
+
+  if (classes.length === 0) {
+    grid.innerHTML = `
+      <div class="empty-state bangla-font">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2v20m8-8H4"></path>
+        </svg>
+        কোনো ক্লাস পাওয়া যায়নি
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = classes.map(cls => {
+    const isHighlighted = highlightedClassTimestamp && cls.timestamp === highlightedClassTimestamp;
+    const isExam = cls.subject === 'ইক্সাম';
+    const expiryDate = isExam && cls.expiry ? new Date(cls.expiry) : null;
+    const isExpired = expiryDate && new Date() > expiryDate;
+
+    return `
+      <div class="card ${isHighlighted ? 'highlight' : ''}" data-timestamp="${cls.timestamp}">
+        <span class="card-badge bangla-font">${isExam ? 'ইক্সাম' : 'ক্লাস'}</span>
+        <div class="subject"><i class="fas fa-book"></i> ${cls.subject}</div>
+        <div class="time"><i class="far fa-clock"></i> ${formatDate(cls.timestamp)} ${formatTime(cls.timestamp)}</div>
+        <div class="video-title bangla-font">${cls.title}</div>
+        ${isExam && cls.expiry && !isExpired ? `
+          <div class="exam-expiry-notice">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span class="bangla-font">মেয়াদ শেষ: ${formatDate(cls.expiry)}</span>
+          </div>
+        ` : ''}
+        ${isExpired ? `
+          <div class="exam-expiry-notice bangla-font">
+            <i class="fas fa-times-circle"></i>
+            <span>ইক্সামের মেয়াদ শেষ হয়েছে</span>
+          </div>
+        ` : `
+          <a href="${cls.link}" target="_blank" rel="noopener" class="btn bangla-font" onclick="trackItem('${cls.timestamp}', '${cls.subject}')">
+            <i class="fas fa-external-link-alt"></i> ${isExam ? 'ইক্সাম দিন' : 'ক্লাসে যোগ দিন'}
+          </a>
+        `}
+      </div>`;
+  }).join('');
+
+  // ট্র্যাকিং লজিক যুক্ত করা
+  $all('.card').forEach(card => {
+    const timestamp = card.dataset.timestamp;
+    const subject = card.querySelector('.subject').textContent;
+    
+    if (subject === 'ক্লাস') {
+      let scrollStart = null;
+      card.addEventListener('scroll', () => {
+        if (!scrollStart) {
+          scrollStart = Date.now();
+        }
+        const scrollDuration = (Date.now() - scrollStart) / 1000; // সেকেন্ডে
+        if (scrollDuration >= 7 && scrollDuration <= 7 * 60) {
+          trackItem(timestamp, subject);
+        }
+      });
+    }
+  });
+}
+
+// নতুন ফাংশন: ড্যাশবোর্ড এবং ট্র্যাকিং
+function initializeDashboard() {
+  const studentName = localStorage.getItem(STORAGE_KEYS.STUDENT_NAME);
+  if (!studentName) {
+    promptForName();
+  } else {
+    updateLastActivity();
+    renderDashboard();
+  }
+}
+
+function promptForName() {
+  dashboardBody.innerHTML = `
+    <div class="dashboard-section">
+      <h3 class="bangla-font">আপনার নাম লিখুন</h3>
+      <form class="name-input-form bangla-font">
+        <input type="text" id="student-name-input" placeholder="আপনার নাম লিখুন" required>
+        <button type="submit">জমা দিন</button>
+      </form>
+    </div>
+  `;
+  dashboardModal.classList.add('show');
+
+  const form = dashboardBody.querySelector('.name-input-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = $('#student-name-input').value.trim();
+    if (name) {
+      localStorage.setItem(STORAGE_KEYS.STUDENT_NAME, name);
+      localStorage.setItem(STORAGE_KEYS.JOIN_DATE, new Date().toISOString());
+      localStorage.setItem(STORAGE_KEYS.COMPLETED_ITEMS, JSON.stringify([]));
+      localStorage.setItem(STORAGE_KEYS.EARNED_BADGES, JSON.stringify([]));
+      updateLastActivity();
+      renderDashboard();
+      showNotification('নাম সফলভাবে সংরক্ষিত হয়েছে!', false);
+    } else {
+      showNotification('অনুগ্রহ করে একটি বৈধ নাম লিখুন।', true);
+    }
+  });
+}
+
+function updateLastActivity() {
+  localStorage.setItem(STORAGE_KEYS.LAST_ACTIVITY, new Date().toISOString());
+}
+
+function trackItem(timestamp, subject) {
+  const completedItems = JSON.parse(localStorage.getItem(STORAGE_KEYS.COMPLETED_ITEMS) || '[]');
+  if (!completedItems.includes(timestamp)) {
+    completedItems.push(timestamp);
+    localStorage.setItem(STORAGE_KEYS.COMPLETED_ITEMS, JSON.stringify(completedItems));
+    updateLastActivity();
+    checkBadges();
+    renderDashboard();
+    showNotification('আইটেম সম্পন্ন হয়েছে!', false);
+  }
+}
+
+function checkBadges() {
+  const completedItems = JSON.parse(localStorage.getItem(STORAGE_KEYS.COMPLETED_ITEMS) || '[]');
+  const totalItems = allClasses.length;
+  const completionPercentage = (completedItems.length / totalItems) * 100;
+  let earnedBadges = JSON.parse(localStorage.getItem(STORAGE_KEYS.EARNED_BADGES) || '[]');
+
+  badgeThresholds.forEach(badge => {
+    if (completionPercentage >= badge.threshold && !earnedBadges.includes(badge.name)) {
+      earnedBadges.push(badge.name);
+      showNotification(`অভিনন্দন! আপনি "${badge.name}" ব্যাজ অর্জন করেছেন!`, false);
+    }
+  });
+
+  localStorage.setItem(STORAGE_KEYS.EARNED_BADGES, JSON.stringify(earnedBadges));
+}
+
+function checkAlarms() {
+  const lastActivity = localStorage.getItem(STORAGE_KEYS.LAST_ACTIVITY);
+  if (!lastActivity) return;
+
+  const lastActivityDate = new Date(lastActivity);
+  const now = new Date();
+  const diffDays = Math.floor((now - lastActivityDate) / (1000 * 60 * 60 * 24));
+
+  let message = '';
+  if (diffDays >= 30) {
+    message = 'আপনি ১ মাস ধরে নিষ্ক্রিয়! দ্রুত একটি ক্লাস সম্পন্ন করুন, নয়তো আপনার ব্যাজ হারাতে পারেন!';
+  } else if (diffDays >= 7) {
+    message = 'আপনি ৭ দিন ধরে নিষ্ক্রিয়! একটি ক্লাস সম্পন্ন করুন।';
+  } else if (diffDays >= 3) {
+    message = 'আপনি ৩ দিন ধরে নিষ্ক্রিয়! আজই একটি ক্লাস শুরু করুন।';
+  }
+
+  if (message) {
+    showNotification(message, false, true);
+  }
+}
+
+function renderDashboard() {
+  const studentName = localStorage.getItem(STORAGE_KEYS.STUDENT_NAME) || 'শিক্ষার্থী';
+  const joinDate = new Date(localStorage.getItem(STORAGE_KEYS.JOIN_DATE) || new Date());
+  const completedItems = JSON.parse(localStorage.getItem(STORAGE_KEYS.COMPLETED_ITEMS) || '[]');
+  const earnedBadges = JSON.parse(localStorage.getItem(STORAGE_KEYS.EARNED_BADGES) || '[]');
+  const totalItems = allClasses.length;
+  const completionPercentage = totalItems > 0 ? (completedItems.length / totalItems) * 100 : 0;
+  const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+
+  const daysSinceJoin = Math.floor((new Date() - joinDate) / (1000 * 60 * 60 * 24));
+  const classesBeforeJoin = allClasses.filter(cls => new Date(cls.timestamp) < joinDate).length;
+  const classesAfterJoin = allClasses.filter(cls => new Date(cls.timestamp) >= joinDate).length;
+
+  dashboardBody.innerHTML = `
+    <div class="dashboard-section">
+      <h3 class="bangla-font">স্বাগতম, ${studentName}!</h3>
+      <p class="bangla-font">${randomQuote}</p>
+    </div>
+    <div class="dashboard-section">
+      <h3 class="bangla-font">অগ্রগতি ওভারভিউ</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <i class="fas fa-calendar-alt stat-icon"></i>
+          <div class="stat-value">${daysSinceJoin}</div>
+          <div class="stat-description bangla-font">দিন যোগদানের পর</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-book stat-icon"></i>
+          <div class="stat-value">${classesBeforeJoin}</div>
+          <div class="stat-description bangla-font">যোগদানের আগে ক্লাস</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-book-open stat-icon"></i>
+          <div class="stat-value">${classesAfterJoin}</div>
+          <div class="stat-description bangla-font">যোগদানের পর ক্লাস</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-check-circle stat-icon"></i>
+          <div class="stat-value">${completedItems.length}</div>
+          <div class="stat-description bangla-font">সম্পন্ন আইটেম</div>
+        </div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" style="width: ${completionPercentage}%"></div>
+      </div>
+      <p class="bangla-font">${completionPercentage.toFixed(2)}% সম্পন্ন</p>
+    </div>
+    <div class="dashboard-section highlight">
+      <h3 class="bangla-font">আপনার ব্যাজ</h3>
+      <div class="badge-grid">
+        ${badgeThresholds.map(badge => `
+          <div class="badge-item ${earnedBadges.includes(badge.name) ? 'unlocked' : 'locked'}">
+            <div class="badge-icon">${badge.icon}</div>
+            <div class="badge-name bangla-font">${badge.name}</div>
+            <div class="badge-progress bangla-font">${earnedBadges.includes(badge.name) ? 'আনলক করা হয়েছে' : badge.description}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  dashboardModal.classList.add('show');
+}
+
+dashboardBtn.addEventListener('click', () => {
+  renderDashboard();
+});
+
+closeDashboardBtn.addEventListener('click', () => {
+  dashboardModal.classList.remove('show');
+});
+
+if (checkLoginExpiry()) {
+  loginPage.style.display = 'none';
+  mainPage.style.display = 'block';
+  loadInitialData();
+} else {
+  loginPage.style.display = 'flex';
+  mainPage.style.display = 'none';
+  subjectPage.style.display = 'none';
+}
   </script>
 </body>
 </html>
