@@ -1404,52 +1404,153 @@
       font-size: 0.9rem;
     }
 
-    .badge-current {
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      margin-left: 10px;
-      font-weight: 600;
-    }
+    /* Notes Section Styles */
+.notes-section {
+  margin-top: 20px;
+  padding: 15px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
 
-    .badge-start {
-      background: #6b7280;
-      color: white;
-    }
+.notes-section h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: var(--text);
+}
 
-    .badge-30 {
-      background: #eab308;
-      color: white;
-    }
+.note-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
 
-    .badge-50 {
-      background: #22c55e;
-      color: white;
-    }
+.note-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: var(--glass);
+  color: var(--text);
+  outline: none;
+}
 
-    .badge-65 {
-      background: #3b82f6;
-      color: white;
-    }
+.note-input button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: var(--gradient-primary);
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
 
-    .badge-80 {
-      background: #a855f7;
-      color: white;
-    }
+.notes-list {
+  max-height: 200px;
+  overflow-y: auto;
+}
 
-    .badges-dropdown {
-      margin-top: 20px;
-      text-align: center;
-    }
+.note-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
 
-    .badges-dropdown select {
-      padding: 10px;
-      border-radius: 10px;
-      background: var(--glass);
-      color: var(--text);
-      border: 1px solid var(--card-border);
-    }
+.note-item p {
+  margin: 0;
+  flex: 1;
+  color: var(--text-muted);
+}
+
+.note-item button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: var(--danger);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* Enhanced Badge Styles */
+.badge-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 1rem;
+  animation: badge-glow 2s ease-in-out infinite;
+}
+
+.badge-current i {
+  font-size: 1.2rem;
+}
+
+.badge-start {
+  background: #6b7280;
+  color: white;
+}
+
+.badge-start i {
+  color: #fff;
+}
+
+.badge-30 {
+  background: #cd7f32; /* Bronze */
+  color: white;
+}
+
+.badge-30 i {
+  color: #ffd700; /* Gold tint */
+}
+
+.badge-50 {
+  background: #c0c0c0; /* Silver */
+  color: white;
+}
+
+.badge-50 i {
+  color: #fff;
+}
+
+.badge-65 {
+  background: #ffd700; /* Gold */
+  color: #333;
+}
+
+.badge-65 i {
+  color: #fff;
+}
+
+.badge-80 {
+  background: linear-gradient(135deg, #b9f2ff, #ffd700); /* Diamond-like */
+  color: #333;
+}
+
+.badge-80 i {
+  color: #000;
+}
+
+@keyframes badge-glow {
+  0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+  50% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
+  100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+}
+
+/* Badges Dropdown Styles */
+.badges-dropdown select {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background: var(--glass);
+  color: var(--text);
+  border: 1px solid var(--card-border);
+  font-weight: 600;
+      }
 
     .alarms .alert-box {
       margin-bottom: 10px;
