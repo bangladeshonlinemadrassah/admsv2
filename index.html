@@ -2668,6 +2668,70 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   initializeEventListeners();
 });
+
+    // Notes System
+const NOTES_KEY = 'dakhil26_notes';
+
+function getNotes() {
+  return JSON.parse(localStorage.getItem(NOTES_KEY)) || [];
+}
+
+function saveNotes(notes) {
+  localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+}
+
+function renderNotes() {
+  const notesList = document.querySelector('#notes-list');
+  if (!notesList) return;
+
+  const notes = getNotes();
+  notesList.innerHTML = '';
+  notes.forEach((note, index) => {
+    const noteItem = document.createElement('div');
+    noteItem.className = 'note-item bangla-font';
+    noteItem.innerHTML = `
+      <p>${note}</p>
+      <button onclick="deleteNote(${index})">মুছে ফেলুন</button>
+    `;
+    notesList.appendChild(noteItem);
+  });
+}
+
+window.deleteNote = function(index) {
+  const notes = getNotes();
+  notes.splice(index, 1);
+  saveNotes(notes);
+  renderNotes();
+};
+
+function addNote() {
+  const input = document.querySelector('#note-input');
+  if (!input) return;
+
+  const noteText = input.value.trim();
+  if (noteText) {
+    const notes = getNotes();
+    notes.push(noteText);
+    saveNotes(notes);
+    input.value = '';
+    renderNotes();
+    showNotification('নোট যোগ করা হয়েছে!', false);
+  } else {
+    showNotification('নোট লিখুন!', true);
+  }
+}
+
+// Updated Badge Icons
+const badgeIcons = {
+  'Start': '<i class="fas fa-star"></i> Start',
+  '30%': '<i class="fas fa-medal"></i> Bronze 30%',
+  '50%': '<i class="fas fa-trophy"></i> Silver 50%',
+  '65%': '<i class="fas fa-award"></i> Gold 65%',
+  '80%+': '<i class="fas fa-crown"></i> Diamond 80%+'
+};
+
+// Update showDashboard function to include notes and enhanced badges
+// (এই অংশটা অরিজিনাল showDashboard ফাংশনের মধ্যে ইন্টিগ্রেট করুন, নিচে বিস্তারিত বলা হয়েছে)
   </script>
 </body>
 </html>
