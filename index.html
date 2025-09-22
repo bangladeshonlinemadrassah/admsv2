@@ -2525,7 +2525,7 @@ function showDashboard() {
     ` : `
       <header class="modal-header bangla-font">
         <h2>স্বাগতম, ${studentData.name}!</h2>
-        <div class="badge-current ${currentBadge.class}" id="current-badge">${currentBadge.name}</div>
+        <div class="badge-current ${currentBadge.class}" id="current-badge">${badgeIcons[currentBadge.name] || currentBadge.name}</div>
         <div id="close-btn" class="close-btn">✕</div>
       </header>
 
@@ -2595,55 +2595,70 @@ function showDashboard() {
         <label for="badges-select">ব্যাজসমূহ:</label>
         <select id="badges-select">
           ${badges.map(badge => `
-            <option ${stats.progress >= badge.threshold ? '' : 'disabled'}>${badge.name} ${stats.progress >= badge.threshold ? '(প্রাপ্ত)' : '(লক)'}</option>
+            <option ${stats.progress >= badge.threshold ? '' : 'disabled'}>${badgeIcons[badge.name] || badge.name} ${stats.progress >= badge.threshold ? '(প্রাপ্ত)' : '(লক)'}</option>
           `).join('')}
         </select>
       </div>
-    `}
-  `;
 
-  if (isNewUser) {
-    const form = dashboardBody.querySelector('.name-input-form');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const nameInput = $('#student-name-input').value.trim();
-      if (nameInput) {
-        saveStudentData(nameInput, getTodayDate(), new Date().toISOString(), new Date().toISOString(), []);
-        showNotification('নাম সফলভাবে সংরক্ষিত হয়েছে!', false);
-        showDashboard();
-      } else {
-        showNotification('অনুগ্রহ করে একটি বৈধ নাম লিখুন', true);
+      <section class="notes-section bangla-font">
+        <h3>আপনার নোটস</h3>
+        <div class="note-input">
+          <input type="text" id="note-input" placeholder="নোট লিখুন..." class="bangla-font">
+          <button onclick="addNote()">যোগ করুন</button>
+        </div>
+        <div id="notes-list" class="notes-list"></div>
+      </section>
+    `;
+
+    if (isNewUser) {
+      const form = dashboardBody.querySelector('.name-input-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const nameInput = $('#student-name-input').value.trim();
+        if (nameInput) {
+          saveStudentData(nameInput, getTodayDate(), new Date().toISOString(), new Date().toISOString(), []);
+          showNotification('নাম সফলভাবে সংরক্ষিত হয়েছে!', false);
+          showDashboard();
+        } else {
+          showNotification('অনুগ্রহ করে একটি বৈধ নাম লিখুন', true);
+        }
+      });
+    } else {
+      // Update last login
+      localStorage.setItem(STORAGE_KEYS.LAST_LOGIN, new Date().toISOString());
+
+      // Alarms
+      const alarms = $('#alarms');
+      if (stats.before.pendingClasses + stats.before.pendingMissions + stats.before.pendingExams > 0) {
+        alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> জয়েনের আগের ক্লাস, মিশন এবং পরীক্ষাগুলো নিজ দায়িত্বে সম্পন্ন করুন যতক্ষণ না সবগুলো শেষ হয়।</div>`;
       }
-    });
-  } else {
-    // Update last login
-    localStorage.setItem(STORAGE_KEYS.LAST_LOGIN, new Date().toISOString());
+      if (daysSinceActivity > 7) {
+        alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনি টানা ১ সপ্তাহের বেশি ক্লাস করেননি! আজকের ক্লাস বক্সে গিয়ে সপ্তাহের ক্লাস সিলেক্ট করে প্রতিটা ক্লাস করে নিন।</div>`;
+      }
+      if (daysSinceActivity > 30) {
+        alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনি টানা ১ মাসের বেশি ক্লাস করেননি! আজকের ক্লাস বক্সে গিয়ে মাসের ক্লাস সিলেক্ট করে প্রতিটা ক্লাস করে নিন।</div>`;
+      }
+      if (stats.progress < 10 && !isNewUser) {
+        alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনার অগ্রগতি খুব কম! নিয়মিত ক্লাস করে অগ্রসর হোন।</div>`;
+      }
+      if (stats.after.pendingClasses > 5) {
+        alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> জয়েনের পরের ক্লাসগুলোতে অনেক বাকি! দ্রুত সম্পন্ন করুন।</div>`;
+      }
 
-    // Alarms
-    const alarms = $('#alarms');
-    if (stats.before.pendingClasses + stats.before.pendingMissions + stats.before.pendingExams > 0) {
-      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> জয়েনের আগের ক্লাস, মিশন এবং পরীক্ষাগুলো নিজ দায়িত্বে সম্পন্ন করুন যতক্ষণ না সবগুলো শেষ হয়।</div>`;
-    }
-    if (daysSinceActivity > 7) {
-      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনি টানা ১ সপ্তাহের বেশি ক্লাস করেননি! আজকের ক্লাস বক্সে গিয়ে সপ্তাহের ক্লাস সিলেক্ট করে প্রতিটা ক্লাস করে নিন।</div>`;
-    }
-    if (daysSinceActivity > 30) {
-      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনি টানা ১ মাসের বেশি ক্লাস করেননি! আজকের ক্লাস বক্সে গিয়ে মাসের ক্লাস সিলেক্ট করে প্রতিটা ক্লাস করে নিন।</div>`;
-    }
-    if (stats.progress < 10 && !isNewUser) {
-      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনার অগ্রগতি খুব কম! নিয়মিত ক্লাস করে অগ্রসর হোন।</div>`;
-    }
-    if (stats.after.pendingClasses > 5) {
-      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> জয়েনের পরের ক্লাসগুলোতে অনেক বাকি! দ্রুত সম্পন্ন করুন।</div>`;
+      // Close button
+      const closeBtn = $('#close-btn');
+      closeBtn.addEventListener('click', () => {
+        const dashboardModal = $('#dashboard-modal');
+        dashboardModal.classList.remove('show');
+      });
+
+      // Render notes
+      renderNotes();
     }
 
-    // Close button
-    const closeBtn = $('#close-btn');
-    closeBtn.addEventListener('click', () => {
-      const dashboardModal = $('#dashboard-modal');
-      dashboardModal.classList.remove('show');
-    });
-  }
+    const dashboardModal = $('#dashboard-modal');
+    dashboardModal.classList.add('show');
+    }
 
   const dashboardModal = $('#dashboard-modal');
   dashboardModal.classList.add('show');
