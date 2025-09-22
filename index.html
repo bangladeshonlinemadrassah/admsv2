@@ -1404,153 +1404,52 @@
       font-size: 0.9rem;
     }
 
-    /* Notes Section Styles */
-.notes-section {
-  margin-top: 20px;
-  padding: 15px;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-}
+    .badge-current {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-left: 10px;
+      font-weight: 600;
+    }
 
-.notes-section h3 {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  color: var(--text);
-}
+    .badge-starter {
+      background: #6b7280;
+      color: white;
+    }
 
-.note-input {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-}
+    .badge-bronze {
+      background: #cd7f32;
+      color: white;
+    }
 
-.note-input input {
-  flex: 1;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--card-border);
-  background: var(--glass);
-  color: var(--text);
-  outline: none;
-}
+    .badge-silver {
+      background: #c0c0c0;
+      color: white;
+    }
 
-.note-input button {
-  padding: 10px 20px;
-  border-radius: 8px;
-  background: var(--gradient-primary);
-  color: white;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-}
+    .badge-gold {
+      background: #ffd700;
+      color: black;
+    }
 
-.notes-list {
-  max-height: 200px;
-  overflow-y: auto;
-}
+    .badge-platinum {
+      background: #e5e4e2;
+      color: black;
+    }
 
-.note-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
+    .badges-dropdown {
+      margin-top: 20px;
+      text-align: center;
+    }
 
-.note-item p {
-  margin: 0;
-  flex: 1;
-  color: var(--text-muted);
-}
-
-.note-item button {
-  padding: 5px 10px;
-  border-radius: 5px;
-  background: var(--danger);
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-/* Enhanced Badge Styles */
-.badge-current {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 1rem;
-  animation: badge-glow 2s ease-in-out infinite;
-}
-
-.badge-current i {
-  font-size: 1.2rem;
-}
-
-.badge-start {
-  background: #6b7280;
-  color: white;
-}
-
-.badge-start i {
-  color: #fff;
-}
-
-.badge-30 {
-  background: #cd7f32; /* Bronze */
-  color: white;
-}
-
-.badge-30 i {
-  color: #ffd700; /* Gold tint */
-}
-
-.badge-50 {
-  background: #c0c0c0; /* Silver */
-  color: white;
-}
-
-.badge-50 i {
-  color: #fff;
-}
-
-.badge-65 {
-  background: #ffd700; /* Gold */
-  color: #333;
-}
-
-.badge-65 i {
-  color: #fff;
-}
-
-.badge-80 {
-  background: linear-gradient(135deg, #b9f2ff, #ffd700); /* Diamond-like */
-  color: #333;
-}
-
-.badge-80 i {
-  color: #000;
-}
-
-@keyframes badge-glow {
-  0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
-  50% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
-  100% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
-}
-
-/* Badges Dropdown Styles */
-.badges-dropdown select {
-  padding: 10px 15px;
-  border-radius: 10px;
-  background: var(--glass);
-  color: var(--text);
-  border: 1px solid var(--card-border);
-  font-weight: 600;
-      }
+    .badges-dropdown select {
+      padding: 10px;
+      border-radius: 10px;
+      background: var(--glass);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+    }
 
     .alarms .alert-box {
       margin-bottom: 10px;
@@ -1563,6 +1462,56 @@
 
     .progress-section p {
       margin-top: 10px;
+    }
+
+    /* Notes Section Styles */
+    .notes-section {
+      margin-top: 20px;
+    }
+
+    .notes-section textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: var(--glass);
+      color: var(--text);
+      outline: none;
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .notes-section button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: none;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .notes-section ul {
+      list-style: none;
+      margin-top: 15px;
+    }
+
+    .notes-section li {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .notes-section li button {
+      background: var(--danger);
+      padding: 5px 10px;
+      font-size: 0.8rem;
     }
   </style>
 </head>
@@ -2340,23 +2289,23 @@ const STORAGE_KEYS = {
   JOIN_DATE: 'dakhil26_join_date',
   LAST_LOGIN: 'dakhil26_last_login',
   LAST_ACTIVITY: 'dakhil26_last_activity',
-  COMPLETED_ITEMS: 'dakhil26_completed_items'
+  COMPLETED_ITEMS: 'dakhil26_completed_items',
+  NOTES: 'dakhil26_notes'
 };
 
 const motivationalQuotes = [
   "প্রতিদিন একটি ক্লাস করুন, সাফল্য আপনার কাছে আসবে! 🌟",
   "ছোট ছোট পদক্ষেপই বড় সাফল্যের পথ তৈরি করে! 💪",
   "নিয়মিত পড়াশোনা আপনাকে লক্ষ্যের কাছে নিয়ে যাবে! 🚀",
-  "আজকের পরিশ্রম আগামীকালের সাফল্য! 🔥",
   "প্রতিটি ক্লাস আপনাকে এক ধাপ এগিয়ে নেয়! 🏆"
 ];
 
 const badges = [
-  { name: 'Start', threshold: 0, class: 'badge-start' },
-  { name: '30%', threshold: 30, class: 'badge-30' },
-  { name: '50%', threshold: 50, class: 'badge-50' },
-  { name: '65%', threshold: 65, class: 'badge-65' },
-  { name: '80%+', threshold: 80, class: 'badge-80' }
+  { name: 'Starter', threshold: 0, class: 'badge-starter', icon: '🏁' },
+  { name: 'Bronze Cup', threshold: 30, class: 'badge-bronze', icon: '🥉' },
+  { name: 'Silver Cup', threshold: 50, class: 'badge-silver', icon: '🥈' },
+  { name: 'Gold Cup', threshold: 65, class: 'badge-gold', icon: '🥇' },
+  { name: 'Platinum Trophy', threshold: 80, class: 'badge-platinum', icon: '🏆' }
 ];
 
 function parseDate(dateStr) {
@@ -2503,6 +2452,35 @@ function getCurrentBadge(progress) {
   return badges[0];
 }
 
+function saveNotes(notes) {
+  localStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(notes));
+}
+
+function getNotes() {
+  return JSON.parse(localStorage.getItem(STORAGE_KEYS.NOTES)) || [];
+}
+
+function renderNotes() {
+  const notesList = $('#notes-list');
+  const notes = getNotes();
+  notesList.innerHTML = '';
+  notes.forEach((note, index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span>${note}</span>
+      <button onclick="deleteNote(${index})">মুছে ফেলুন</button>
+    `;
+    notesList.appendChild(li);
+  });
+}
+
+window.deleteNote = function(index) {
+  let notes = getNotes();
+  notes.splice(index, 1);
+  saveNotes(notes);
+  renderNotes();
+};
+
 function showDashboard() {
   const studentData = getStudentData();
   const isNewUser = !localStorage.getItem(STORAGE_KEYS.STUDENT_NAME);
@@ -2525,7 +2503,7 @@ function showDashboard() {
     ` : `
       <header class="modal-header bangla-font">
         <h2>স্বাগতম, ${studentData.name}!</h2>
-        <div class="badge-current ${currentBadge.class}" id="current-badge">${badgeIcons[currentBadge.name] || currentBadge.name}</div>
+        <div class="badge-current ${currentBadge.class}" id="current-badge">${currentBadge.icon} ${currentBadge.name}</div>
         <div id="close-btn" class="close-btn">✕</div>
       </header>
 
@@ -2595,70 +2573,80 @@ function showDashboard() {
         <label for="badges-select">ব্যাজসমূহ:</label>
         <select id="badges-select">
           ${badges.map(badge => `
-            <option ${stats.progress >= badge.threshold ? '' : 'disabled'}>${badgeIcons[badge.name] || badge.name} ${stats.progress >= badge.threshold ? '(প্রাপ্ত)' : '(লক)'}</option>
+            <option ${stats.progress >= badge.threshold ? '' : 'disabled'}>${badge.icon} ${badge.name} ${stats.progress >= badge.threshold ? '(প্রাপ্ত)' : '(লক)'}</option>
           `).join('')}
         </select>
       </div>
 
       <section class="notes-section bangla-font">
-        <h3>আপনার নোটস</h3>
-        <div class="note-input">
-          <input type="text" id="note-input" placeholder="নোট লিখুন..." class="bangla-font">
-          <button onclick="addNote()">যোগ করুন</button>
-        </div>
-        <div id="notes-list" class="notes-list"></div>
+        <h3>আমার নোটস</h3>
+        <textarea id="note-input" placeholder="নতুন নোট লিখুন..."></textarea>
+        <button id="add-note-btn">নোট যোগ করুন</button>
+        <ul id="notes-list"></ul>
       </section>
-    `;
+    `}
+  `;
 
-    if (isNewUser) {
-      const form = dashboardBody.querySelector('.name-input-form');
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const nameInput = $('#student-name-input').value.trim();
-        if (nameInput) {
-          saveStudentData(nameInput, getTodayDate(), new Date().toISOString(), new Date().toISOString(), []);
-          showNotification('নাম সফলভাবে সংরক্ষিত হয়েছে!', false);
-          showDashboard();
-        } else {
-          showNotification('অনুগ্রহ করে একটি বৈধ নাম লিখুন', true);
-        }
-      });
-    } else {
-      // Update last login
-      localStorage.setItem(STORAGE_KEYS.LAST_LOGIN, new Date().toISOString());
+  if (isNewUser) {
+    const form = dashboardBody.querySelector('.name-input-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameInput = $('#student-name-input').value.trim();
+      if (nameInput) {
+        saveStudentData(nameInput, getTodayDate(), new Date().toISOString(), new Date().toISOString(), []);
+        showNotification('নাম সফলভাবে সংরক্ষিত হয়েছে!', false);
+        showDashboard();
+      } else {
+        showNotification('অনুগ্রহ করে একটি বৈধ নাম লিখুন', true);
+      }
+    });
+  } else {
+    // Update last login
+    localStorage.setItem(STORAGE_KEYS.LAST_LOGIN, new Date().toISOString());
 
-      // Alarms
-      const alarms = $('#alarms');
-      if (stats.before.pendingClasses + stats.before.pendingMissions + stats.before.pendingExams > 0) {
-        alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> জয়েনের আগের ক্লাস, মিশন এবং পরীক্ষাগুলো নিজ দায়িত্বে সম্পন্ন করুন যতক্ষণ না সবগুলো শেষ হয়।</div>`;
-      }
-      if (daysSinceActivity > 7) {
-        alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনি টানা ১ সপ্তাহের বেশি ক্লাস করেননি! আজকের ক্লাস বক্সে গিয়ে সপ্তাহের ক্লাস সিলেক্ট করে প্রতিটা ক্লাস করে নিন।</div>`;
-      }
-      if (daysSinceActivity > 30) {
-        alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনি টানা ১ মাসের বেশি ক্লাস করেননি! আজকের ক্লাস বক্সে গিয়ে মাসের ক্লাস সিলেক্ট করে প্রতিটা ক্লাস করে নিন।</div>`;
-      }
-      if (stats.progress < 10 && !isNewUser) {
-        alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনার অগ্রগতি খুব কম! নিয়মিত ক্লাস করে অগ্রসর হোন।</div>`;
-      }
-      if (stats.after.pendingClasses > 5) {
-        alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> জয়েনের পরের ক্লাসগুলোতে অনেক বাকি! দ্রুত সম্পন্ন করুন।</div>`;
-      }
-
-      // Close button
-      const closeBtn = $('#close-btn');
-      closeBtn.addEventListener('click', () => {
-        const dashboardModal = $('#dashboard-modal');
-        dashboardModal.classList.remove('show');
-      });
-
-      // Render notes
-      renderNotes();
+    // Alarms
+    const alarms = $('#alarms');
+    if (stats.before.pendingClasses + stats.before.pendingMissions + stats.before.pendingExams > 0) {
+      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> জয়েনের আগের ক্লাস, মিশন এবং পরীক্ষাগুলো নিজ দায়িত্বে সম্পন্ন করুন যতক্ষণ না সবগুলো শেষ হয়।</div>`;
+    }
+    if (daysSinceActivity > 7) {
+      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনি টানা ১ সপ্তাহের বেশি ক্লাস করেননি! আজকের ক্লাস বক্সে গিয়ে সপ্তাহের ক্লাস সিলেক্ট করে প্রতিটা ক্লাস করে নিন।</div>`;
+    }
+    if (daysSinceActivity > 30) {
+      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনি টানা ১ মাসের বেশি ক্লাস করেননি! আজকের ক্লাস বক্সে গিয়ে মাসের ক্লাস সিলেক্ট করে প্রতিটা ক্লাস করে নিন।</div>`;
+    }
+    if (stats.progress < 10 && !isNewUser) {
+      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনার অগ্রগতি খুব কম! নিয়মিত ক্লাস করে অগ্রসর হোন।</div>`;
+    }
+    if (stats.after.pendingClasses > 5) {
+      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> জয়েনের পরের ক্লাসগুলোতে অনেক বাকি! দ্রুত সম্পন্ন করুন।</div>`;
     }
 
-    const dashboardModal = $('#dashboard-modal');
-    dashboardModal.classList.add('show');
-    }
+    // Close button
+    const closeBtn = $('#close-btn');
+    closeBtn.addEventListener('click', () => {
+      const dashboardModal = $('#dashboard-modal');
+      dashboardModal.classList.remove('show');
+    });
+
+    // Notes functionality
+    renderNotes();
+    const addNoteBtn = $('#add-note-btn');
+    addNoteBtn.addEventListener('click', () => {
+      const noteInput = $('#note-input');
+      const noteText = noteInput.value.trim();
+      if (noteText) {
+        let notes = getNotes();
+        notes.push(noteText);
+        saveNotes(notes);
+        renderNotes();
+        noteInput.value = '';
+        showNotification('নোট যোগ করা হয়েছে!', false);
+      } else {
+        showNotification('অনুগ্রহ করে নোট লিখুন', true);
+      }
+    });
+  }
 
   const dashboardModal = $('#dashboard-modal');
   dashboardModal.classList.add('show');
@@ -2683,70 +2671,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   initializeEventListeners();
 });
-
-    // Notes System
-const NOTES_KEY = 'dakhil26_notes';
-
-function getNotes() {
-  return JSON.parse(localStorage.getItem(NOTES_KEY)) || [];
-}
-
-function saveNotes(notes) {
-  localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
-}
-
-function renderNotes() {
-  const notesList = document.querySelector('#notes-list');
-  if (!notesList) return;
-
-  const notes = getNotes();
-  notesList.innerHTML = '';
-  notes.forEach((note, index) => {
-    const noteItem = document.createElement('div');
-    noteItem.className = 'note-item bangla-font';
-    noteItem.innerHTML = `
-      <p>${note}</p>
-      <button onclick="deleteNote(${index})">মুছে ফেলুন</button>
-    `;
-    notesList.appendChild(noteItem);
-  });
-}
-
-window.deleteNote = function(index) {
-  const notes = getNotes();
-  notes.splice(index, 1);
-  saveNotes(notes);
-  renderNotes();
-};
-
-function addNote() {
-  const input = document.querySelector('#note-input');
-  if (!input) return;
-
-  const noteText = input.value.trim();
-  if (noteText) {
-    const notes = getNotes();
-    notes.push(noteText);
-    saveNotes(notes);
-    input.value = '';
-    renderNotes();
-    showNotification('নোট যোগ করা হয়েছে!', false);
-  } else {
-    showNotification('নোট লিখুন!', true);
-  }
-}
-
-// Updated Badge Icons
-const badgeIcons = {
-  'Start': '<i class="fas fa-star"></i> Start',
-  '30%': '<i class="fas fa-medal"></i> Bronze 30%',
-  '50%': '<i class="fas fa-trophy"></i> Silver 50%',
-  '65%': '<i class="fas fa-award"></i> Gold 65%',
-  '80%+': '<i class="fas fa-crown"></i> Diamond 80%+'
-};
-
-// Update showDashboard function to include notes and enhanced badges
-// (এই অংশটা অরিজিনাল showDashboard ফাংশনের মধ্যে ইন্টিগ্রেট করুন, নিচে বিস্তারিত বলা হয়েছে)
   </script>
 </body>
 </html>
