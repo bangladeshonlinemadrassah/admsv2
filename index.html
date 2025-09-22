@@ -1143,7 +1143,7 @@
       gap: 6px;
     }
 
-    /* নতুন CSS: ড্যাশবোর্ডের জন্য */
+    /* Dashboard Styles */
     .dashboard-modal {
       position: fixed;
       top: 0;
@@ -1165,128 +1165,144 @@
       visibility: visible;
     }
 
-    .dashboard-section {
-      margin-bottom: 30px;
-      padding: 20px;
-      border-radius: 12px;
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      box-shadow: var(--shadow-md);
+    .modal-content {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      backdrop-filter: blur(15px);
+      box-shadow: var(--shadow-lg);
+      position: relative;
     }
 
-    .dashboard-section.highlight {
-      background: rgba(37, 99, 235, 0.1);
-      border-color: var(--primary);
-      box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+    .modal-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .modal-header h2 {
+      font-size: 1.5rem;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .modal-body {
+      margin-bottom: 25px;
+    }
+
+    .modal-body p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .modal-footer {
+      text-align: center;
+    }
+
+    .modal-ok-btn {
+      padding: 12px 30px;
+      border-radius: 10px;
+      border: none;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+    }
+
+    .modal-ok-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
     }
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 15px;
       margin-top: 20px;
     }
 
-    .stat-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+    .stat-item {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
       border-radius: 12px;
       padding: 15px;
       text-align: center;
-      transition: var(--transition);
     }
 
-    .stat-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .stat-icon {
+    .stat-number {
       font-size: 2rem;
-      margin-bottom: 10px;
-    }
-
-    .stat-value {
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-weight: 800;
       background: var(--gradient-primary);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .stat-description {
+    .stat-label {
       color: var(--text-muted);
       font-size: 0.9rem;
     }
 
     .alert-box {
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid var(--warning);
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--danger);
       border-radius: 10px;
       padding: 15px;
       margin-bottom: 20px;
       color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      animation: pulse 2s infinite;
+      position: relative;
+    }
+
+    .alert-box.warning {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: var(--warning);
     }
 
     .alert-box i {
-      font-size: 1.2rem;
+      margin-right: 10px;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    .badge-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    .name-input-form {
+      display: flex;
+      flex-direction: column;
       gap: 15px;
-      margin-top: 20px;
+      margin-bottom: 20px;
     }
 
-    .badge-item {
-      text-align: center;
-      padding: 15px;
-      border-radius: 12px;
-      background: var(--card-bg);
+    .name-input-form input {
+      padding: 14px;
+      border-radius: 10px;
       border: 1px solid var(--card-border);
-      transition: var(--transition);
-    }
-
-    .badge-item.unlocked {
-      background: rgba(16, 185, 129, 0.1);
-      border-color: var(--secondary);
-    }
-
-    .badge-item.locked {
-      opacity: 0.6;
-    }
-
-    .badge-icon {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-
-    .badge-name {
-      font-weight: 600;
+      background: var(--glass);
+      color: var(--text);
+      outline: none;
       font-size: 1rem;
     }
 
-    .badge-progress {
-      color: var(--text-muted);
-      font-size: 0.8rem;
+    .name-input-form button {
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
     }
 
     .progress-bar {
-      height: 8px;
-      background: var(--card-border);
-      border-radius: 4px;
+      height: 10px;
+      background: var(--text-muted);
+      border-radius: 5px;
       overflow: hidden;
       margin-top: 10px;
     }
@@ -1297,85 +1313,155 @@
       transition: width 0.5s ease;
     }
 
-    .name-input-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 20px;
+    @media (max-width: 480px) {
+      .modal-content {
+        padding: 20px;
+      }
+
+      .modal-header h2 {
+        font-size: 1.5rem;
+      }
     }
 
-    .name-input-form input {
-      padding: 12px;
-      border-radius: 10px;
+    /* Additional styles that might be referenced in dashboard */
+    .notification {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 15px 22px;
+      background: var(--card-bg);
       border: 1px solid var(--card-border);
-      background: var(--glass);
-      color: var(--text);
-      font-size: 1rem;
-    }
-
-    .name-input-form button {
-      padding: 12px;
       border-radius: 10px;
-      border: none;
-      background: var(--gradient-primary);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s, transform 0.3s;
+      backdrop-filter: blur(15px);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      max-width: 350px;
+      font-size: 0.9rem;
     }
 
-    .name-input-form button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+    .notification.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    .modal-content {
-      overflow-y: auto;
-      max-height: 80vh;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
+    .notification.error {
+      border-left: 4px solid var(--danger);
     }
 
-    .modal-content::-webkit-scrollbar {
-      display: none;
+    .notification.success {
+      border-left: 4px solid var(--secondary);
     }
 
-    .modal-close {
+    .notification.warning {
+      border-left: 4px solid var(--warning);
+    }
+
+    /* New styles for updated dashboard */
+    .close-btn {
       position: absolute;
       top: 10px;
       right: 10px;
-      font-size: 2rem;
-      background: none;
-      border: none;
-      color: var(--text);
+      font-size: 1.5rem;
       cursor: pointer;
+      color: var(--text-muted);
     }
 
-    .badge-sticker {
-      font-size: 1.2rem;
-      margin-left: 5px;
+    .close-btn:hover {
+      color: var(--text);
     }
 
-    .category-stats {
-      margin-top: 20px;
+    .stats {
+      margin-bottom: 20px;
     }
 
-    .category-stat {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
       border-radius: 12px;
       padding: 15px;
-      margin-bottom: 15px;
+      text-align: left;
     }
 
-    .category-stat h4 {
+    .card h3 {
       margin-bottom: 10px;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
 
-    .category-stat p {
+    .card p {
       margin: 5px 0;
       font-size: 0.9rem;
-      color: var(--text-muted);
+    }
+
+    .badge-current {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-left: 10px;
+      font-weight: 600;
+    }
+
+    .badge-start {
+      background: #6b7280;
+      color: white;
+    }
+
+    .badge-30 {
+      background: #eab308;
+      color: white;
+    }
+
+    .badge-50 {
+      background: #22c55e;
+      color: white;
+    }
+
+    .badge-65 {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .badge-80 {
+      background: #a855f7;
+      color: white;
+    }
+
+    .badges-dropdown {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .badges-dropdown select {
+      padding: 10px;
+      border-radius: 10px;
+      background: var(--glass);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+    }
+
+    .alarms .alert-box {
+      margin-bottom: 10px;
+    }
+
+    .progress-section {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .progress-section p {
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -1570,18 +1656,15 @@
       </div>
     </div>
   </div>
+  <div id="notification" class="notification"></div>
+  <!-- Dashboard Modal -->
   <div id="dashboard-modal" class="dashboard-modal">
     <div class="modal-content">
-      <button class="modal-close" id="close-dashboard">&times;</button>
-      <div class="modal-header">
-        <h2 class="bangla-font">আপনার ড্যাশবোর্ড</h2>
-      </div>
       <div class="modal-body" id="dashboard-body">
         <!-- ডাইনামিক কনটেন্ট এখানে লোড হবে -->
       </div>
     </div>
   </div>
-  <div id="notification" class="notification"></div>
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycbwZnb6Lr-_IN1FzgvhQ-em6NjaqVIWWpmEKHinchUbY4Bt8NhOssIx_dRJ4MiSFmfKJ4g/exec";
 
@@ -1594,10 +1677,6 @@ const loginPage = $('#login-page');
 const mainPage = $('#main-page');
 const subjectPage = $('#subject-page');
 const warningModal = $('#warning-modal');
-const dashboardModal = $('#dashboard-modal');
-const dashboardBody = $('#dashboard-body');
-const closeDashboardBtn = $('#close-dashboard');
-const dashboardBtn = $('#dashboard-btn');
 let allClasses = [];
 let groupedClassesCache = {};
 
@@ -1614,28 +1693,6 @@ const availableSubjects = [
 const LOGIN_EXPIRY_KEY = 'dakhil26_login_expiry';
 const IS_LOGGED_IN_KEY = 'dakhil26_is_logged_in';
 const USER_ROLE_KEY = 'dakhil26_user_role';
-const STORAGE_KEYS = {
-  STUDENT_NAME: 'dakhil26_student_name',
-  JOIN_DATE: 'dakhil26_join_date',
-  COMPLETED_ITEMS: 'dakhil26_completed_items',
-  LAST_ACTIVITY: 'dakhil26_last_activity',
-  EARNED_BADGES: 'dakhil26_earned_badges'
-};
-
-const motivationalQuotes = [
-  "প্রতিদিন একটি ক্লাস করুন, সাফল্য আপনার কাছে আসবে! 🌟",
-  "ছোট ছোট পদক্ষেপই বড় সাফল্যের পথ তৈরি করে! 💪",
-  "নিয়মিত পড়াশোনা আপনাকে লক্ষ্যের কাছে নিয়ে যাবে! 🚀",
-  "আজকের পরিশ্রম আগামীকালের সাফল্য! 🔥",
-  "প্রতিটি ক্লাস আপনাকে এক ধাপ এগিয়ে নেয়! 🏆"
-];
-
-const badgeThresholds = [
-  { threshold: 30, name: 'Bronze Learner', icon: '🥉', description: '30% অগ্রগতি অর্জন করেছেন!' },
-  { threshold: 50, name: 'Silver Scholar', icon: '🥈', description: '50% অগ্রগতি অর্জন করেছেন!' },
-  { threshold: 65, name: 'Gold Achiever', icon: '🥇', description: '65% অগ্রগতি অর্জন করেছেন!' },
-  { threshold: 80, name: 'Platinum Master', icon: '🏆', description: '80%+ অগ্রগতি অর্জন করেছেন!' }
-];
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1703,6 +1760,7 @@ function checkPassword() {
     mainPage.style.display = 'block';
     showWarningModal();
     loadInitialData();
+    showDashboardButton();
     scrollToTop();
   } else if (password === 'OWNERDAKHIL26') {
     setLoginExpiry('owner');
@@ -1720,472 +1778,795 @@ function checkPassword() {
   }
 }
 
-function showAddClassButton() {
-  const addClassBtn = $('#add-class-btn');
-  if (addClassBtn && getUserRole() === 'owner') {
-    addClassBtn.style.display = 'inline-flex';
-  }
-}
-
-function showAddClassButton() {
-  const addClassBtn = $('#add-class-btn');
-  if (addClassBtn && getUserRole() === 'owner') {
-    addClassBtn.style.display = 'inline-flex';
-  }
-}
-
 function showDashboardButton() {
+  const dashboardBtn = $('#dashboard-btn');
   if (getUserRole() === 'user') {
     dashboardBtn.style.display = 'inline-flex';
   }
 }
 
-$('#password').addEventListener('keydown', (e) => {
+function showAddClassButton() {
+  const addClassBtn = $('#add-class-btn');
+  if (addClassBtn && getUserRole() === 'owner') {
+    addClassBtn.style.display = 'inline-flex';
+  }
+}
+
+$('#password').addEventListener('keypress', function(e) {
   if (e.key === 'Enter') {
     checkPassword();
   }
 });
 
-async function loadInitialData() {
+function getDateFromTimestamp(timestamp) {
+  if (!timestamp) return getTodayDate();
+
   try {
-    showDashboardButton();
-    await fetchClasses();
-    renderTodayClasses();
-    initializeDashboard();
-    checkAlarms();
-  } catch (error) {
-    console.error('Error loading initial data:', error);
-    showNotification('ডেটা লোড করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।', true);
-  }
-}
-
-async function fetchClasses() {
-  const response = await fetch(API_URL);
-  allClasses = await response.json();
-  
-  groupedClassesCache = {};
-  allClasses.forEach(cls => {
-    if (!groupedClassesCache[cls.subject]) {
-      groupedClassesCache[cls.subject] = [];
+    const date = new Date(timestamp);
+    if (!isNaN(date)) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${day}-${month}-${year}`; // ফরম্যাট: DD-MM-YYYY
     }
-    groupedClassesCache[cls.subject].push(cls);
-  });
-
-  updateStats();
-}
-
-function updateStats() {
-  const examCount = allClasses.filter(cls => cls.subject === 'ইক্সাম').length;
-  const missionCount = allClasses.filter(cls => cls.subject === 'মিশন').length;
-  $('#exam-stats .stat-number').textContent = `${examCount}+`;
-  $('#mission-stats .stat-number').textContent = `${missionCount}+`;
-}
-
-function formatTime(timestamp) {
-  const date = new Date(timestamp);
-  return date.toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' });
-}
-
-function formatDate(timestamp) {
-  const date = new Date(timestamp);
-  return date.toLocaleDateString('bn-BD');
-}
-
-function renderTodayClasses() {
-  const tbody = $('#today-classes-body');
-  const sortSelect = $('#sort-classes').value;
-  let filteredClasses = [];
-
-  const now = new Date();
-  const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const weekStart = new Date(now.getFullYear(), now.getMonth(), now.getDate() - now.getDay());
-  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-
-  if (sortSelect === 'today') {
-    filteredClasses = allClasses.filter(cls => {
-      const classDate = new Date(cls.timestamp);
-      return classDate >= todayStart && classDate < new Date(todayStart.getTime() + 24 * 60 * 60 * 1000);
-    });
-  } else if (sortSelect === 'week') {
-    filteredClasses = allClasses.filter(cls => {
-      const classDate = new Date(cls.timestamp);
-      return classDate >= weekStart && classDate < new Date(todayStart.getTime() + 24 * 60 * 60 * 1000);
-    });
-  } else if (sortSelect === 'month') {
-    filteredClasses = allClasses.filter(cls => {
-      const classDate = new Date(cls.timestamp);
-      return classDate >= monthStart && classDate < new Date(todayStart.getTime() + 24 * 60 * 60 * 1000);
-    });
+    return getTodayDate();
+  } catch (error) {
+    console.error("Timestamp parsing error:", error, timestamp);
+    return getTodayDate();
   }
-
-  if (filteredClasses.length === 0) {
-    tbody.innerHTML = `
-      <tr>
-        <td colspan="3" class="bangla-font empty-state">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2v20m8-8H4"></path>
-          </svg>
-          কোনো ক্লাস পাওয়া যায়নি
-        </td>
-      </tr>`;
-    return;
-  }
-
-  filteredClasses.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-
-  tbody.innerHTML = filteredClasses.map(cls => `
-    <tr>
-      <td><span class="subject-badge bangla-font">${cls.subject}</span></td>
-      <td class="bangla-font">${cls.title}</td>
-      <td class="class-info">${formatTime(cls.timestamp)}</td>
-    </tr>
-  `).join('');
 }
 
-$('#sort-classes').addEventListener('change', renderTodayClasses);
+function getTimeFromTimestamp(timestamp) {
+  if (!timestamp) return '12:00 AM';
 
-$('#search-subjects').addEventListener('input', (e) => {
-  const query = e.target.value.trim().toLowerCase();
-  const subjectLinks = $all('.subject-link');
-  
-  subjectLinks.forEach(link => {
-    const subjectName = link.dataset.name.toLowerCase();
-    link.style.display = subjectName.includes(query) ? 'flex' : 'none';
-  });
-});
-
-$all('.subject-link').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    currentSubject = link.dataset.name;
-    mainPage.style.display = 'none';
-    subjectPage.style.display = 'block';
-    $('#subject-title').innerHTML = `<i class="fas fa-book"></i> ${currentSubject}`;
-    renderCards(currentSubject);
-    scrollToTop();
-  });
-});
-
-$('#subject-page .back-button').addEventListener('click', (e) => {
-  e.preventDefault();
-  subjectPage.style.display = 'none';
-  mainPage.style.display = 'block';
-  scrollToTop();
-});
-
-$('#search').addEventListener('input', () => {
-  renderCards(currentSubject);
-});
-
-$('#sort').addEventListener('change', () => {
-  renderCards(currentSubject);
-});
-
-$('#refresh-data-btn').addEventListener('click', async () => {
   try {
-    await fetchClasses();
-    if (currentSubject) {
-      renderCards(currentSubject);
-    }
-    renderTodayClasses();
-    showNotification('ডেটা সফলভাবে রিফ্রেশ করা হয়েছে!', false);
-  } catch (error) {
-    console.error('Error refreshing data:', error);
-    showNotification('ডেটা রিফ্রেশ করতে সমস্যা হয়েছে।', true);
-  }
-});
-
-function renderCards(subject) {
-  const grid = $('#classGrid');
-  const searchQuery = $('#search').value.trim().toLowerCase();
-  const sortOrder = $('#sort').value;
-
-  let classes = groupedClassesCache[subject] || [];
-  
-  if (searchQuery) {
-    classes = classes.filter(cls => 
-      cls.title.toLowerCase().includes(searchQuery) || 
-      cls.description.toLowerCase().includes(searchQuery)
-    );
-  }
-
-  classes.sort((a, b) => {
-    const dateA = new Date(a.timestamp);
-    const dateB = new Date(b.timestamp);
-    return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
-  });
-
-  if (classes.length === 0) {
-    grid.innerHTML = `
-      <div class="empty-state bangla-font">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2v20m8-8H4"></path>
-        </svg>
-        কোনো ক্লাস পাওয়া যায়নি
-      </div>`;
-    return;
-  }
-
-  grid.innerHTML = classes.map(cls => {
-    const isHighlighted = highlightedClassTimestamp && cls.timestamp === highlightedClassTimestamp;
-    const isExam = cls.subject === 'ইক্সাম';
-    const expiryDate = isExam && cls.expiry ? new Date(cls.expiry) : null;
-    const isExpired = expiryDate && new Date() > expiryDate;
-
-    return `
-      <div class="card ${isHighlighted ? 'highlight' : ''}" data-timestamp="${cls.timestamp}">
-        <span class="card-badge bangla-font">${isExam ? 'ইক্সাম' : 'ক্লাস'}</span>
-        <div class="subject"><i class="fas fa-book"></i> ${cls.subject}</div>
-        <div class="time"><i class="far fa-clock"></i> ${formatDate(cls.timestamp)} ${formatTime(cls.timestamp)}</div>
-        <div class="video-title bangla-font">${cls.title}</div>
-        ${isExam && cls.expiry && !isExpired ? `
-          <div class="exam-expiry-notice">
-            <i class="fas fa-exclamation-triangle"></i>
-            <span class="bangla-font">মেয়াদ শেষ: ${formatDate(cls.expiry)}</span>
-          </div>
-        ` : ''}
-        ${isExpired ? `
-          <div class="exam-expiry-notice bangla-font">
-            <i class="fas fa-times-circle"></i>
-            <span>ইক্সামের মেয়াদ শেষ হয়েছে</span>
-          </div>
-        ` : `
-          <a href="${cls.link}" target="_blank" rel="noopener" class="btn bangla-font" onclick="trackItem('${cls.timestamp}', '${cls.subject}')">
-            <i class="fas fa-external-link-alt"></i> ${isExam ? 'ইক্সাম দিন' : 'ক্লাসে যোগ দিন'}
-          </a>
-        `}
-      </div>`;
-  }).join('');
-
-  // ট্র্যাকিং লজিক যুক্ত করা
-  $all('.card').forEach(card => {
-    const timestamp = card.dataset.timestamp;
-    const subject = card.querySelector('.subject').textContent;
-    
-    if (subject === 'ক্লাস') {
-      let scrollStart = null;
-      card.addEventListener('scroll', () => {
-        if (!scrollStart) {
-          scrollStart = Date.now();
-        }
-        const scrollDuration = (Date.now() - scrollStart) / 1000; // সেকেন্ডে
-        if (scrollDuration >= 7 && scrollDuration <= 7 * 60) {
-          trackItem(timestamp, subject);
-        }
+    const date = new Date(timestamp);
+    if (!isNaN(date)) {
+      return date.toLocaleTimeString('en-US', { 
+        timeZone: 'Asia/Dhaka', 
+        hour: 'numeric', 
+        minute: '2-digit', 
+        hour12: true 
       });
     }
-  });
-}
-
-// নতুন ফাংশন: ড্যাশবোর্ড এবং ট্র্যাকিং
-function initializeDashboard() {
-  const studentName = localStorage.getItem(STORAGE_KEYS.STUDENT_NAME);
-  if (!studentName) {
-    promptForName();
-  } else {
-    updateLastActivity();
-    renderDashboard();
+    return '12:00 AM';
+  } catch (error) {
+    console.error("Time parsing error:", error, timestamp);
+    return '12:00 AM';
   }
 }
 
-function promptForName() {
-  dashboardBody.innerHTML = `
-    <div class="dashboard-section">
-      <h3 class="bangla-font">আপনার নাম লিখুন</h3>
-      <form class="name-input-form bangla-font">
-        <input type="text" id="student-name-input" placeholder="আপনার নাম লিখুন" required>
-        <button type="submit">জমা দিন</button>
-      </form>
-    </div>
-  `;
-  dashboardModal.classList.add('show');
+function getTodayDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${day}-${month}-${year}`; // ফরম্যাট: DD-MM-YYYY
+}
 
-  const form = dashboardBody.querySelector('.name-input-form');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = $('#student-name-input').value.trim();
-    if (name) {
-      localStorage.setItem(STORAGE_KEYS.STUDENT_NAME, name);
-      localStorage.setItem(STORAGE_KEYS.JOIN_DATE, new Date().toISOString());
-      localStorage.setItem(STORAGE_KEYS.COMPLETED_ITEMS, JSON.stringify([]));
-      localStorage.setItem(STORAGE_KEYS.EARNED_BADGES, JSON.stringify([]));
-      updateLastActivity();
-      renderDashboard();
-      showNotification('নাম সফলভাবে সংরক্ষিত হয়েছে!', false);
+function formatDateToBangla(dateStr) {
+  if (!dateStr) return '';
+
+  try {
+    if (/^\d{2}-\d{2}-\d{4}$/.test(dateStr)) {
+      return dateStr; // ইতিমধ্যে DD-MM-YYYY ফরম্যাটে থাকলে রিটার্ন
+    }
+    const [year, month, day] = dateStr.split('-');
+    return `${day}-${month}-${year}`; // ফরম্যাট: DD-MM-YYYY
+  } catch (error) {
+    console.error("Date formatting error:", error, dateStr);
+    return dateStr;
+  }
+}
+
+function findBestMatchingSubject(subjectFromSheet) {
+  if (!subjectFromSheet) return null;
+
+  const cleanSubject = subjectFromSheet.toString().trim();
+  for (const availableSubject of availableSubjects) {
+    if (cleanSubject === availableSubject) {
+      return availableSubject;
+    }
+  }
+  return cleanSubject;
+}
+
+async function fetchData() {
+  try {
+    showNotification("ডেটা লোড হচ্ছে...", false);
+    const res = await fetch(API_URL, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    const data = await res.json();
+    if (data && data.ok) {
+      showNotification("ডেটা সফলভাবে লোড হয়েছে!");
+      console.log("API Response:", data);
+      return data.rows || [];
     } else {
-      showNotification('অনুগ্রহ করে একটি বৈধ নাম লিখুন।', true);
+      throw new Error(data.error || "ডেটা লোড করতে সমস্যা");
     }
-  });
-}
-
-function updateLastActivity() {
-  localStorage.setItem(STORAGE_KEYS.LAST_ACTIVITY, new Date().toISOString());
-}
-
-function trackItem(timestamp, subject) {
-  const completedItems = JSON.parse(localStorage.getItem(STORAGE_KEYS.COMPLETED_ITEMS) || '[]');
-  if (!completedItems.includes(timestamp)) {
-    completedItems.push(timestamp);
-    localStorage.setItem(STORAGE_KEYS.COMPLETED_ITEMS, JSON.stringify(completedItems));
-    updateLastActivity();
-    checkBadges();
-    renderDashboard();
-    showNotification('আইটেম সম্পন্ন হয়েছে!', false);
+  } catch (error) {
+    console.error("ডেটা লোড করতে সমস্যা:", error);
+    showNotification("ডেটা লোড করা যায়নি: " + error.message, true);
+    return [];
   }
 }
 
-function checkBadges() {
-  const completedItems = JSON.parse(localStorage.getItem(STORAGE_KEYS.COMPLETED_ITEMS) || '[]');
-  const totalItems = allClasses.length;
-  const completionPercentage = (completedItems.length / totalItems) * 100;
-  let earnedBadges = JSON.parse(localStorage.getItem(STORAGE_KEYS.EARNED_BADGES) || '[]');
+function normalizeRows(rows) {
+  try {
+    // প্রথমে ক্লাসগুলোকে সাবজেক্ট অনুযায়ী গ্রুপ করা
+    const groupedBySubject = rows.reduce((acc, row) => {
+      const subjectFromSheet = row.subject || 'Unknown Subject';
+      const matchedSubject = findBestMatchingSubject(subjectFromSheet) || subjectFromSheet;
+      if (!acc[matchedSubject]) {
+        acc[matchedSubject] = [];
+      }
+      acc[matchedSubject].push(row);
+      return acc;
+    }, {});
 
-  badgeThresholds.forEach(badge => {
-    if (completionPercentage >= badge.threshold && !earnedBadges.includes(badge.name)) {
-      earnedBadges.push(badge.name);
-      showNotification(`অভিনন্দন! আপনি "${badge.name}" ব্যাজ অর্জন করেছেন!`, false);
-    }
-  });
+    // প্রতিটি সাবজেক্টের ক্লাসগুলোকে টাইমস্ট্যাম্প অনুযায়ী সাজানো (পুরানো থেকে নতুন)
+    const normalizedRows = [];
+    Object.keys(groupedBySubject).forEach(subject => {
+      const sortedClasses = groupedBySubject[subject].sort((a, b) => {
+        return new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime();
+      });
 
-  localStorage.setItem(STORAGE_KEYS.EARNED_BADGES, JSON.stringify(earnedBadges));
+      // প্রতিটি ক্লাসের জন্য সিরিয়াল নাম্বার যুক্ত করা (পুরানো ক্লাস থেকে শুরু)
+      sortedClasses.forEach((row, index) => {
+        const timestamp = row.timestamp || '';
+        const link = row.link || '#';
+        const title = row.title || 'ক্লাস ভিডিও';
+        const date = getDateFromTimestamp(timestamp);
+        const time = getTimeFromTimestamp(timestamp);
+        const serial = index + 1; // পুরানো ক্লাস থেকে নাম্বারিং শুরু (১ থেকে)
+
+        normalizedRows.push({
+          subject: subject,
+          originalSubject: row.subject,
+          link: link,
+          title: title,
+          date: date,
+          time: time,
+          serial: serial,
+          timestamp: timestamp
+        });
+      });
+    });
+
+    return normalizedRows;
+  } catch (error) {
+    console.error("Rows normalization error:", error);
+    return [];
+  }
 }
 
-function checkAlarms() {
-  const lastActivity = localStorage.getItem(STORAGE_KEYS.LAST_ACTIVITY);
-  if (!lastActivity) return;
+function isExamTimeExpired(timestamp) {
+  if (!timestamp) return false;
+  try {
+    const examTime = new Date(timestamp).getTime();
+    const now = new Date().getTime();
+    const twentyFourHoursInMs = 24 * 60 * 60 * 1000;
+    return (now - examTime) > twentyFourHoursInMs;
+  } catch (error) {
+    console.error("Exam expiry check error:", error, timestamp);
+    return false;
+  }
+}
 
-  const lastActivityDate = new Date(lastActivity);
+function filterClassesByTimeRange(range) {
   const now = new Date();
-  const diffDays = Math.floor((now - lastActivityDate) / (1000 * 60 * 60 * 24));
+  const today = getTodayDate(); // DD-MM-YYYY ফরম্যাটে আজকের তারিখ
 
-  let message = '';
-  if (diffDays >= 30) {
-    message = 'আপনি ১ মাস ধরে নিষ্ক্রিয়! দ্রুত একটি ক্লাস সম্পন্ন করুন, নয়তো আপনার ব্যাজ হারাতে পারেন!';
-  } else if (diffDays >= 7) {
-    message = 'আপনি ৭ দিন ধরে নিষ্ক্রিয়! একটি ক্লাস সম্পন্ন করুন।';
-  } else if (diffDays >= 3) {
-    message = 'আপনি ৩ দিন ধরে নিষ্ক্রিয়! আজই একটি ক্লাস শুরু করুন।';
+  if (range === 'today') {
+    return allClasses.filter(cls => cls && cls.date === today);
+  } else if (range === 'all') {
+    return allClasses;
   }
 
-  if (message) {
-    showNotification(message, false, true);
-  }
+  const weekAgo = new Date(now.setDate(now.getDate() - 7));
+  const monthAgo = new Date(now.setMonth(now.getMonth() - 1));
+
+  return allClasses.filter(cls => {
+    if (!cls || !cls.date) return false;
+    const classDateParts = cls.date.split('-'); // DD-MM-YYYY ফরম্যাট
+    const classDate = new Date(`${classDateParts[2]}-${classDateParts[1]}-${classDateParts[0]}`);
+    
+    if (range === 'week') {
+      return classDate >= weekAgo && classDate <= new Date();
+    } else if (range === 'month') {
+      return classDate >= monthAgo && classDate <= new Date();
+    }
+    return true;
+  });
 }
 
-function renderDashboard() {
-  const studentName = localStorage.getItem(STORAGE_KEYS.STUDENT_NAME) || 'শিক্ষার্থী';
-  const joinDate = new Date(localStorage.getItem(STORAGE_KEYS.JOIN_DATE) || new Date());
-  const completedItems = JSON.parse(localStorage.getItem(STORAGE_KEYS.COMPLETED_ITEMS) || '[]');
-  const earnedBadges = JSON.parse(localStorage.getItem(STORAGE_KEYS.EARNED_BADGES) || '[]');
-  const totalItems = allClasses.length;
-  const completionPercentage = totalItems > 0 ? (completedItems.length / totalItems) * 100 : 0;
-  const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+function groupClassesBySubject(classes) {
+  if (groupedClassesCache[JSON.stringify(classes)]) {
+    return groupedClassesCache[JSON.stringify(classes)];
+  }
 
-  const daysSinceJoin = Math.floor((new Date() - joinDate) / (1000 * 60 * 60 * 24));
-
-  // ক্যাটাগরি স্ট্যাটস ক্যালকুলেট
-  const categories = {
-    'ক্লাস': allClasses.filter(cls => !['মিশন', 'ইক্সাম'].includes(cls.subject)),
-    'মিশন': allClasses.filter(cls => cls.subject === 'মিশন'),
-    'পরীক্ষা': allClasses.filter(cls => cls.subject === 'ইক্সাম')
-  };
-
-  let categoryStatsHTML = '';
-  Object.keys(categories).forEach(cat => {
-    const items = categories[cat];
-    if (items.length === 0) {
-      categoryStatsHTML += `
-        <div class="category-stat">
-          <h4 class="bangla-font">${cat}</h4>
-          <p class="bangla-font">এখনো শুরু হয়নি</p>
-        </div>
-      `;
-      return;
+  const grouped = classes.reduce((acc, cls) => {
+    if (!cls || !cls.subject) return acc;
+    if (!acc[cls.subject]) {
+      acc[cls.subject] = [];
     }
+    acc[cls.subject].push(cls);
+    return acc;
+  }, {});
 
-    const oldItems = items.filter(cls => new Date(cls.timestamp) < joinDate).length;
-    const newItems = items.filter(cls => new Date(cls.timestamp) >= joinDate).length;
-    const completed = items.filter(cls => completedItems.includes(cls.timestamp)).length;
-    const remaining = items.length - completed;
+  // প্রতিটি সাবজেক্টের ক্লাসগুলোকে টাইমস্ট্যাম্প অনুযায়ী সাজানো (নতুন থেকে পুরানো)
+  Object.keys(grouped).forEach(subject => {
+    grouped[subject].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+  });
 
-    categoryStatsHTML += `
-      <div class="category-stat">
-        <h4 class="bangla-font">${cat}</h4>
-        <p class="bangla-font">পুরাতন: ${oldItems}</p>
-        <p class="bangla-font">নতুন: ${newItems}</p>
-        <p class="bangla-font">সম্পন্ন: ${completed}</p>
-        <p class="bangla-font">বাকি: ${remaining}</p>
-      </div>
+  groupedClassesCache[JSON.stringify(classes)] = grouped;
+  return grouped;
+}
+
+function renderTodayClassesSummary(classes) {
+  const container = $('#today-classes-body');
+  const sortValue = $('#sort-classes').value;
+
+  if (!classes || classes.length === 0) {
+    container.innerHTML = `<tr><td colspan="3" class="bangla-font" style="text-align: center; padding: 20px;">আজকের জন্য কোন ক্লাস পাওয়া যায়নি</td></tr>`;
+    return;
+  }
+
+  let tableHTML = '';
+  classes.forEach(cls => {
+    if (!cls) return;
+    const displayValue = sortValue === 'today' ? cls.time : cls.date;
+    tableHTML += `
+      <tr data-subject="${cls.subject}" data-timestamp="${cls.timestamp}">
+        <td><span class="subject-badge bangla-font">${cls.subject}</span></td>
+        <td class="class-info bangla-font">${cls.title}</td>
+        <td class="bangla-font">${displayValue}</td>
+      </tr>
     `;
   });
+  container.innerHTML = tableHTML;
 
+  $all('#today-classes-body tr').forEach(row => {
+    row.addEventListener('click', () => {
+      const subject = row.getAttribute('data-subject');
+      highlightedClassTimestamp = row.getAttribute('data-timestamp');
+      showSubjectPage(subject, true);
+    });
+  });
+}
+
+function renderCards(rows, root) {
+  if (!rows || rows.length === 0) {
+    root.innerHTML = '<div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><p class="bangla-font">কোন ক্লাস পাওয়া যায়নি</p></div>';
+    return;
+  }
+
+  root.innerHTML = '';
+  rows.forEach(r => {
+    if (!r) return;
+
+    const specialFolders = ["ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "অন্যান্য"];
+    let buttonText;
+    let isExpired = false;
+
+    if (specialFolders.includes(r.subject)) {
+      buttonText = "দেখুন";
+    } else if (r.subject === "মিশন") {
+      buttonText = "মিশন সম্পন্ন করুন";
+    } else if (r.subject === "ইক্সাম") {
+      buttonText = "পরীক্ষায় অংশগ্রহণ করুন";
+      isExpired = isExamTimeExpired(r.timestamp);
+    } else {
+      buttonText = "ক্লাস দেখুন";
+    }
+
+    const card = document.createElement('div');
+    card.className = 'card fade-in';
+    card.setAttribute('data-timestamp', r.timestamp);
+    if (highlightedClassTimestamp === r.timestamp) {
+      card.classList.add('highlight');
+      setTimeout(() => {
+        card.classList.remove('highlight');
+        highlightedClassTimestamp = null;
+      }, 5000);
+    }
+    let onclickAttr = '';
+    let idPrefix = '';
+    let type = '';
+    if (r.subject === "মিশন") {
+      idPrefix = 'm';
+      type = 'mission';
+    } else if (r.subject === "ইক্সাম") {
+      idPrefix = 'e';
+      type = 'exam';
+    } else {
+      idPrefix = 'c';
+      type = 'class';
+    }
+    const itemId = idPrefix + String(r.serial).padStart(2, '0');
+    onclickAttr = `onclick="trackItem('${itemId}', '${type}')"`
+    card.innerHTML = `
+      <span class="card-badge bangla-font">ক্লাস ${r.serial}</span>
+      <div class="subject"><i class="fas fa-book"></i> <span class="bangla-font">${r.subject}</span></div>
+      <div class="video-title bangla-font">${r.title}</div>
+      <div class="time"><i class="fas fa-clock"></i> ${r.time} | <span class="bangla-font">${r.date}</span></div>
+      ${r.subject === "ইক্সাম" && isExpired ? '<div class="exam-expiry-notice bangla-font"><i class="fas fa-exclamation-triangle"></i> পরীক্ষায় অংশগ্রহণ করার নির্দিষ্ট সময় শেষ হয়ে গেছে</div>' : ''}
+      <a class="btn" target="_blank" rel="noopener" href="${r.link}" ${onclickAttr}><i class="fas fa-play-circle"></i> <span class="bangla-font">${buttonText}</span></a>
+    `;
+    root.appendChild(card);
+  });
+}
+
+function filterTodayClasses(classes) {
+  const today = getTodayDate();
+  return classes.filter(cls => cls && cls.date === today);
+}
+
+async function loadInitialData() {
+  if (!checkLoginExpiry()) {
+    logout();
+    return;
+  }
+
+  const rows = await fetchData();
+  allClasses = normalizeRows(rows);
+  renderTodayClassesSummary(filterTodayClasses(allClasses));
+
+  showAddClassButton();
+  showDashboardButton();
+}
+
+function showSubjectPage(subject, fromTable = false) {
+  currentSubject = subject;
+  mainPage.style.display = 'none';
+  subjectPage.style.display = 'block';
+  $('#subject-title').innerHTML = `<i class="fas fa-book"></i> <span class="bangla-font">${subject}</span>`;
+  scrollToTop();
+
+  const classes = filterClassesByTimeRange('all');
+  const groupedClasses = groupClassesBySubject(classes);
+  const subjectClasses = groupedClasses[subject] || [];
+
+  const root = $('#classGrid');
+  renderCards(subjectClasses, root);
+
+  if (fromTable) {
+    const highlightedCard = $all('#classGrid .card').find(card => card.getAttribute('data-timestamp') === highlightedClassTimestamp);
+    if (highlightedCard) {
+      highlightedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  $('#search').value = '';
+}
+
+function initializeEventListeners() {
+  $('#sort-classes').addEventListener('change', () => {
+    const range = $('#sort-classes').value;
+    const filteredClasses = filterClassesByTimeRange(range);
+    renderTodayClassesSummary(filteredClasses);
+  });
+
+  $('#search-subjects').addEventListener('input', () => {
+    const searchTerm = $('#search-subjects').value.trim().toLowerCase();
+    const pills = $all('.subject-link');
+    pills.forEach(pill => {
+      const subjectName = pill.getAttribute('data-name').toLowerCase();
+      pill.style.display = subjectName.includes(searchTerm) ? 'flex' : 'none';
+    });
+  });
+
+  $all('.subject-link').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const subject = link.getAttribute('data-name');
+      showSubjectPage(subject);
+    });
+  });
+
+  $('#search').addEventListener('input', () => {
+    const searchTerm = $('#search').value.trim().toLowerCase();
+    const classes = filterClassesByTimeRange('all');
+    const groupedClasses = groupClassesBySubject(classes);
+    const subjectClasses = groupedClasses[currentSubject] || [];
+    const filteredClasses = subjectClasses.filter(cls => cls.title.toLowerCase().includes(searchTerm));
+    
+    const sortOrder = $('#sort').value;
+    if (sortOrder === 'asc') {
+      filteredClasses.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+    } else {
+      filteredClasses.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+    }
+    
+    renderCards(filteredClasses, $('#classGrid'));
+  });
+
+  $('#sort').addEventListener('change', () => {
+    const searchTerm = $('#search').value.trim().toLowerCase();
+    const classes = filterClassesByTimeRange('all');
+    const groupedClasses = groupClassesBySubject(classes);
+    const subjectClasses = groupedClasses[currentSubject] || [];
+    const filteredClasses = subjectClasses.filter(cls => cls.title.toLowerCase().includes(searchTerm));
+    
+    const sortOrder = $('#sort').value;
+    if (sortOrder === 'asc') {
+      filteredClasses.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+    } else {
+      filteredClasses.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+    }
+    
+    renderCards(filteredClasses, $('#classGrid'));
+  });
+
+  $('.back-button').addEventListener('click', e => {
+    e.preventDefault();
+    subjectPage.style.display = 'none';
+    mainPage.style.display = 'block';
+    scrollToTop();
+    $('#search-subjects').value = '';
+    const pills = $all('.subject-link');
+    pills.forEach(pill => {
+      pill.style.display = 'flex';
+    });
+  });
+
+  $('#refresh-data-btn').addEventListener('click', async () => {
+    const rows = await fetchData();
+    allClasses = normalizeRows(rows);
+    groupedClassesCache = {};
+    renderTodayClassesSummary(filterClassesByTimeRange($('#sort-classes').value));
+    
+    if (subjectPage.style.display === 'block' && currentSubject) {
+      showSubjectPage(currentSubject);
+    }
+    
+    showNotification("ডেটা রিফ্রেশ হয়েছে!");
+  });
+}
+
+/* Dashboard Script */
+const STORAGE_KEYS = {
+  STUDENT_NAME: 'dakhil26_student_name',
+  JOIN_DATE: 'dakhil26_join_date',
+  LAST_LOGIN: 'dakhil26_last_login',
+  LAST_ACTIVITY: 'dakhil26_last_activity',
+  COMPLETED_ITEMS: 'dakhil26_completed_items'
+};
+
+const motivationalQuotes = [
+  "প্রতিদিন একটি ক্লাস করুন, সাফল্য আপনার কাছে আসবে! 🌟",
+  "ছোট ছোট পদক্ষেপই বড় সাফল্যের পথ তৈরি করে! 💪",
+  "নিয়মিত পড়াশোনা আপনাকে লক্ষ্যের কাছে নিয়ে যাবে! 🚀",
+  "আজকের পরিশ্রম আগামীকালের সাফল্য! 🔥",
+  "প্রতিটি ক্লাস আপনাকে এক ধাপ এগিয়ে নেয়! 🏆"
+];
+
+const badges = [
+  { name: 'Start', threshold: 0, class: 'badge-start' },
+  { name: '30%', threshold: 30, class: 'badge-30' },
+  { name: '50%', threshold: 50, class: 'badge-50' },
+  { name: '65%', threshold: 65, class: 'badge-65' },
+  { name: '80%+', threshold: 80, class: 'badge-80' }
+];
+
+function parseDate(dateStr) {
+  if (!dateStr) return new Date(0);
+  const [day, month, year] = dateStr.split('-').map(Number);
+  return new Date(year, month - 1, day);
+}
+
+function saveStudentData(name, joinDate, lastLogin, lastActivity, completedItems) {
+  localStorage.setItem(STORAGE_KEYS.STUDENT_NAME, name || 'শিক্ষার্থী');
+  localStorage.setItem(STORAGE_KEYS.JOIN_DATE, joinDate || getTodayDate());
+  localStorage.setItem(STORAGE_KEYS.LAST_LOGIN, lastLogin || new Date().toISOString());
+  localStorage.setItem(STORAGE_KEYS.LAST_ACTIVITY, lastActivity || new Date().toISOString());
+  localStorage.setItem(STORAGE_KEYS.COMPLETED_ITEMS, JSON.stringify(completedItems || []));
+}
+
+function getStudentData() {
+  return {
+    name: localStorage.getItem(STORAGE_KEYS.STUDENT_NAME) || 'শিক্ষার্থী',
+    joinDate: localStorage.getItem(STORAGE_KEYS.JOIN_DATE) || getTodayDate(),
+    lastLogin: localStorage.getItem(STORAGE_KEYS.LAST_LOGIN) || new Date().toISOString(),
+    lastActivity: localStorage.getItem(STORAGE_KEYS.LAST_ACTIVITY) || new Date().toISOString(),
+    completedItems: JSON.parse(localStorage.getItem(STORAGE_KEYS.COMPLETED_ITEMS)) || []
+  };
+}
+
+// Tracking function
+window.trackItem = function(id, type) {
+  const studentData = getStudentData();
+  let completed = studentData.completedItems;
+  if (completed.includes(id)) {
+    return; // Already completed
+  }
+
+  if (type === 'class') {
+    let scrolled = false;
+    const scrollListener = () => { scrolled = true; };
+    window.addEventListener('scroll', scrollListener);
+
+    const minTime = 0; // seconds
+    const maxTime = 0; // 7 minutes in seconds
+    const randomTime = Math.random() * (maxTime - minTime) + minTime;
+
+    setTimeout(() => {
+      window.removeEventListener('scroll', scrollListener);
+      if (!scrolled) {
+        completed.push(id);
+        saveStudentData(studentData.name, studentData.joinDate, new Date().toISOString(), new Date().toISOString(), completed);
+        showNotification(`${type} সম্পন্ন হয়েছে!`, false);
+      } else {
+        showNotification('পেজ স্ক্রল হয়েছে, সম্পন্ন মনে করা হয়নি।', true);
+      }
+    }, randomTime * 1000);
+  } else {
+    // For missions and exams, complete immediately
+    completed.push(id);
+    saveStudentData(studentData.name, studentData.joinDate, new Date().toISOString(), new Date().toISOString(), completed);
+    showNotification(`${type} সম্পন্ন হয়েছে!`, false);
+  }
+};
+
+function getItemsFromAllClasses() {
+  const items = {
+    classes: [],
+    missions: [],
+    exams: []
+  };
+
+  allClasses.forEach((cls, index) => {
+    if (cls.subject === 'মিশন') {
+      items.missions.push({ id: 'm' + String(index + 1).padStart(2, '0'), addDate: cls.date });
+    } else if (cls.subject === 'ইক্সাম') {
+      items.exams.push({ id: 'e' + String(index + 1).padStart(2, '0'), addDate: cls.date });
+    } else {
+      items.classes.push({ id: 'c' + String(index + 1).padStart(2, '0'), addDate: cls.date });
+    }
+  });
+
+  return items;
+}
+
+function calculateStats(joinDate, completed) {
+  const joinDateObj = parseDate(joinDate);
+  const items = getItemsFromAllClasses();
+
+  function filterItems(itemList, isAfter) {
+    return itemList.filter(item => {
+      const addDateObj = parseDate(item.addDate);
+      return isAfter ? addDateObj >= joinDateObj : addDateObj < joinDateObj;
+    });
+  }
+
+  const afterClasses = filterItems(items.classes, true);
+  const beforeClasses = filterItems(items.classes, false);
+  const afterMissions = filterItems(items.missions, true);
+  const beforeMissions = filterItems(items.missions, false);
+  const afterExams = filterItems(items.exams, true);
+  const beforeExams = filterItems(items.exams, false);
+
+  const doneAfterClasses = afterClasses.filter(item => completed.includes(item.id)).length;
+  const doneBeforeClasses = beforeClasses.filter(item => completed.includes(item.id)).length;
+  const doneAfterMissions = afterMissions.filter(item => completed.includes(item.id)).length;
+  const doneBeforeMissions = beforeMissions.filter(item => completed.includes(item.id)).length;
+  const doneAfterExams = afterExams.filter(item => completed.includes(item.id)).length;
+  const doneBeforeExams = beforeExams.filter(item => completed.includes(item.id)).length;
+
+  const totalAll = items.classes.length + items.missions.length + items.exams.length;
+  const totalCompleted = completed.length;
+  const progress = totalAll > 0 ? (totalCompleted / totalAll) * 100 : 0;
+
+  return {
+    after: {
+      totalClasses: afterClasses.length,
+      doneClasses: doneAfterClasses,
+      pendingClasses: afterClasses.length - doneAfterClasses,
+      totalMissions: afterMissions.length,
+      doneMissions: doneAfterMissions,
+      pendingMissions: afterMissions.length - doneAfterMissions,
+      totalExams: afterExams.length,
+      doneExams: doneAfterExams,
+      pendingExams: afterExams.length - doneAfterExams
+    },
+    before: {
+      totalClasses: beforeClasses.length,
+      doneClasses: doneBeforeClasses,
+      pendingClasses: beforeClasses.length - doneBeforeClasses,
+      totalMissions: beforeMissions.length,
+      doneMissions: doneBeforeMissions,
+      pendingMissions: beforeMissions.length - doneBeforeMissions,
+      totalExams: beforeExams.length,
+      doneExams: doneBeforeExams,
+      pendingExams: beforeExams.length - doneBeforeExams
+    },
+    progress: progress.toFixed(1)
+  };
+}
+
+function getCurrentBadge(progress) {
+  for (let i = badges.length - 1; i >= 0; i--) {
+    if (progress >= badges[i].threshold) {
+      return badges[i];
+    }
+  }
+  return badges[0];
+}
+
+function showDashboard() {
+  const studentData = getStudentData();
+  const isNewUser = !localStorage.getItem(STORAGE_KEYS.STUDENT_NAME);
+  const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+  const stats = calculateStats(studentData.joinDate, studentData.completedItems);
+  const currentBadge = getCurrentBadge(stats.progress);
+  const lastActivityDate = new Date(studentData.lastActivity);
+  const daysSinceActivity = (new Date() - lastActivityDate) / (1000 * 60 * 60 * 24);
+
+  const dashboardBody = $('#dashboard-body');
   dashboardBody.innerHTML = `
-    <div class="dashboard-section">
-      <h3 class="bangla-font">স্বাগতম, ${studentName}${earnedBadges.map(b => {
-        const badge = badgeThresholds.find(bd => bd.name === b);
-        return badge ? `<span class="badge-sticker">${badge.icon}</span>` : '';
-      }).join('')}!</h3>
-      <p class="bangla-font">${randomQuote}</p>
-    </div>
-    <div class="dashboard-section">
-      <h3 class="bangla-font">অগ্রগতি ওভারভিউ</h3>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <i class="fas fa-calendar-alt stat-icon"></i>
-          <div class="stat-value">${daysSinceJoin}</div>
-          <div class="stat-description bangla-font">দিন যোগদানের পর</div>
-        </div>
-        <div class="stat-card">
-          <i class="fas fa-check-circle stat-icon"></i>
-          <div class="stat-value">${completedItems.length}</div>
-          <div class="stat-description bangla-font">সম্পন্ন আইটেম</div>
-        </div>
+    ${isNewUser ? `
+      <div class="alert-box success bangla-font">
+        <i class="fas fa-info-circle"></i> আপনার নাম লিখুন এবং ড্যাশবোর্ড কাস্টমাইজ করুন!
       </div>
-      <div class="progress-bar">
-        <div class="progress-bar-fill" style="width: ${completionPercentage}%"></div>
-      </div>
-      <p class="bangla-font">${completionPercentage.toFixed(2)}% সম্পন্ন</p>
-    </div>
-    <div class="dashboard-section">
-      <h3 class="bangla-font">ক্যাটাগরি স্ট্যাটস</h3>
-      <div class="category-stats">
-        ${categoryStatsHTML}
-      </div>
-    </div>
-    <div class="dashboard-section highlight">
-      <h3 class="bangla-font">আপনার ব্যাজ</h3>
-      <div class="badge-grid">
-        ${badgeThresholds.map(badge => `
-          <div class="badge-item ${earnedBadges.includes(badge.name) ? 'unlocked' : 'locked'}">
-            <div class="badge-icon">${badge.icon}</div>
-            <div class="badge-name bangla-font">${badge.name}</div>
-            <div class="badge-progress bangla-font">${earnedBadges.includes(badge.name) ? 'আনলক করা হয়েছে' : badge.description}</div>
+      <form class="name-input-form">
+        <input type="text" id="student-name-input" placeholder="আপনার নাম লিখুন" class="bangla-font">
+        <button type="submit" class="bangla-font">নাম সংরক্ষণ করুন</button>
+      </form>
+    ` : `
+      <header class="modal-header bangla-font">
+        <h2>স্বাগতম, ${studentData.name}!</h2>
+        <div class="badge-current ${currentBadge.class}" id="current-badge">${currentBadge.name}</div>
+        <div id="close-btn" class="close-btn">✕</div>
+      </header>
+
+      <section class="motivation">
+        <p id="motivation-text" class="bangla-font">${randomQuote}</p>
+      </section>
+
+      <section class="stats after-join bangla-font">
+        <h2>জয়েন-এর পর</h2>
+        <div class="cards">
+          <div class="card" id="card-classes">
+            <h3>ক্লাস</h3>
+            <p>মোট: <span id="after-total-classes">${stats.after.totalClasses}</span></p>
+            <p>করা হয়েছে: <span id="after-done-classes">${stats.after.doneClasses}</span></p>
+            <p>বাকি আছে: <span id="after-pending-classes">${stats.after.pendingClasses}</span></p>
           </div>
-        `).join('')}
+          <div class="card" id="card-missions">
+            <h3>মিশন</h3>
+            <p>মোট: <span id="after-total-missions">${stats.after.totalMissions}</span></p>
+            <p>সম্পন্ন হয়েছে: <span id="after-done-missions">${stats.after.doneMissions}</span></p>
+            <p>বাকি আছে: <span id="after-pending-missions">${stats.after.pendingMissions}</span></p>
+          </div>
+          <div class="card" id="card-exams">
+            <h3>পরীক্ষা</h3>
+            <p>মোট: <span id="after-total-exams">${stats.after.totalExams}</span></p>
+            <p>দেওয়া হয়েছে: <span id="after-done-exams">${stats.after.doneExams}</span></p>
+            <p>বাকি আছে: <span id="after-pending-exams">${stats.after.pendingExams}</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats before-join bangla-font">
+        <h2>জয়েন-এর আগে</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>ক্লাস</h3>
+            <p>মোট: <span id="before-total-classes">${stats.before.totalClasses}</span></p>
+            <p>করা হয়েছে: <span id="before-done-classes">${stats.before.doneClasses}</span></p>
+            <p>বাকি আছে: <span id="before-pending-classes">${stats.before.pendingClasses}</span></p>
+          </div>
+          <div class="card">
+            <h3>মিশন</h3>
+            <p>মোট: <span id="before-total-missions">${stats.before.totalMissions}</span></p>
+            <p>সম্পন্ন হয়েছে: <span id="before-done-missions">${stats.before.doneMissions}</span></p>
+            <p>বাকি আছে: <span id="before-pending-missions">${stats.before.pendingMissions}</span></p>
+          </div>
+          <div class="card">
+            <h3>পরীক্ষা</h3>
+            <p>মোট: <span id="before-total-exams">${stats.before.totalExams}</span></p>
+            <p>দেওয়া হয়েছে: <span id="before-done-exams">${stats.before.doneExams}</span></p>
+            <p>বাকি আছে: <span id="before-pending-exams">${stats.before.pendingExams}</span></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="alarms" class="alarms bangla-font"></section>
+
+      <section class="progress-section bangla-font">
+        <h3>সম্মক অগ্রগতি</h3>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" style="width: ${stats.progress}%"></div>
+        </div>
+        <p>${stats.progress}%</p>
+      </section>
+
+      <div class="badges-dropdown bangla-font">
+        <label for="badges-select">ব্যাজসমূহ:</label>
+        <select id="badges-select">
+          ${badges.map(badge => `
+            <option ${stats.progress >= badge.threshold ? '' : 'disabled'}>${badge.name} ${stats.progress >= badge.threshold ? '(প্রাপ্ত)' : '(লক)'}</option>
+          `).join('')}
+        </select>
       </div>
-    </div>
+    `}
   `;
 
+  if (isNewUser) {
+    const form = dashboardBody.querySelector('.name-input-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameInput = $('#student-name-input').value.trim();
+      if (nameInput) {
+        saveStudentData(nameInput, getTodayDate(), new Date().toISOString(), new Date().toISOString(), []);
+        showNotification('নাম সফলভাবে সংরক্ষিত হয়েছে!', false);
+        showDashboard();
+      } else {
+        showNotification('অনুগ্রহ করে একটি বৈধ নাম লিখুন', true);
+      }
+    });
+  } else {
+    // Update last login
+    localStorage.setItem(STORAGE_KEYS.LAST_LOGIN, new Date().toISOString());
+
+    // Alarms
+    const alarms = $('#alarms');
+    if (stats.before.pendingClasses + stats.before.pendingMissions + stats.before.pendingExams > 0) {
+      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> জয়েনের আগের ক্লাস, মিশন এবং পরীক্ষাগুলো নিজ দায়িত্বে সম্পন্ন করুন যতক্ষণ না সবগুলো শেষ হয়।</div>`;
+    }
+    if (daysSinceActivity > 7) {
+      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনি টানা ১ সপ্তাহের বেশি ক্লাস করেননি! আজকের ক্লাস বক্সে গিয়ে সপ্তাহের ক্লাস সিলেক্ট করে প্রতিটা ক্লাস করে নিন।</div>`;
+    }
+    if (daysSinceActivity > 30) {
+      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনি টানা ১ মাসের বেশি ক্লাস করেননি! আজকের ক্লাস বক্সে গিয়ে মাসের ক্লাস সিলেক্ট করে প্রতিটা ক্লাস করে নিন।</div>`;
+    }
+    if (stats.progress < 10 && !isNewUser) {
+      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনার অগ্রগতি খুব কম! নিয়মিত ক্লাস করে অগ্রসর হোন।</div>`;
+    }
+    if (stats.after.pendingClasses > 5) {
+      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> জয়েনের পরের ক্লাসগুলোতে অনেক বাকি! দ্রুত সম্পন্ন করুন।</div>`;
+    }
+
+    // Close button
+    const closeBtn = $('#close-btn');
+    closeBtn.addEventListener('click', () => {
+      const dashboardModal = $('#dashboard-modal');
+      dashboardModal.classList.remove('show');
+    });
+  }
+
+  const dashboardModal = $('#dashboard-modal');
   dashboardModal.classList.add('show');
 }
 
+const dashboardBtn = $('#dashboard-btn');
 dashboardBtn.addEventListener('click', () => {
-  renderDashboard();
+  showDashboard();
 });
 
-closeDashboardBtn.addEventListener('click', () => {
-  dashboardModal.classList.remove('show');
+document.addEventListener('DOMContentLoaded', () => {
+  if (checkLoginExpiry()) {
+    loginPage.style.display = 'none';
+    mainPage.style.display = 'block';
+    loadInitialData();
+    showAddClassButton();
+    showDashboardButton();
+  } else {
+    loginPage.style.display = 'flex';
+    mainPage.style.display = 'none';
+    subjectPage.style.display = 'none';
+  }
+  initializeEventListeners();
 });
-
-if (checkLoginExpiry()) {
-  loginPage.style.display = 'none';
-  mainPage.style.display = 'block';
-  loadInitialData();
-} else {
-  loginPage.style.display = 'flex';
-  mainPage.style.display = 'none';
-  subjectPage.style.display = 'none';
-}
   </script>
 </body>
 </html>
