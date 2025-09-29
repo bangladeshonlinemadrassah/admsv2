@@ -1323,6 +1323,138 @@
       }
     }
 
+    /* প্রফেশনাল টেবিল স্টাইল */
+.stats-section {
+  margin: 25px 0;
+}
+
+.stats-table-container {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(10px);
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.stats-table th {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.stats-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--card-border);
+  transition: all 0.3s ease;
+}
+
+.stats-table tbody tr:hover {
+  background: rgba(255,255,255,0.05);
+  transform: translateX(5px);
+}
+
+.stats-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* সেকশন ডিভাইডার */
+.section-divider {
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.section-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--primary);
+  padding: 15px;
+  text-align: center;
+}
+
+/* ব্যাজ স্টাইল */
+.badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.badge.after {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.badge.before {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+  color: white;
+}
+
+/* সংখ্যা স্টাইল */
+.done {
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.pending {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+/* প্রোগ্রেস বার */
+.progress-container {
+  position: relative;
+  height: 20px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.progress-container span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  z-index: 2;
+}
+
+/* রেসপন্সিভ */
+@media (max-width: 768px) {
+  .stats-table-container {
+    overflow-x: auto;
+  }
+  
+  .stats-table {
+    min-width: 600px;
+  }
+  
+  .stats-table th,
+  .stats-table td {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+    }
+
     /* Additional styles that might be referenced in dashboard */
     .notification {
       position: fixed;
@@ -2730,53 +2862,97 @@ function showDashboard() {
         <p id="motivation-text" class="bangla-font">${randomQuote}</p>
       </section>
 
-      <section class="stats after-join bangla-font">
-        <h2>জয়েন-এর পর</h2>
-        <div class="cards">
-          <div class="card" id="card-classes">
-            <h3>ক্লাস</h3>
-            <p>মোট: <span id="after-total-classes">${stats.after.totalClasses}</span></p>
-            <p>করা হয়েছে: <span id="after-done-classes">${stats.after.doneClasses}</span></p>
-            <p>বাকি আছে: <span id="after-pending-classes">${stats.after.pendingClasses}</span></p>
-          </div>
-          <div class="card" id="card-missions">
-            <h3>মিশন</h3>
-            <p>মোট: <span id="after-total-missions">${stats.after.totalMissions}</span></p>
-            <p>সম্পন্ন হয়েছে: <span id="after-done-missions">${stats.after.doneMissions}</span></p>
-            <p>বাকি আছে: <span id="after-pending-missions">${stats.after.pendingMissions}</span></p>
-          </div>
-          <div class="card" id="card-exams">
-            <h3>পরীক্ষা</h3>
-            <p>মোট: <span id="after-total-exams">${stats.after.totalExams}</span></p>
-            <p>দেওয়া হয়েছে: <span id="after-done-exams">${stats.after.doneExams}</span></p>
-            <p>বাকি আছে: <span id="after-pending-exams">${stats.after.pendingExams}</span></p>
-          </div>
-        </div>
-      </section>
+      // Dashboard এর stats section replace করুন এই code দিয়ে
+`
+<section class="stats-section bangla-font">
+  <h2>📊 অগ্রগতি সারাংশ</h2>
+  
+  <div class="stats-table-container">
+    <table class="stats-table">
+      <thead>
+        <tr>
+          <th>ধরণ</th>
+          <th>পর্যায়</th>
+          <th>মোট</th>
+          <th>সম্পন্ন</th>
+          <th>বাকি</th>
+          <th>অগ্রগতি</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- জয়েন-এর পরের ডেটা -->
+        <tr class="section-divider">
+          <td colspan="6" class="section-title">🎯 জয়েন-এর পর</td>
+        </tr>
+        <tr>
+          <td>📚 ক্লাস</td>
+          <td><span class="badge after">পরবর্তী</span></td>
+          <td>${stats.after.totalClasses}</td>
+          <td class="done">${stats.after.doneClasses}</td>
+          <td class="pending">${stats.after.pendingClasses}</td>
+          <td>${getProgressBar(stats.after.totalClasses, stats.after.doneClasses)}</td>
+        </tr>
+        <tr>
+          <td>🎯 মিশন</td>
+          <td><span class="badge after">পরবর্তী</span></td>
+          <td>${stats.after.totalMissions}</td>
+          <td class="done">${stats.after.doneMissions}</td>
+          <td class="pending">${stats.after.pendingMissions}</td>
+          <td>${getProgressBar(stats.after.totalMissions, stats.after.doneMissions)}</td>
+        </tr>
+        <tr>
+          <td>📝 পরীক্ষা</td>
+          <td><span class="badge after">পরবর্তী</span></td>
+          <td>${stats.after.totalExams}</td>
+          <td class="done">${stats.after.doneExams}</td>
+          <td class="pending">${stats.after.pendingExams}</td>
+          <td>${getProgressBar(stats.after.totalExams, stats.after.doneExams)}</td>
+        </tr>
+        
+        <!-- জয়েন-এর আগের ডেটা -->
+        <tr class="section-divider">
+          <td colspan="6" class="section-title">⏳ জয়েন-এর আগে</td>
+        </tr>
+        <tr>
+          <td>📚 ক্লাস</td>
+          <td><span class="badge before">পূর্ববর্তী</span></td>
+          <td>${stats.before.totalClasses}</td>
+          <td class="done">${stats.before.doneClasses}</td>
+          <td class="pending">${stats.before.pendingClasses}</td>
+          <td>${getProgressBar(stats.before.totalClasses, stats.before.doneClasses)}</td>
+        </tr>
+        <tr>
+          <td>🎯 মিশন</td>
+          <td><span class="badge before">পূর্ববর্তী</span></td>
+          <td>${stats.before.totalMissions}</td>
+          <td class="done">${stats.before.doneMissions}</td>
+          <td class="pending">${stats.before.pendingMissions}</td>
+          <td>${getProgressBar(stats.before.totalMissions, stats.before.doneMissions)}</td>
+        </tr>
+        <tr>
+          <td>📝 পরীক্ষা</td>
+          <td><span class="badge before">পূর্ববর্তী</span></td>
+          <td>${stats.before.totalExams}</td>
+          <td class="done">${stats.before.doneExams}</td>
+          <td class="pending">${stats.before.pendingExams}</td>
+          <td>${getProgressBar(stats.before.totalExams, stats.before.doneExams)}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-      <section class="stats before-join bangla-font">
-        <h2>জয়েন-এর আগে</h2>
-        <div class="cards">
-          <div class="card">
-            <h3>ক্লাস</h3>
-            <p>মোট: <span id="before-total-classes">${stats.before.totalClasses}</span></p>
-            <p>করা হয়েছে: <span id="before-done-classes">${stats.before.doneClasses}</span></p>
-            <p>বাকি আছে: <span id="before-pending-classes">${stats.before.pendingClasses}</span></p>
-          </div>
-          <div class="card">
-            <h3>মিশন</h3>
-            <p>মোট: <span id="before-total-missions">${stats.before.totalMissions}</span></p>
-            <p>সম্পন্ন হয়েছে: <span id="before-done-missions">${stats.before.doneMissions}</span></p>
-            <p>বাকি আছে: <span id="before-pending-missions">${stats.before.pendingMissions}</span></p>
-          </div>
-          <div class="card">
-            <h3>পরীক্ষা</h3>
-            <p>মোট: <span id="before-total-exams">${stats.before.totalExams}</span></p>
-            <p>দেওয়া হয়েছে: <span id="before-done-exams">${stats.before.doneExams}</span></p>
-            <p>বাকি আছে: <span id="before-pending-exams">${stats.before.pendingExams}</span></p>
-          </div>
-        </div>
-      </section>
+// Progress bar ফাংশন
+function getProgressBar(total, done) {
+  if (total === 0) return '<div class="progress-container"><div class="progress-bar" style="width: 0%"></div><span>0%</span></div>';
+  const percentage = Math.round((done / total) * 100);
+  return `
+    <div class="progress-container">
+      <div class="progress-bar" style="width: ${percentage}%"></div>
+      <span>${percentage}%</span>
+    </div>
+  `;
+    }
 
       <section id="alarms" class="alarms bangla-font"></section>
 
