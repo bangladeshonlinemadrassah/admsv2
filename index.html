@@ -1323,138 +1323,6 @@
       }
     }
 
-    /* প্রফেশনাল টেবিল স্টাইল */
-.stats-section {
-  margin: 25px 0;
-}
-
-.stats-table-container {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  backdrop-filter: blur(10px);
-}
-
-.stats-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-}
-
-.stats-table th {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: white;
-  padding: 12px 15px;
-  text-align: left;
-  font-weight: 600;
-  font-size: 0.8rem;
-}
-
-.stats-table td {
-  padding: 12px 15px;
-  border-bottom: 1px solid var(--card-border);
-  transition: all 0.3s ease;
-}
-
-.stats-table tbody tr:hover {
-  background: rgba(255,255,255,0.05);
-  transform: translateX(5px);
-}
-
-.stats-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-/* সেকশন ডিভাইডার */
-.section-divider {
-  background: rgba(37, 99, 235, 0.1);
-}
-
-.section-title {
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: var(--primary);
-  padding: 15px;
-  text-align: center;
-}
-
-/* ব্যাজ স্টাইল */
-.badge {
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.7rem;
-  font-weight: 600;
-}
-
-.badge.after {
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
-}
-
-.badge.before {
-  background: linear-gradient(135deg, #6b7280, #4b5563);
-  color: white;
-}
-
-/* সংখ্যা স্টাইল */
-.done {
-  color: var(--secondary);
-  font-weight: 700;
-}
-
-.pending {
-  color: var(--warning);
-  font-weight: 600;
-}
-
-/* প্রোগ্রেস বার */
-.progress-container {
-  position: relative;
-  height: 20px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary), var(--secondary));
-  border-radius: 10px;
-  transition: width 0.5s ease;
-  position: relative;
-}
-
-.progress-container span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-  z-index: 2;
-}
-
-/* রেসপন্সিভ */
-@media (max-width: 768px) {
-  .stats-table-container {
-    overflow-x: auto;
-  }
-  
-  .stats-table {
-    min-width: 600px;
-  }
-  
-  .stats-table th,
-  .stats-table td {
-    padding: 8px 10px;
-    font-size: 0.8rem;
-  }
-    }
-
     /* Additional styles that might be referenced in dashboard */
     .notification {
       position: fixed;
@@ -1536,99 +1404,44 @@
       font-size: 0.9rem;
     }
 
-    /* Trophy Style Badges */
-.badge-current {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    border-radius: 25px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    margin-left: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    border: 2px solid transparent;
-    background-clip: padding-box;
-    transition: all 0.3s ease;
-}
+    .badge-current {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-left: 10px;
+      font-weight: 600;
+    }
 
-.badge-current::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    transition: 0.5s;
-}
+    .badge-starter {
+      background: #6b7280;
+      color: white;
+    }
 
-.badge-current:hover::before {
-    left: 100%;
-}
+    .badge-bronze {
+      background: #cd7f32;
+      color: white;
+    }
 
-.badge-current:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-}
+    .badge-silver {
+      background: #c0c0c0;
+      color: white;
+    }
 
-/* Individual Badge Styles with Gradients */
-.badge-starter {
-    background: linear-gradient(135deg, #8e9eab 0%, #eef2f3 100%);
-    color: #2c3e50;
-    border-color: #a0a0a0;
-    box-shadow: 0 4px 15px rgba(142, 158, 171, 0.4);
-}
+    .badge-gold {
+      background: #ffd700;
+      color: black;
+    }
 
-.badge-bronze {
-    background: linear-gradient(135deg, #cd7f32 0%, #e6b17e 50%, #cd7f32 100%);
-    color: white;
-    border-color: #b56a2a;
-    box-shadow: 0 4px 15px rgba(205, 127, 50, 0.5);
-}
+    .badge-platinum {
+      background: #e5e4e2;
+      color: black;
+    }
 
-.badge-silver {
-    background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 50%, #c0c0c0 100%);
-    color: #2c3e50;
-    border-color: #a8a8a8;
-    box-shadow: 0 4px 15px rgba(192, 192, 192, 0.5);
-    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-}
-
-.badge-gold {
-    background: linear-gradient(135deg, #ffd700 0%, #fff8b3 50%, #ffd700 100%);
-    color: #000;
-    border-color: #e6c200;
-    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6);
-    font-weight: 800;
-}
-
-.badge-platinum {
-    background: linear-gradient(135deg, #e5e4e2 0%, #ffffff 30%, #e5e4e2 100%);
-    color: #000;
-    border-color: #d4d3d1;
-    box-shadow: 0 4px 25px rgba(229, 228, 226, 0.7);
-    font-weight: 800;
-    position: relative;
-}
-
-.badge-platinum::after {
-    content: '✨';
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    font-size: 0.6rem;
-    animation: sparkle 2s infinite;
-}
-
-@keyframes sparkle {
-    0%, 100% { opacity: 0; transform: scale(0.8); }
-    50% { opacity: 1; transform: scale(1.2); }
-}
+    .badges-dropdown {
+      margin-top: 20px;
+      text-align: center;
+    }
 
     .badges-dropdown select {
       padding: 10px;
@@ -1700,6 +1513,68 @@
       padding: 5px 10px;
       font-size: 0.8rem;
     }
+
+    /* Dashboard Table Styles - Attractive and Colorful */
+    .stats-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin-top: 15px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      background: var(--card-bg);
+    }
+
+    .stats-table th,
+    .stats-table td {
+      padding: 12px 16px;
+      text-align: center;
+      border-bottom: 1px solid var(--card-border);
+      font-size: 0.9rem;
+    }
+
+    .stats-table th {
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stats-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .stats-table tr:hover {
+      background: rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+    }
+
+    .stats-table .total {
+      color: #2563eb; /* Blue for total */
+      font-weight: 600;
+    }
+
+    .stats-table .done {
+      color: #10b981; /* Green for done */
+      font-weight: 600;
+    }
+
+    .stats-table .pending {
+      color: #ef4444; /* Red for pending */
+      font-weight: 600;
+    }
+
+    .stats h2 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      background: var(--gradient-secondary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
   </style>
   <style>
 :root{
@@ -1768,6 +1643,7 @@ body::-webkit-scrollbar{display:none;}
   color: var(--warning);
   font-size: 0.8rem;
   padding: 6px 0;
+  text-align: center;
   border-bottom: 1px solid var(--card-border);
   margin-top: 0;
   position: relative;
@@ -1775,27 +1651,58 @@ body::-webkit-scrollbar{display:none;}
 
 .notice-bar span {
   display: inline-block;
-  padding-left: 100%;
-  white-space: nowrap;
-  animation: marquee 25s linear infinite;
-  will-change: transform;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
+  animation: marquee 40s linear infinite 0s;
+  padding-left: 100%; /* এটি গুরুত্বপূর্ণ - gap দূর করবে */
 }
 
 @keyframes marquee {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translateX(0);
   }
   100% {
-    transform: translate3d(-100%, 0, 0);
+    transform: translateX(-100%);
   }
-}
-
-/* ব্রাউজার optimization */
-.notice-bar {
-  transform: translateZ(0);
     }
+
+    /* Clock Styles - Attractive Digital Clock */
+    .clock-container {
+      text-align: center;
+      margin: 20px auto;
+      padding: 15px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(10px);
+      max-width: 300px;
+    }
+
+    .clock-time {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 5px;
+    }
+
+    .clock-date {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .clock-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-secondary);
+    }
+
   </style>
 </head>
 <body>
@@ -1846,6 +1753,11 @@ body::-webkit-scrollbar{display:none;}
       <div class="hero fade-in">
         <h1 class="bangla-font">Dakhil-26 "Final Stage Preparation Course"</h1>
         <p class="bangla-font">শিক্ষার যাত্রায় এক নতুন দিগন্ত। বাংলাদেশ অনলাইন মাদ্রাসা (BOM) এর প্রাইভেট ব্যাচের দাখিল-২৬ শিক্ষার্থীদের জন্য প্রিমিয়াম লার্নিং এক্সপেরিয়েন্স</p>
+      </div>
+      <!-- Attractive Clock with Date -->
+      <div class="clock-container fade-in">
+        <div id="clock-time" class="clock-time"></div>
+        <div id="clock-date" class="clock-date"></div>
       </div>
       <div class="stats">
         <div class="stat-card fade-in">
@@ -2040,10 +1952,8 @@ body::-webkit-scrollbar{display:none;}
         <label class="bangla-font" for="batch">ব্যাচ নাম</label>
         <select name="batch" id="batch" required class="bangla-font">
           <option value="" disabled selected class="bangla-font">ব্যাচ নির্বাচন করুন</option>
-          <option value="Alim-25" class="bangla-font">আলিম-২৫</option>
           <option value="Dakhil-26" class="bangla-font">দাখিল-২৬</option>
-          <option value="Alim-26" class="bangla-font">আলিম-২৬</option>
-        </select><br>
+          </select><br>
         <label class="bangla-font" for="message">মতামত/পরামর্শ/অভিযোগ</label>
         <textarea name="message" id="message" placeholder="আপনার মতামত লিখুন" required class="bangla-font"></textarea>
         <button type="submit" class="submit-button bangla-font" id="submitBtn">জমা দিন <span class="spinner"></span></button>
@@ -2862,97 +2772,73 @@ function showDashboard() {
         <p id="motivation-text" class="bangla-font">${randomQuote}</p>
       </section>
 
-      // Dashboard এর stats section replace করুন এই code দিয়ে
-`
-<section class="stats-section bangla-font">
-  <h2>📊 অগ্রগতি সারাংশ</h2>
-  
-  <div class="stats-table-container">
-    <table class="stats-table">
-      <thead>
-        <tr>
-          <th>ধরণ</th>
-          <th>পর্যায়</th>
-          <th>মোট</th>
-          <th>সম্পন্ন</th>
-          <th>বাকি</th>
-          <th>অগ্রগতি</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- জয়েন-এর পরের ডেটা -->
-        <tr class="section-divider">
-          <td colspan="6" class="section-title">🎯 জয়েন-এর পর</td>
-        </tr>
-        <tr>
-          <td>📚 ক্লাস</td>
-          <td><span class="badge after">পরবর্তী</span></td>
-          <td>${stats.after.totalClasses}</td>
-          <td class="done">${stats.after.doneClasses}</td>
-          <td class="pending">${stats.after.pendingClasses}</td>
-          <td>${getProgressBar(stats.after.totalClasses, stats.after.doneClasses)}</td>
-        </tr>
-        <tr>
-          <td>🎯 মিশন</td>
-          <td><span class="badge after">পরবর্তী</span></td>
-          <td>${stats.after.totalMissions}</td>
-          <td class="done">${stats.after.doneMissions}</td>
-          <td class="pending">${stats.after.pendingMissions}</td>
-          <td>${getProgressBar(stats.after.totalMissions, stats.after.doneMissions)}</td>
-        </tr>
-        <tr>
-          <td>📝 পরীক্ষা</td>
-          <td><span class="badge after">পরবর্তী</span></td>
-          <td>${stats.after.totalExams}</td>
-          <td class="done">${stats.after.doneExams}</td>
-          <td class="pending">${stats.after.pendingExams}</td>
-          <td>${getProgressBar(stats.after.totalExams, stats.after.doneExams)}</td>
-        </tr>
-        
-        <!-- জয়েন-এর আগের ডেটা -->
-        <tr class="section-divider">
-          <td colspan="6" class="section-title">⏳ জয়েন-এর আগে</td>
-        </tr>
-        <tr>
-          <td>📚 ক্লাস</td>
-          <td><span class="badge before">পূর্ববর্তী</span></td>
-          <td>${stats.before.totalClasses}</td>
-          <td class="done">${stats.before.doneClasses}</td>
-          <td class="pending">${stats.before.pendingClasses}</td>
-          <td>${getProgressBar(stats.before.totalClasses, stats.before.doneClasses)}</td>
-        </tr>
-        <tr>
-          <td>🎯 মিশন</td>
-          <td><span class="badge before">পূর্ববর্তী</span></td>
-          <td>${stats.before.totalMissions}</td>
-          <td class="done">${stats.before.doneMissions}</td>
-          <td class="pending">${stats.before.pendingMissions}</td>
-          <td>${getProgressBar(stats.before.totalMissions, stats.before.doneMissions)}</td>
-        </tr>
-        <tr>
-          <td>📝 পরীক্ষা</td>
-          <td><span class="badge before">পূর্ববর্তী</span></td>
-          <td>${stats.before.totalExams}</td>
-          <td class="done">${stats.before.doneExams}</td>
-          <td class="pending">${stats.before.pendingExams}</td>
-          <td>${getProgressBar(stats.before.totalExams, stats.before.doneExams)}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
+      <section class="stats after-join bangla-font">
+        <h2>জয়েন-এর পর</h2>
+        <table class="stats-table">
+          <thead>
+            <tr>
+              <th>আইটেম</th>
+              <th>মোট</th>
+              <th>সম্পন্ন</th>
+              <th>বাকি</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ক্লাস</td>
+              <td class="total">${stats.after.totalClasses}</td>
+              <td class="done">${stats.after.doneClasses}</td>
+              <td class="pending">${stats.after.pendingClasses}</td>
+            </tr>
+            <tr>
+              <td>মিশন</td>
+              <td class="total">${stats.after.totalMissions}</td>
+              <td class="done">${stats.after.doneMissions}</td>
+              <td class="pending">${stats.after.pendingMissions}</td>
+            </tr>
+            <tr>
+              <td>পরীক্ষা</td>
+              <td class="total">${stats.after.totalExams}</td>
+              <td class="done">${stats.after.doneExams}</td>
+              <td class="pending">${stats.after.pendingExams}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-// Progress bar ফাংশন
-function getProgressBar(total, done) {
-  if (total === 0) return '<div class="progress-container"><div class="progress-bar" style="width: 0%"></div><span>0%</span></div>';
-  const percentage = Math.round((done / total) * 100);
-  return `
-    <div class="progress-container">
-      <div class="progress-bar" style="width: ${percentage}%"></div>
-      <span>${percentage}%</span>
-    </div>
-  `;
-    }
+      <section class="stats before-join bangla-font">
+        <h2>জয়েন-এর আগে</h2>
+        <table class="stats-table">
+          <thead>
+            <tr>
+              <th>আইটেম</th>
+              <th>মোট</th>
+              <th>সম্পন্ন</th>
+              <th>বাকি</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ক্লাস</td>
+              <td class="total">${stats.before.totalClasses}</td>
+              <td class="done">${stats.before.doneClasses}</td>
+              <td class="pending">${stats.before.pendingClasses}</td>
+            </tr>
+            <tr>
+              <td>মিশন</td>
+              <td class="total">${stats.before.totalMissions}</td>
+              <td class="done">${stats.before.doneMissions}</td>
+              <td class="pending">${stats.before.pendingMissions}</td>
+            </tr>
+            <tr>
+              <td>পরীক্ষা</td>
+              <td class="total">${stats.before.totalExams}</td>
+              <td class="done">${stats.before.doneExams}</td>
+              <td class="pending">${stats.before.pendingExams}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
       <section id="alarms" class="alarms bangla-font"></section>
 
@@ -3116,8 +3002,12 @@ function hideForm(){ $('#formModal').style.display='none'; }
 
 function showSubmissions(){ 
   $('#submissionsModal').style.display='flex'; 
+  
+  // শুধু এই ১ লাইন যোগ করুন
+  $('#submissions-list').innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted)" class="bangla-font">লোড হচ্ছে...</div>';
+  
   loadSubmissions(); 
-}
+    }
 
 function hideSubmissions(){ $('#submissionsModal').style.display='none'; }
 
@@ -3166,7 +3056,21 @@ function loadSubmissions() {
     .then(data => {
       const list = $('#submissions-list');
       list.innerHTML = '';
-      data.forEach(item => {
+      
+      // শুধুমাত্র Dakhil-26 ব্যাচ ফিল্টার করুন
+      const dakhil26Submissions = data.filter(item => 
+        item.batch && item.batch.toString().toLowerCase().includes('dakhil-26')
+      );
+      
+      // নতুন থেকে পুরানো সাজানো
+      dakhil26Submissions.sort((a, b) => new Date(b.timestamp || b.time) - new Date(a.timestamp || a.time));
+      
+      if (dakhil26Submissions.length === 0) {
+        list.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted)" class="bangla-font">Dakhil-26 ব্যাচের কোন সাবমিশন নেই</div>';
+        return;
+      }
+      
+      dakhil26Submissions.forEach(item => {
         const div = document.createElement('div');
         div.className = 'submission-item';
         div.innerHTML = `
@@ -3180,8 +3084,7 @@ function loadSubmissions() {
       });
     })
     .catch(() => showNotification("সাবমিশন লোড হয়নি! আবার চেষ্টা করুন।", true));
-}
-
+    }
 $('#form-button').addEventListener('click', handleFormClick);
 $('#submissions-button').addEventListener('click',showSubmissions);
 window.addEventListener('click',(e)=>{ 
@@ -3217,7 +3120,28 @@ document.addEventListener('DOMContentLoaded', function() {
     urlParams.set('refreshed', 'true');
     window.location.search = urlParams.toString();
   }
+
+  // Initialize Clock
+  updateClock();
+  setInterval(updateClock, 1000);
 });
+
+function updateClock() {
+  const now = new Date();
+  const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+
+  const timeStr = now.toLocaleTimeString('bn-BD', timeOptions); // Bengali digits for time
+  const dateStr = now.toLocaleDateString('bn-BD', dateOptions); // Bengali date
+
+  const clockTime = document.getElementById('clock-time');
+  const clockDate = document.getElementById('clock-date');
+
+  if (clockTime && clockDate) {
+    clockTime.textContent = timeStr;
+    clockDate.textContent = dateStr;
+  }
+}
 
 function setButtonVisibility() {
   const role = getUserRole();
