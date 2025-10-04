@@ -2,36 +2,67 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dakhil-26 "Final Stage Preparation Course" (BOM)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ALIM-25 BOM Admission Course 1.0</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:wght@400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    /* =========================
+    CSS VARIABLES - ENHANCED
+    ========================= */
     :root {
-      --primary: #2563eb;
-      --primary-dark: #1e40af;
-      --secondary: #10b981;
-      --accent: #8b5cf6;
-      --danger: #ef4444;
-      --warning: #f59e0b;
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --primary-light: #4895ef;
+      --secondary: #06d6a0;
+      --secondary-dark: #05b589;
+      --accent: #7209b7;
+      --accent-light: #9b5de5;
+      --danger: #ef476f;
+      --warning: #ffd166;
       --dark: #0f172a;
-      --darker: #0a0e1a;
+      --darker: #020617;
       --light: #f1f5f9;
       --text: #e2e8f0;
       --text-muted: #94a3b8;
       --card-bg: rgba(30, 41, 59, 0.7);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --glass: rgba(15, 23, 42, 0.6);
-      --glass-border: rgba(255, 255, 255, 0.1);
-      --gradient-primary: linear-gradient(135deg, #2563eb 0%, #10b981 100%);
-      --gradient-secondary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
-      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-      --radius: 12px;
-      --transition: all 0.3s ease;
+      --card-border: rgba(255, 255, 255, 0.12);
+      --glass: rgba(15, 23, 42, 0.65);
+      --glass-border: rgba(255, 255, 255, 0.18);
+      --gradient-primary: linear-gradient(135deg, #4361ee 0%, #9b5de5 50%, #06d6a0 100%);
+      --gradient-secondary: linear-gradient(135deg, #7209b7 0%, #f72585 50%, #ffd166 100%);
+      --gradient-accent: linear-gradient(135deg, #4895ef 0%, #3a0ca3 100%);
+      --gradient-warning: linear-gradient(135deg, #ffd166 0%, #ef476f 100%);
+      --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.15);
+      --shadow-md: 0 10px 20px -5px rgba(0, 0, 0, 0.25);
+      --shadow-lg: 0 20px 30px -10px rgba(0, 0, 0, 0.35);
+      --radius: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+    /* স্ক্রলিং মসৃণ করার জন্য */
+    html {
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    body, header, .card, .hero, .pill, .stat-card {
+      will-change: transform;
+      transform: translateZ(0);
+    }
+
+    header, .card, .hero, .login-container, .modal-content {
+      backdrop-filter: blur(8px);
+    }
+
+    .card, .btn, .pill, .stat-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    /* =========================
+    BASE STYLES - ENHANCED
+    ========================= */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -47,6 +78,10 @@
       overflow-x: hidden;
       scrollbar-width: none;
       -ms-overflow-style: none;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(67, 97, 238, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(155, 93, 229, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(6, 214, 160, 0.1) 0%, transparent 25%);
     }
 
     body::-webkit-scrollbar {
@@ -62,19 +97,25 @@
       text-decoration: none;
     }
 
+    /* =========================
+    LAYOUT & CONTAINER - ENHANCED
+    ========================= */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 20px;
     }
 
+    /* =========================
+    HEADER & NAVIGATION - ENHANCED
+    ========================= */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      backdrop-filter: blur(16px) saturate(180%);
-      background: rgba(10, 14, 26, 0.85);
-      border-bottom: 1px solid var(--card-border);
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(10, 14, 26, 0.9);
+      border-bottom: 1px solid var(--glass-border);
       box-shadow: var(--shadow-md);
     }
 
@@ -95,10 +136,12 @@
       font-size: 1.6rem;
       color: var(--text);
       position: relative;
+      transition: var(--transition);
     }
 
     .brand:hover {
-      color: var(--primary);
+      color: var(--primary-light);
+      transform: translateY(-2px);
     }
 
     .tag {
@@ -112,6 +155,10 @@
       border-radius: 20px;
       border: 1px solid var(--glass-border);
       backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .searchbar {
@@ -127,13 +174,19 @@
       width: 100%;
       padding: 14px 20px 14px 45px;
       border-radius: 12px;
-      border: 1px solid var(--card-border);
+      border: 1px solid var(--glass-border);
       background: var(--glass);
       color: var(--text);
       outline: none;
       transition: var(--transition);
       backdrop-filter: blur(10px);
       font-size: 0.95rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .searchbar input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3), var(--shadow-md);
     }
 
     .searchbar i {
@@ -143,19 +196,17 @@
       font-size: 1rem;
     }
 
-    .searchbar input:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-    }
-
+    /* =========================
+    HERO SECTION - ENHANCED
+    ========================= */
     .hero {
       text-align: center;
-      padding: 60px 30px;
+      padding: 80px 30px;
       margin: 30px 0;
-      border-radius: 20px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      backdrop-filter: blur(15px);
+      border-radius: var(--radius-lg);
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px);
       box-shadow: var(--shadow-lg);
       position: relative;
       overflow: hidden;
@@ -168,47 +219,61 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.1), transparent 40%),
-                  radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.1), transparent 40%);
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(67, 97, 238, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(6, 214, 160, 0.15) 0%, transparent 40%);
+      z-index: -1;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, transparent 50%, rgba(6, 214, 160, 0.1) 100%);
       z-index: -1;
     }
 
     .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 15px;
+      font-size: 3.2rem;
+      margin-bottom: 20px;
       background: var(--gradient-primary);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       font-weight: 800;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .hero p {
       color: var(--text-muted);
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       max-width: 800px;
       margin: 0 auto;
       line-height: 1.8;
     }
 
+    /* =========================
+    STATS SECTION - ENHANCED
+    ========================= */
     .stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      gap: 25px;
       margin: 40px 0;
     }
 
     .stat-card {
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 25px 20px;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 30px 20px;
       text-align: center;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px);
       transition: var(--transition);
       position: relative;
       overflow: hidden;
       cursor: pointer;
+      box-shadow: var(--shadow-sm);
     }
 
     .stat-card::before {
@@ -217,17 +282,30 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
+      height: 5px;
       background: var(--gradient-primary);
     }
 
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(30deg);
+      pointer-events: none;
+    }
+
     .stat-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px) scale(1.02);
       box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
     }
 
     .stat-number {
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       font-weight: 800;
       background: var(--gradient-primary);
       -webkit-background-clip: text;
@@ -235,80 +313,115 @@
       color: transparent;
       margin-bottom: 10px;
       line-height: 1;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .stat-label {
       color: var(--text-muted);
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 500;
     }
 
+    /* =========================
+    TODAY'S CLASSES TABLE - ENHANCED
+    ========================= */
     .today-classes-table {
       width: 100%;
-      border-collapse: collapse;
-      margin: 20px 0;
+      border-collapse: separate;
+      border-spacing: 0;
+      margin: 30px 0;
       background: var(--card-bg);
-      border-radius: 12px;
+      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      font-size: 0.85rem;
+      box-shadow: var(--shadow-md);
+      font-size: 0.9rem;
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
     }
 
     .today-classes-table th {
       background: var(--gradient-primary);
       color: white;
-      padding: 10px 12px;
+      padding: 14px 20px;
       text-align: left;
-      font-weight: 600;
+      font-weight: 500;
       font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .today-classes-table th::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     }
 
     .today-classes-table td {
-      padding: 8px 12px;
-      border-bottom: 1px solid var(--card-border);
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--glass-border);
+      position: relative;
+      transition: var(--transition);
     }
 
     .today-classes-table tr:last-child td {
       border-bottom: none;
     }
 
-    .today-classes-table tr:hover {
+    .today-classes-table tr:hover td {
       background: rgba(255, 255, 255, 0.05);
+    }
+
+    .today-classes-table tr td:first-child {
+      border-top-left-radius: var(--radius);
+      border-bottom-left-radius: var(--radius);
+    }
+
+    .today-classes-table tr td:last-child {
+      border-top-right-radius: var(--radius);
+      border-bottom-right-radius: var(--radius);
     }
 
     .subject-badge {
       display: inline-block;
-      padding: 3px 8px;
-      border-radius: 12px;
-      background: var(--primary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: var(--gradient-accent);
       color: white;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 500;
+      box-shadow: var(--shadow-sm);
     }
 
     .class-info {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+      font-size: 0.9rem;
+      color: var(--text);
     }
 
+    /* =========================
+    CARDS & GRID - ENHANCED
+    ========================= */
     .grid {
       display: grid;
-      gap: 25px;
+      gap: 30px;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       margin-top: 30px;
     }
 
     .card {
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 20px;
-      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 25px;
+      backdrop-filter: blur(15px);
       transition: var(--transition);
       box-shadow: var(--shadow-sm);
       position: relative;
       overflow: hidden;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
     .card::before {
@@ -318,13 +431,31 @@
       left: 0;
       right: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(30deg);
+      pointer-events: none;
+      transition: var(--transition);
+      opacity: 0;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px) scale(1.02);
       border-color: var(--primary);
       box-shadow: var(--shadow-lg);
+    }
+
+    .card:hover::after {
+      opacity: 1;
     }
 
     .card.highlight {
@@ -335,9 +466,9 @@
 
     .subject {
       font-weight: 700;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: #7ecbff;
-      font-size: 1rem;
+      font-size: 1.05rem;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -345,8 +476,8 @@
 
     .time {
       color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-bottom: 15px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -356,18 +487,18 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 16px;
-      border-radius: 10px;
+      padding: 12px 20px;
+      border-radius: 12px;
       border: none;
       background: var(--gradient-primary);
       color: white;
       font-weight: 600;
       transition: var(--transition);
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+      box-shadow: var(--shadow-md);
       position: relative;
       overflow: hidden;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     .btn::before {
@@ -386,8 +517,8 @@
     }
 
     .btn:focus, .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
     }
 
     .btn.disabled {
@@ -402,28 +533,31 @@
       box-shadow: none;
     }
 
+    /* =========================
+    SUBJECT LIST - ENHANCED
+    ========================= */
     .subj-list {
       display: grid;
-      gap: 15px;
+      gap: 20px;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       margin-top: 30px;
     }
 
     .pill {
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 15px 20px;
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
       transition: var(--transition);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(15px);
       box-shadow: var(--shadow-sm);
       position: relative;
       overflow: hidden;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
     .pill::before {
@@ -431,15 +565,29 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 4px;
+      width: 5px;
       height: 100%;
       background: var(--gradient-primary);
       opacity: 0;
       transition: var(--transition);
     }
 
+    .pill::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(30deg);
+      pointer-events: none;
+      transition: var(--transition);
+      opacity: 0;
+    }
+
     .pill:hover {
-      transform: translateY(-3px);
+      transform: translateY(-5px);
       border-color: var(--primary);
       box-shadow: var(--shadow-md);
     }
@@ -448,85 +596,86 @@
       opacity: 1;
     }
 
+    .pill:hover::after {
+      opacity: 1;
+    }
+
     .pill .go {
-      padding: 6px 12px;
-      border-radius: 8px;
+      padding: 8px 14px;
+      border-radius: 10px;
       background: var(--gradient-primary);
       color: white;
       font-weight: 600;
       transition: var(--transition);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
+      box-shadow: var(--shadow-sm);
     }
 
     .pill:hover .go {
-      transform: translateX(3px);
+      transform: translateX(5px);
     }
 
+    /* =========================
+    OWNER & DESIGNER BLOCK - ENHANCED
+    ========================= */
     .owner-wrap {
       max-width: 980px;
-      margin: 28px auto 12px;
-      padding: 18px 20px;
-      border-radius: 14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid rgba(255,255,255,0.04);
+      margin: 50px auto 20px;
+      padding: 30px;
+      border-radius: var(--radius);
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid var(--glass-border);
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 18px;
       align-items: center;
       text-align: center;
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
     }
 
-    .owner-messages {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      font-size: 12px;
-      letter-spacing: 0.6px;
-      color: rgba(226,232,240,0.75);
-      text-transform: lowercase;
+    .owner-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
     }
 
-    .owner-messages .msg {
-      background: rgba(255,255,255,0.02);
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.03);
-      font-style: italic;
-      font-weight: 500;
-      min-width: auto;
+    .owner-message {
+      font-size: 15px;
+      color: rgba(226, 232, 240, 0.8);
+      margin-top: 5px;
     }
 
     .owner-name {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 800;
-      margin-top: 6px;
-      margin-bottom: 2px;
-      background: linear-gradient(90deg, #8b5cf6, #ec4899, #10b981);
+      margin-top: 10px;
+      background: var(--gradient-secondary);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-transform: none;
       letter-spacing: 0.4px;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .owner-sub {
-      font-size: 13px;
-      color: rgba(226,232,240,0.7);
-      margin-top: 0;
-      margin-bottom: 6px;
-      text-transform: lowercase;
+      font-size: 15px;
+      color: rgba(226, 232, 240, 0.8);
+      margin-top: 5px;
     }
 
     .designer-credit {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       align-items: center;
-      font-size: 12px;
-      color: rgba(226,232,240,0.85);
-      text-transform: none;
+      font-size: 14px;
+      color: rgba(226, 232, 240, 0.9);
       font-weight: 600;
     }
 
@@ -534,145 +683,292 @@
       font-weight: 900;
       letter-spacing: 0.6px;
       text-transform: uppercase;
-      background: linear-gradient(90deg, #2563eb, #8b5cf6);
+      background: var(--gradient-primary);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      margin-left: 6px;
-      font-size: 12px;
     }
 
+    /* =========================
+    FOOTER - ENHANCED
+    ========================= */
     .site-footer {
       max-width: 980px;
-      margin: 12px auto 48px;
-      padding: 16px 18px;
-      border-radius: 10px;
-      background: rgba(15,23,42,0.6);
-      border: 1px solid rgba(255,255,255,0.04);
-      color: rgba(226,232,240,0.75);
+      margin: 20px auto 50px;
+      padding: 20px;
+      border-radius: var(--radius);
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--glass-border);
+      color: rgba(226, 232, 240, 0.8);
       text-align: center;
-      font-size: 13px;
+      font-size: 14px;
+      backdrop-filter: blur(15px);
     }
 
-    @media (max-width: 768px) {
-      .owner-name { font-size: 1.05rem; }
-      .owner-messages { font-size: 11px; gap: 8px; }
-      .designer-credit { font-size: 11px; }
-
-      .today-classes-table {
-        font-size: 0.75rem;
-      }
-
-      .today-classes-table th,
-      .today-classes-table td {
-        padding: 6px 8px;
-      }
-    }
-
-    .controls {
+    /* =========================
+    LOGIN PAGE - ENHANCED
+    ========================= */
+    #login-page {
+      background: var(--darker);
+      color: var(--text);
+      font-family: 'Poppins', 'Tiro Bangla', system-ui, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
       display: flex;
-      gap: 15px;
       align-items: center;
-      margin-top: 20px;
+      justify-content: center;
+      padding: 20px;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(67, 97, 238, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(155, 93, 229, 0.1) 0%, transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(6, 214, 160, 0.1) 0%, transparent 25%);
     }
 
-    .back-button {
+    .login-container {
+      width: 100%;
+      max-width: 450px;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 35px;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gradient-primary);
+    }
+
+    .login-container::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(30deg);
+      pointer-events: none;
+    }
+
+    .welcome-message h1 {
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 800;
+    }
+
+    .welcome-message p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    .login-form .form-group {
+      margin-bottom: 25px;
+    }
+
+    .login-form .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .login-form .form-group input {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      color: var(--text);
+      outline: none;
+      transition: var(--transition);
+      font-size: 1rem;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .login-form .form-group input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3), var(--shadow-sm);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 12px;
+      border: none;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 600;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-md);
+    }
+
+    .login-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+    }
+
+    .support-info {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .support-info p {
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+    }
+
+    .whatsapp-link {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 20px;
-      padding: 10px 16px;
-      background: var(--card-bg);
-      border-radius: 10px;
+      padding: 12px 24px;
+      background: #25D366;
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
       transition: var(--transition);
-      border: 1px solid var(--card-border);
-      backdrop-filter: blur(10px);
-      font-size: 0.9rem;
+      box-shadow: var(--shadow-sm);
     }
 
-    .back-button:hover {
-      background: rgba(37, 99, 235, 0.1);
-      transform: translateX(-3px);
-      border-color: var(--primary);
+    .whatsapp-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
     }
 
-    .section-title {
+    .error-message {
+      color: var(--danger);
+      text-align: center;
+      margin-top: 18px;
+      font-size: 0.95rem;
+      display: none;
+    }
+
+    /* =========================
+    WARNING MODAL - FLOATING POPUP CENTER
+    ========================= */
+    .warning-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-top: 40px;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--card-border);
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .warning-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 35px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-lg);
       position: relative;
     }
 
-    .section-title::before {
-      content: "";
-      display: block;
-      width: 5px;
-      height: 28px;
-      background: var(--gradient-primary);
-      border-radius: 5px;
+    .modal-content::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent);
+      transform: rotate(30deg);
+      pointer-events: none;
     }
 
-    .section-title h2 {
+    .modal-header h2 {
       font-size: 1.6rem;
-      font-weight: 700;
       background: var(--gradient-primary);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-    }
-
-    .empty-state {
-      text-align: center;
-      padding: 40px 20px;
-      color: var(--text-muted);
-      grid-column: 1 / -1;
-      font-size: 0.9rem;
-    }
-
-    .empty-state svg {
-      width: 70px;
-      height: 70px;
       margin-bottom: 15px;
-      opacity: 0.5;
+      font-weight: 800;
     }
 
-    .loading {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      border-top-color: var(--primary);
-      animation: spin 1s ease-in-out infinite;
+    .modal-body p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
     }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    .modal-footer .modal-ok-btn {
+      padding: 14px 35px;
+      border-radius: 12px;
+      border: none;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-md);
     }
 
+    .modal-ok-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+    }
+
+    /* =========================
+    NOTIFICATION - ENHANCED
+    ========================= */
     .notification {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      padding: 15px 22px;
+      padding: 18px 25px;
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
       box-shadow: var(--shadow-lg);
-      z-index: 1000;
+      z-index: 1001;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.3s, transform 0.3s;
-      backdrop-filter: blur(15px);
+      backdrop-filter: blur(20px);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       max-width: 350px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
 
     .notification.show {
@@ -681,52 +977,62 @@
     }
 
     .notification.error {
-      border-left: 4px solid var(--danger);
+      border-left: 5px solid var(--danger);
     }
 
     .notification.success {
-      border-left: 4px solid var(--secondary);
+      border-left: 5px solid var(--secondary);
     }
 
     .notification.warning {
-      border-left: 4px solid var(--warning);
+      border-left: 5px solid var(--warning);
     }
 
-    .card .video-title {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 15px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      line-height: 1.5;
+    @media (max-width: 768px) {
+      .notification {
+        top: 80px;
+        bottom: auto;
+        left: 10px;
+        right: 10px;
+        max-width: none;
+        width: calc(100% - 20px);
+        margin: 0 auto;
+      }
     }
 
+    /* =========================
+    ANIMATIONS
+    ========================= */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .fade-in {
-      animation: fadeIn 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
     }
 
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+    RESPONSIVE DESIGN - ENHANCED
+    ========================= */
     @media (max-width: 968px) {
       .grid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       }
 
       .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.7rem;
       }
 
       .hero p {
-        font-size: 1.1rem;
-      }
-
-      .today-classes-table {
-        font-size: 0.8rem;
+        font-size: 1.15rem;
       }
     }
 
@@ -748,20 +1054,12 @@
         grid-template-columns: 1fr;
       }
 
-      .section-title {
-        margin-top: 30px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
       .hero {
-        padding: 30px 15px;
+        padding: 50px 20px;
       }
 
       .hero h1 {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
       }
 
       .today-classes-table {
@@ -770,344 +1068,249 @@
       }
 
       .pill {
-        padding: 12px 16px;
+        padding: 16px 20px;
+      }
+
+      .owner-wrap {
+        padding: 25px 20px;
       }
     }
 
-    ::-webkit-scrollbar {
-      width: 0px;
-      display: none;
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 25px 20px;
+      }
+
+      .welcome-message h1 {
+        font-size: 1.6rem;
+      }
+
+      .modal-content {
+        padding: 25px 20px;
+      }
+
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .stat-number {
+        font-size: 2.8rem;
+      }
     }
 
-    .glow-effect {
-      position: relative;
+    /* =========================
+    CUSTOM STYLES FOR CORRECTIONS
+    ========================= */
+    #sort {
+      background: var(--glass);
+      color: var(--text);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 10px 15px;
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
     }
 
-    .glow-effect::after {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      z-index: -1;
-      border-radius: inherit;
-      background: var(--gradient-primary);
-      background-size: 400% 400%;
-      animation: gradientGlow 3s ease infinite;
-      filter: blur(10px);
-      opacity: 0.4;
+    #sort option {
+      background: var(--card-bg);
+      color: var(--text);
     }
 
-    @keyframes gradientGlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    #subject-page .container {
-      padding-top: 25px;
-    }
-
-    #subject-title {
-      font-size: 1.8rem;
-      margin-bottom: 8px;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .empty-state .fas.fa-clock {
+      font-size: 2rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
     }
 
     .filter-bar {
       display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 12px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
+      width: 100%;
+      max-width: 500px;
+      margin: 15px auto 0;
     }
 
-    .filter-bar input, .filter-bar select {
-      padding: 12px 16px;
-      border-radius: 10px;
-      border: 1px solid var(--card-border);
+    .filter-bar input {
+      width: 100%;
+      max-width: 400px;
+      padding: 12px 18px 12px 40px;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
       background: var(--glass);
       color: var(--text);
       outline: none;
       transition: var(--transition);
       backdrop-filter: blur(10px);
-      min-width: 180px;
-      font-size: 0.9rem;
+      box-shadow: var(--shadow-sm);
+      font-size: 0.95rem;
     }
 
-    .filter-bar input:focus, .filter-bar select:focus {
+    .filter-bar input:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3), var(--shadow-sm);
     }
 
-    .card-badge {
+    .filter-bar i {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      background: var(--gradient-primary);
-      color: white;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 15px;
-      box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
-    }
-
-    #login-page {
-      background: var(--darker);
-      color: var(--text);
-      font-family: 'Poppins', 'Tiro Bangla', system-ui, sans-serif;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .login-container {
-      width: 100%;
-      max-width: 450px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 30px;
-      backdrop-filter: blur(12px);
-      box-shadow: var(--shadow-lg);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .login-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--gradient-primary);
-      z-index: 1;
-    }
-
-    .welcome-message {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .welcome-message h1 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 800;
-    }
-
-    .welcome-message p {
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
       color: var(--text-muted);
       font-size: 1rem;
     }
 
-    .login-form {
-      margin-bottom: 25px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .form-group input {
-      width: 100%;
-      padding: 14px 18px;
+    .filter-bar select#sort {
+      width: auto;
+      min-width: 150px;
+      padding: 8px 12px;
       border-radius: 10px;
-      border: 1px solid var(--card-border);
+      border: 1px solid var(--glass-border);
       background: var(--glass);
       color: var(--text);
       outline: none;
       transition: var(--transition);
-      font-size: 1rem;
+      backdrop-filter: blur(10px);
+      font-size: 0.85rem;
+      box-shadow: var(--shadow-sm);
     }
 
-    .form-group input:focus {
+    .filter-bar select#sort:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3), var(--shadow-sm);
     }
 
-    .login-btn {
-      width: 100%;
-      padding: 14px;
-      border-radius: 10px;
-      border: none;
-      background: var(--gradient-primary);
-      color: white;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
+    .back-button {
+      padding: 10px 20px;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      backdrop-filter: blur(10px);
       transition: var(--transition);
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+      box-shadow: var(--shadow-sm);
     }
 
-    .login-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+    .back-button:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
     }
 
-    .support-info {
-      text-align: center;
-      margin-top: 25px;
-      padding-top: 20px;
-      border-top: 1px solid var(--card-border);
+    #classGrid .card {
+      min-height: 220px;
+      height: auto;
+      max-width: 300px;
+      width: 300px;
+      margin: 0 auto;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
     }
 
-    .support-info p {
-      color: var(--text-muted);
-      margin-bottom: 15px;
+    #classGrid .card .subject {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    #classGrid .card .time {
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    #classGrid .card .btn {
+      padding: 10px 18px;
       font-size: 0.9rem;
     }
 
-    .whatsapp-link {
+    #classGrid .card .card-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--glass);
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--glass-border);
+    }
+
+    #classGrid .card .class-title {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.5;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .refresh-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 20px;
-      background: #25D366;
-      color: white;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: var(--transition);
-    }
-
-    .whatsapp-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
-    }
-
-    .error-message {
-      color: var(--danger);
-      text-align: center;
-      margin-top: 15px;
-      font-size: 0.9rem;
-      display: none;
-    }
-
-    .warning-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s;
-    }
-
-    .warning-modal.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-content {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 30px;
-      max-width: 500px;
-      width: 90%;
-      backdrop-filter: blur(15px);
-      box-shadow: var(--shadow-lg);
-      position: relative;
-    }
-
-    .modal-header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .modal-header h2 {
-      font-size: 1.5rem;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 10px;
-    }
-
-    .modal-body {
-      margin-bottom: 25px;
-    }
-
-    .modal-body p {
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    .modal-footer {
-      text-align: center;
-    }
-
-    .modal-ok-btn {
-      padding: 12px 30px;
-      border-radius: 10px;
+      padding: 12px 20px;
+      border-radius: 12px;
       border: none;
       background: var(--gradient-primary);
       color: white;
       font-weight: 600;
-      cursor: pointer;
       transition: var(--transition);
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
     }
 
-    .modal-ok-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+    .refresh-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
     }
 
-    @media (max-width: 480px) {
-      .login-container {
-        padding: 20px;
+    .add-class-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: none;
+      background: var(--gradient-primary);
+      color: white;
+      font-weight: 600;
+      transition: var(--transition);
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .add-class-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .button-group {
+        flex-direction: column;
+        gap: 10px;
       }
-      
-      .welcome-message h1 {
-        font-size: 1.5rem;
-      }
-
-      .modal-content {
-        padding: 20px;
-      }
-    }
-
-    #refresh-data-btn {
-      margin-left: auto;
-    }
-
-    .sorted-classes-table th, .sorted-classes-table td {
-      text-align: left;
-    }
-
-    .sorted-classes-table th:nth-child(3), .sorted-classes-table td:nth-child(3) {
-      width: 80px;
-    }
-
-    .sorted-classes-table th:nth-child(4), .sorted-classes-table td:nth-child(4) {
-      width: 120px;
     }
 
     #sort-classes {
@@ -1142,575 +1345,15 @@
       align-items: center;
       gap: 6px;
     }
-
-    /* Dashboard Styles */
-    .dashboard-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s, visibility 0.3s;
-    }
-
-    .dashboard-modal.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-content {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 30px;
-      max-width: 600px;
-      width: 90%;
-      max-height: 80vh;
-      overflow-y: auto;
-      backdrop-filter: blur(15px);
-      box-shadow: var(--shadow-lg);
-      position: relative;
-    }
-
-    .modal-header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .modal-header h2 {
-      font-size: 1.5rem;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 10px;
-    }
-
-    .modal-body {
-      margin-bottom: 25px;
-    }
-
-    .modal-body p {
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
-
-    .modal-footer {
-      text-align: center;
-    }
-
-    .modal-ok-btn {
-      padding: 12px 30px;
-      border-radius: 10px;
-      border: none;
-      background: var(--gradient-primary);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
-    }
-
-    .modal-ok-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .stat-item {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-    }
-
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 800;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .stat-label {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .alert-box {
-      background: rgba(239, 68, 68, 0.1);
-      border: 1px solid var(--danger);
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 20px;
-      color: var(--text);
-      position: relative;
-    }
-
-    .alert-box.warning {
-      background: rgba(245, 158, 11, 0.1);
-      border-color: var(--warning);
-    }
-
-    .alert-box i {
-      margin-right: 10px;
-    }
-
-    .name-input-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .name-input-form input {
-      padding: 14px;
-      border-radius: 10px;
-      border: 1px solid var(--card-border);
-      background: var(--glass);
-      color: var(--text);
-      outline: none;
-      font-size: 1rem;
-    }
-
-    .name-input-form button {
-      padding: 14px;
-      border-radius: 10px;
-      border: none;
-      background: var(--gradient-primary);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .progress-bar {
-      height: 10px;
-      background: var(--text-muted);
-      border-radius: 5px;
-      overflow: hidden;
-      margin-top: 10px;
-    }
-
-    .progress-bar-fill {
-      height: 100%;
-      background: var(--gradient-primary);
-      transition: width 0.5s ease;
-    }
-
-    @media (max-width: 480px) {
-      .modal-content {
-        padding: 20px;
-      }
-
-      .modal-header h2 {
-        font-size: 1.5rem;
-      }
-    }
-
-    /* Additional styles that might be referenced in dashboard */
-    .notification {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      padding: 15px 22px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      box-shadow: var(--shadow-lg);
-      z-index: 1000;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.3s, transform 0.3s;
-      backdrop-filter: blur(15px);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      max-width: 350px;
-      font-size: 0.9rem;
-    }
-
-    .notification.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .notification.error {
-      border-left: 4px solid var(--danger);
-    }
-
-    .notification.success {
-      border-left: 4px solid var(--secondary);
-    }
-
-    .notification.warning {
-      border-left: 4px solid var(--warning);
-    }
-
-    /* New styles for updated dashboard */
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: var(--text-muted);
-    }
-
-    .close-btn:hover {
-      color: var(--text);
-    }
-
-    .stats {
-      margin-bottom: 20px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-    }
-
-    .card {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      padding: 15px;
-      text-align: left;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-    }
-
-    .card p {
-      margin: 5px 0;
-      font-size: 0.9rem;
-    }
-
-    .badge-current {
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      margin-left: 10px;
-      font-weight: 600;
-    }
-
-    .badge-starter {
-      background: #6b7280;
-      color: white;
-    }
-
-    .badge-bronze {
-      background: #cd7f32;
-      color: white;
-    }
-
-    .badge-silver {
-      background: #c0c0c0;
-      color: white;
-    }
-
-    .badge-gold {
-      background: #ffd700;
-      color: black;
-    }
-
-    .badge-platinum {
-      background: #e5e4e2;
-      color: black;
-    }
-
-    .badges-dropdown {
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    .badges-dropdown select {
-      padding: 10px;
-      border-radius: 10px;
-      background: var(--glass);
-      color: var(--text);
-      border: 1px solid var(--card-border);
-    }
-
-    .alarms .alert-box {
-      margin-bottom: 10px;
-    }
-
-    .progress-section {
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    .progress-section p {
-      margin-top: 10px;
-    }
-
-    /* Notes Section Styles */
-    .notes-section {
-      margin-top: 20px;
-    }
-
-    .notes-section textarea {
-      width: 100%;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid var(--card-border);
-      background: var(--glass);
-      color: var(--text);
-      outline: none;
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .notes-section button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      border-radius: 10px;
-      border: none;
-      background: var(--gradient-primary);
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .notes-section ul {
-      list-style: none;
-      margin-top: 15px;
-    }
-
-    .notes-section li {
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 8px;
-      padding: 10px;
-      margin-bottom: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .notes-section li button {
-      background: var(--danger);
-      padding: 5px 10px;
-      font-size: 0.8rem;
-    }
-
-    /* Dashboard Table Styles - Attractive and Colorful */
-    .stats-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin-top: 15px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      background: var(--card-bg);
-    }
-
-    .stats-table th,
-    .stats-table td {
-      padding: 12px 16px;
-      text-align: center;
-      border-bottom: 1px solid var(--card-border);
-      font-size: 0.9rem;
-    }
-
-    .stats-table th {
-      background: var(--gradient-primary);
-      color: white;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .stats-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .stats-table tr:hover {
-      background: rgba(255, 255, 255, 0.05);
-      cursor: pointer;
-    }
-
-    .stats-table .total {
-      color: #2563eb; /* Blue for total */
-      font-weight: 600;
-    }
-
-    .stats-table .done {
-      color: #10b981; /* Green for done */
-      font-weight: 600;
-    }
-
-    .stats-table .pending {
-      color: #ef4444; /* Red for pending */
-      font-weight: 600;
-    }
-
-    .stats h2 {
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-      background: var(--gradient-secondary);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-  </style>
-  <style>
-:root{
---primary:#2563eb; --primary-dark:#1e40af; --secondary:#10b981; --accent:#8b5cf6; --danger:#ef4444;
---warning:#f59e0b; --dark:#0f172a; --darker:#0a0e1a; --light:#f1f5f9; --text:#e2e8f0;
---text-muted:#94a3b8; --card-bg:rgba(30,41,59,0.7); --card-border:rgba(255,255,255,0.08);
---glass:rgba(15,23,42,0.6); --glass-border:rgba(255,255,255,0.1);
---gradient-primary:linear-gradient(135deg,#2563eb 0%,#10b981 100%);
---gradient-secondary:linear-gradient(135deg,#8b5cf6 0%,#ec4899 100%);
---shadow-sm:0 4px 6px rgba(0,0,0,0.1); --shadow-md:0 10px 15px -3px rgba(0,0,0,0.2);
---shadow-lg:0 20px 25px -5px rgba(0,0,0,0.3); --radius:12px; --transition:all 0.3s ease;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-html,body{background:var(--darker);color:var(--text);font-family:'Poppins','Tiro Bangla',system-ui,sans-serif;line-height:1.6;min-height:100vh;overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none;}
-body::-webkit-scrollbar{display:none;}
-.bangla-font{font-family:'Tiro Bangla','Poppins',serif;}
-.container{max-width:980px;margin:40px auto;padding:20px;}
-.action-buttons{display:flex;justify-content:center;gap:12px;margin-bottom:20px;}
-.form-button,.submissions-button,.comment-button,.reply-button,.admin-button{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;border:none;background:var(--gradient-primary);color:white;font-weight:600;font-size:0.85rem;cursor:pointer;transition:var(--transition);box-shadow:var(--shadow-sm);position:relative;overflow:hidden;}
-.form-button:hover,.submissions-button:hover,.comment-button:hover,.reply-button:hover,.admin-button:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
-.form-button::before,.submissions-button::before,.comment-button::before,.reply-button::before,.admin-button::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);transition:0.5s;}
-.form-button:hover::before,.submissions-button:hover::before,.comment-button:hover::before,.reply-button:hover::before,.admin-button:hover::before{left:100%;}
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);justify-content:center;align-items:center;z-index:1000;backdrop-filter:blur(5px);}
-.modal-content{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:25px;max-width:600px;width:90%;backdrop-filter:blur(12px);box-shadow:var(--shadow-lg);position:relative;overflow-y:auto;max-height:90vh;scroll-behavior:smooth;}
-.modal-content::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--gradient-primary);}
-.modal-close{position:absolute;top:15px;right:15px;background:none;border:none;color:var(--text-muted);font-size:1.5rem;cursor:pointer;transition:var(--transition);}
-.modal-close:hover{color:var(--danger);}
-.modal-intro{margin-bottom:20px;text-align:center;}
-.modal-intro h2{font-size:1.4rem;background:var(--gradient-primary);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:10px;}
-.modal-intro p{color:var(--text-muted);font-size:0.9rem;line-height:1.6;}
-.form-section{display:flex;flex-direction:column;gap:25px;}
-.form-section label{font-weight:bold;font-size:0.95rem;color:var(--text);text-align:left;}
-.form-section input,.form-section select,.form-section textarea{padding:12px 16px;border-radius:10px;border:1px solid var(--card-border);background:var(--glass);color:var(--text);outline:none;transition:var(--transition);backdrop-filter:blur(10px);font-size:0.9rem;}
-.form-section input:focus,.form-section select:focus,.form-section textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,0.2);}
-.form-section textarea{resize:vertical;min-height:120px;}
-.submit-button{width:100%;padding:12px;border-radius:10px;border:none;background:var(--gradient-primary);color:white;font-weight:600;font-size:0.95rem;cursor:pointer;transition:var(--transition);box-shadow:0 4px 10px rgba(37,99,235,0.3);display:flex;align-items:center;justify-content:center;gap:8px;}
-.submit-button:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(37,99,235,0.4);}
-.submit-button.loading .spinner{display:inline-block;}
-.submit-button.loading{animation: none !important;}
-.spinner{display:none;width:16px;height:16px;border:2px solid white;border-top:2px solid transparent;border-radius:50%;animation:spin 1s linear infinite;}
-@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-.success-message{display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--secondary);color:white;padding:20px 40px;border-radius:10px;z-index:2000;font-size:1rem;box-shadow:var(--shadow-md);text-align:center;max-width:80%;}
-.notification{position:fixed;bottom:30px;right:30px;padding:15px 22px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;box-shadow:var(--shadow-lg);z-index:1000;opacity:0;transform:translateY(20px);transition:opacity 0.3s,transform 0.3s;backdrop-filter:blur(15px);display:flex;align-items:center;gap:10px;max-width:350px;font-size:0.9rem;}
-.notification.show{opacity:1;transform:translateY(0);}
-.notification.success{border-left:4px solid var(--secondary);}
-.notification.error{border-left:4px solid var(--danger);}
-.submissions-list,.reply-list,.sub-buttons{display:flex;flex-direction:column;gap:15px;max-height:60vh;overflow-y:auto;scroll-behavior:smooth;}
-.submission-item{background:var(--glass);border:1px solid var(--glass-border);border-radius:10px;padding:15px;box-shadow:var(--shadow-sm);transition:var(--transition);}
-.submission-item:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
-.submission-name{font-weight:600;font-size:1rem;color:var(--primary);}
-.submission-batch{font-size:0.85rem;color:var(--text-muted);}
-.submission-message{margin-top:10px;font-size:0.9rem;}
-.submission-reply{margin-top:10px;font-size:0.9rem;border-top:1px solid var(--card-border);padding-top:10px;color:var(--secondary);}
-.submission-time{font-size:0.75rem;color:var(--text-muted);margin-top:5px;text-align:right;}
-.reply-btn{padding:8px 16px;border-radius:8px;background:var(--gradient-secondary);color:white;border:none;cursor:pointer;margin-top:10px;transition:var(--transition);box-shadow:var(--shadow-sm);}
-.reply-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
-.warning-message{background:var(--warning);color:white;padding:15px;border-radius:10px;margin-bottom:20px;text-align:center;font-size:0.9rem;}
-@media(max-width:768px){.container{padding:15px;margin:20px;}.modal-content{padding:20px;max-height:90vh;}.action-buttons{flex-direction:column;gap:10px;}.form-button,.submissions-button,.comment-button,.reply-button,.admin-button{width:100%;justify-content:center;}}
-@media(max-width:480px){.modal-intro h2{font-size:1.2rem;}.form-section label,.form-section input,.form-section select,.form-section textarea,.submit-button{font-size:0.85rem;}.submission-item{padding:12px;}.submission-name,.submission-message{font-size:0.85rem;}.submission-batch,.submission-time{font-size:0.75rem;}}
-</style>
-  <style>
-.notice-bar {
-  overflow: hidden;
-  white-space: nowrap;
-  background: rgba(37, 99, 235, 0.1);
-  color: var(--warning);
-  font-size: 0.8rem;
-  padding: 6px 0;
-  text-align: center;
-  border-bottom: 1px solid var(--card-border);
-  margin-top: 0;
-  position: relative;
-}
-
-.notice-bar span {
-  display: inline-block;
-  animation: marquee 40s linear infinite 0s;
-  padding-left: 100%; /* এটি গুরুত্বপূর্ণ - gap দূর করবে */
-}
-
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-    }
-
-    /* Clock Styles - Attractive Digital Clock */
-    .clock-container {
-      text-align: center;
-      margin: 20px auto;
-      padding: 15px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      box-shadow: var(--shadow-md);
-      backdrop-filter: blur(10px);
-      max-width: 300px;
-    }
-
-    .clock-time {
-      font-size: 2.5rem;
-      font-weight: 700;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 5px;
-    }
-
-    .clock-date {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    .clock-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--gradient-secondary);
-    }
-
   </style>
 </head>
 <body>
+  <!-- লগইন পৃষ্ঠা (ডিফল্টভাবে দেখাবে) -->
   <div id="login-page">
     <div class="login-container">
       <div class="welcome-message">
-        <h1 class="bangla-font">Dakhil-26 "Final Stage Preparation Course"</h1>
-        <p class="bangla-font">শিক্ষার যাত্রায় এক নতুন দিগন্ত। বাংলাদেশ অনলাইন মাদ্রাসা (BOM) এর প্রাইভেট ব্যাচের দাখিল-২৬ শিক্ষার্থীদের জন্য প্রিমিয়াম লার্নিং এক্সপেরিয়েন্স</p>
+        <h1 class="bangla-font">ALIM-25 BOM Admission Course 1.0</h1>
+        <p class="bangla-font">DU, CU, RU, SUST, GST, NU, JU, IU সহ সব বিশ্ববিদ্যালয়ের জন্য গুরুত্বপূর্ণ সাবজেক্টের উপর একসাথে গোছানো প্রস্তুতি</p>
       </div>
       <div class="login-form">
         <div class="form-group">
@@ -1722,67 +1365,71 @@ body::-webkit-scrollbar{display:none;}
       </div>
       <div class="support-info">
         <p class="bangla-font">এক্সেস পাসওয়ার্ড পেতে BOM এর এডমিনের সাথে যোগাযোগ করুন</p>
-        <a href="https://wa.me/8801806234120" class="whatsapp-link" target="_blank">
+        <a href="https://wa.me/8801806262745" class="whatsapp-link" target="_blank">
           <i class="fab fa-whatsapp"></i>
           <span>WhatsApp</span>
         </a>
       </div>
     </div>
   </div>
+  <!-- মেইন ইনডেক্স পৃষ্ঠা (প্রথমে লুকানো) -->
   <div id="main-page" style="display: none;">
     <header>
       <nav class="nav container">
         <div class="brand">
           <i class="fas fa-graduation-cap"></i>
-          <span>DAKHIL-26 <br>
-            <span class="tag">"Final Stage Preparation Course" (BOM)</span></span>
+          <span>ALIM-25 <br>
+            <span class="tag">"BOM Admission Course 1.0"</span></span>
         </div>
+        <br>
         <div class="searchbar">
           <i class="fas fa-search"></i>
           <input id="search-subjects" type="search" placeholder="সাবজেক্ট খুঁজুন...">
         </div>
-        <div class="controls">
-          <button class="btn" id="refresh-data-btn"><i class="fas fa-sync-alt"></i> <span class="bangla-font">ডেটা রিফ্রেশ</span></button>
-          <button class="btn" id="dashboard-btn" style="display: none;"><i class="fas fa-tachometer-alt"></i> <span class="bangla-font">ড্যাশবোর্ড</span></button>
-          <a class="btn" id="add-class-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfL0sFmx3IiTXCiFFraymOe65ITt6TqtTJVgjQln5dpAgk1oQ/viewform?usp=header" target="_blank" rel="noopener" style="display: none;"><i class="fas fa-plus-circle"></i> <span class="bangla-font">ক্লাস যুক্ত করুন</span></a>
-        </div>
       </nav>
     </header>
-    <div class="notice-bar bangla-font"><span><b>নতুন যোগ করা হয়েছে: ড্যাশবোর্ড এবং কমেন্ট সুবিধা! আপনার শিক্ষা যাত্রার অগ্রগতি পর্যবেক্ষণ করুন এবং আপনার মূল্যবান মতামত আমাদের জানান।</b></span></div>
     <main class="container">
+      <!-- New: Button group for Refresh and Add Class buttons -->
+      <div class="button-group">
+        <button class="refresh-btn bangla-font" id="refresh-btn" onclick="refreshData()">
+          <i class="fas fa-sync-alt"></i> <span id="refresh-btn-text">ডাটা রিফ্রেশ করুন</span>
+        </button>
+        <a class="add-class-btn bangla-font" id="add-class-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeBjBhyRPk0tb5GTLXIxsZZxwSoP12npKInobGYBN4TTafXkg/viewform?usp=header" target="_blank" style="display: none;">
+          <i class="fas fa-plus-circle"></i> ক্লাস যুক্ত করুন
+        </a>
+      </div>
+      <!-- হিরো সেকশন -->
       <div class="hero fade-in">
-        <h1 class="bangla-font">Dakhil-26 "Final Stage Preparation Course"</h1>
-        <p class="bangla-font">শিক্ষার যাত্রায় এক নতুন দিগন্ত। বাংলাদেশ অনলাইন মাদ্রাসা (BOM) এর প্রাইভেট ব্যাচের দাখিল-২৬ শিক্ষার্থীদের জন্য প্রিমিয়াম লার্নিং এক্সপেরিয়েন্স</p>
+        <h1 class="bangla-font">ALIM-25 BOM Admission Course 1.0</h1>
+        <p class="bangla-font">DU, CU, RU, SUST, GST, NU, JU, IU সহ সব বিশ্ববিদ্যালয়ের জন্য গুরুত্বপূর্ণ সাবজেক্টের উপর একসাথে গোছানো প্রস্তুতি</p>
       </div>
-      <!-- Attractive Clock with Date -->
-      <div class="clock-container fade-in">
-        <div id="clock-time" class="clock-time"></div>
-        <div id="clock-date" class="clock-date"></div>
-      </div>
+      <!-- স্ট্যাটস সেকশন -->
       <div class="stats">
         <div class="stat-card fade-in">
-          <div class="stat-number">21</div>
-          <div class="stat-label bangla-font">সাবজেক্ট</div>
-        </div>
-        <div class="stat-card fade-in">
-          <div class="stat-number">120+</div>
+          <div class="stat-number">90+</div>
           <div class="stat-label bangla-font">ক্লাস</div>
         </div>
+        <div class="stat-card fade-in">
+          <div class="stat-number">05+</div>
+          <div class="stat-label bangla-font">Solve ক্লাস</div>
+        </div>
         <div class="stat-card fade-in" id="exam-stats">
-          <div class="stat-number">20+</div>
+          <div class="stat-number">100+</div>
           <div class="stat-label bangla-font">ইক্সাম</div>
         </div>
         <div class="stat-card fade-in" id="mission-stats">
-          <div class="stat-number">60+</div>
+          <div class="stat-number">130+</div>
           <div class="stat-label bangla-font">মিশন</div>
         </div>
       </div>
+      <!-- আজকের ক্লাস সেকশন -->
       <div class="section-title">
         <h2 class="bangla-font">আজকের ক্লাস</h2>
         <select id="sort-classes" class="bangla-font">
           <option value="today" selected>আজকের ক্লাস</option>
           <option value="week">সপ্তাহের ক্লাস</option>
           <option value="month">মাসের ক্লাস</option>
+          <option value="all">সকল ক্লাস</option>
         </select>
       </div>
       <div id="today-classes">
@@ -1790,7 +1437,7 @@ body::-webkit-scrollbar{display:none;}
           <thead>
             <tr>
               <th class="bangla-font">সাবজেক্ট</th>
-              <th class="bangla-font">শিরোনাম</th>
+              <th class="bangla-font">তথ্য</th>
               <th class="bangla-font">সময়</th>
             </tr>
           </thead>
@@ -1803,68 +1450,50 @@ body::-webkit-scrollbar{display:none;}
           </tbody>
         </table>
       </div>
+      <!-- সকল সাবজেক্ট সেকশন -->
       <div class="section-title">
         <h2 class="bangla-font">সব সাবজেক্ট</h2>
       </div>
       <div class="subj-list">
-        <a class="pill subject-link" href="#" data-name="কুরআন মাজীদ ও তাজভীদ"><span><i class="fas fa-book-quran"></i> <span class="bangla-font">কুরআন মাজীদ ও তাজভীদ</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="হাদিস শরীফ"><span><i class="fas fa-book"></i> <span class="bangla-font">হাদিস শরীফ</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="আরবি প্রথম পত্র"><span><i class="fas fa-language"></i> <span class="bangla-font">আরবি প্রথম পত্র</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="আরবি দ্বিতীয় পত্র"><span><i class="fas fa-language"></i> <span class="bangla-font">আরবি দ্বিতীয় পত্র</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="আকাইদ ও ফিকহ"><span><i class="fas fa-balance-scale"></i> <span class="bangla-font">আকাইদ ও ফিকহ</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="বাংলা প্রথম পত্র"><span><i class="fas fa-font"></i> <span class="bangla-font">বাংলা প্রথম পত্র</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="বাংলা দ্বিতীয় পত্র"><span><i class="fas fa-font"></i> <span class="bangla-font">বাংলা দ্বিতীয় পত্র</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="ইংরেজি প্রথম পত্র"><span><i class="fas fa-font"></i> <span class="bangla-font">ইংরেজি প্রথম পত্র</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="ইংরেজি দ্বিতীয় পত্র"><span><i class="fas fa-font"></i> <span class="bangla-font">ইংরেজি দ্বিতীয় পত্র</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="গণিত"><span><i class="fas fa-square-root-alt"></i> <span class="bangla-font">গণিত</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="ইসলামের ইতিহাস"><span><i class="fas fa-landmark"></i> <span class="bangla-font">ইসলামের ইতিহাস</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="তথ্য ও যোগাযোগ প্রযুক্তি"><span><i class="fas fa-laptop-code"></i> <span class="bangla-font">তথ্য ও যোগাযোগ প্রযুক্তি</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="পদার্থবিজ্ঞান"><span><i class="fas fa-atom"></i> <span class="bangla-font">পদার্থবিজ্ঞান</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="রসায়ন"><span><i class="fas fa-flask"></i> <span class="bangla-font">রসায়ন</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="উচ্চতর গণিত"><span><i class="fas fa-calculator"></i> <span class="bangla-font">উচ্চতর গণিত</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="জীববিজ্ঞান"><span><i class="fas fa-dna"></i> <span class="bangla-font">জীববিজ্ঞান</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="বাংলাদেশ ও বিশ্বপরিচয়"><span><i class="fas fa-globe-asia"></i> <span class="bangla-font">বাংলাদেশ ও বিশ্বপরিচয়</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="কৃষি শিক্ষা"><span><i class="fas fa-seedling"></i> <span class="bangla-font">কৃষি শিক্ষা</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="মানতিক"><span><i class="fas fa-brain"></i> <span class="bangla-font">মানতিক</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="গার্হস্থ্য বিজ্ঞান"><span><i class="fas fa-home"></i> <span class="bangla-font">গার্হস্থ্য বিজ্ঞান</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="পৌরনীতি ও নাগরিকতা"><span><i class="fas fa-landmark"></i> <span class="bangla-font">পৌরনীতি ও নাগরিকতা</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="মিশন"><span><i class="fas fa-bullseye"></i> <span class="bangla-font">মিশন</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="বাংলা"><span><i class="fas fa-font"></i> <span class="bangla-font">বাংলা</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="ইংরেজি"><span><i class="fas fa-font"></i> <span class="bangla-font">ইংরেজি</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="জি.কে"><span><i class="fas fa-globe"></i> <span class="bangla-font">জি.কে</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="Solve ক্লাস"><span><i class="fas fa-square-root-alt"></i> <span class="bangla-font">Solve ক্লাস</span></span><span class="go bangla-font">খুলুন</span></a>
         <a class="pill subject-link" href="#" data-name="ইক্সাম"><span><i class="fas fa-file-alt"></i> <span class="bangla-font">ইক্সাম</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="ক্লাসের লেকচার শীট"><span><i class="fas fa-file-pdf"></i> <span class="bangla-font">ক্লাসের লেকচার শীট</span></span><span class="go bangla-font">খুলুন</span></a>
-        <a class="pill subject-link" href="#" data-name="পরীক্ষার রেজাল্ট শীট"><span><i class="fas fa-chart-bar"></i> <span class="bangla-font">পরীক্ষার রেজাল্ট শীট</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="মিশন"><span><i class="fas fa-bullseye"></i> <span class="bangla-font">মিশন</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="রেজাল্ট"><span><i class="fas fa-chart-line"></i> <span class="bangla-font">রেজাল্ট</span></span><span class="go bangla-font">খুলুন</span></a>
+        <a class="pill subject-link" href="#" data-name="উত্তরপত্র ও শীট"><span><i class="fas fa-clipboard"></i> <span class="bangla-font">উত্তরপত্র ও শীট</span></span><span class="go bangla-font">খুলুন</span></a>
         <a class="pill subject-link" href="#" data-name="অন্যান্য"><span><i class="fas fa-ellipsis-h"></i> <span class="bangla-font">অন্যান্য</span></span><span class="go bangla-font">খুলুন</span></a>
       </div>
     </main>
-    <div class="container">
-      <div class="action-buttons">
-        <button class="form-button" id="form-button"><i class="fas fa-comment"></i> <span class="bangla-font">কমেন্ট করুন</span></button>
-        <button class="submissions-button" id="submissions-button"><i class="fas fa-list"></i> <span class="bangla-font">সাবমিশন দেখুন</span></button>
-      </div>
-    </div>
+    <!-- OWNER & DESIGNER BLOCK -->
     <div class="owner-wrap">
-      <div class="owner-messages" aria-hidden="false">
-        <span class="msg">crafted with care</span>
-        <span class="msg">trusted mentor</span>
-        <span class="msg">leading the roadmap</span>
-        <span class="msg">for topper success</span>
+      <div class="owner-message">
+        The guiding force behind this platform is
       </div>
-      <div class="owner-name bangla-font">MD. RIAD HASAN<span style="font-weight:600; font-size:0.86rem; color:rgba(226,232,240,0.85); margin-left:8px;">(CEO & Founder)</span></div>
-      <div class="owner-sub">building brighter paths for ambitious learners</div>
+      <div class="owner-name bangla-font">MD. RIAD HASAN <span style="font-weight:600; font-size:0.86rem; color:rgba(226,232,240,0.85); margin-left:8px;"><br>(CEO & Founder)</span></div>
+      <div class="owner-sub">Committed to better education and brighter futures</div>
       <div class="designer-credit">
         <span class="bangla-font" style="opacity:0.9;">design by</span>
         <span class="designer-name">SAHIBUL MUSA SIUM</span>
       </div>
     </div>
+    <!-- FOOTER -->
     <footer class="site-footer">
-      © 2025 Dakhil-26 "Final Stage Preparation Course" (BOM). All rights reserved.
+      © 2025 ALIM-25 BOM Admission Course 1.0 (BOM). All rights reserved.
     </footer>
   </div>
+  <!-- সাবজেক্ট পৃষ্ঠা (প্রথমে লুকানো) -->
   <div id="subject-page" style="display: none;">
     <header>
       <nav class="nav container">
         <a class="brand back-button" href="#"><i class="fas fa-arrow-left"></i> <span class="bangla-font">সব সাবজেক্ট</span></a>
+        <br>
         <div class="filter-bar">
-          <input id="search" type="search" placeholder="🔍 সার্চ...">
+          <div style="position: relative; width: 100%; max-width: 400px;">
+            <i class="fas fa-search"></i>
+            <input id="search" type="search" placeholder="সার্চ..." class="bangla-font">
+          </div>
           <select id="sort">
             <option value="desc" class="bangla-font">নতুন থেকে পুরানো</option>
             <option value="asc" class="bangla-font">পুরানো থেকে নতুন</option>
@@ -1876,31 +1505,61 @@ body::-webkit-scrollbar{display:none;}
       <h2 id="subject-title" class="bangla-font"><i class="fas fa-book"></i> সাবজেক্ট</h2>
       <div id="classGrid" class="grid"></div>
     </main>
+    <!-- OWNER & DESIGNER BLOCK -->
     <div class="owner-wrap">
-      <div class="owner-messages" aria-hidden="false">
-        <span class="msg">crafted with care</span>
-        <span class="msg">trusted mentor</span>
-        <span class="msg">leading the roadmap</span>
-        <span class="msg">for topper success</span>
+      <div class="owner-message">
+         The guiding force behind this platform is
       </div>
-      <div class="owner-name bangla-font">MD. RIAD HASAN<span style="font-weight:600; font-size:0.86rem; color:rgba(226,232,240,0.85); margin-left:8px;">(CEO & Founder)</span></div>
-      <div class="owner-sub">building brighter paths for ambitious learners</div>
+      <div class="owner-name bangla-font">MD. RIAD HASAN <span style="font-weight:600; font-size:0.86rem; color:rgba(226,232,240,0.85); margin-left:8px;"><br>(CEO & Founder)</span></div>
+      <div class="owner-sub">Committed to better education and brighter futures</div>
       <div class="designer-credit">
         <span class="bangla-font" style="opacity:0.9;">design by</span>
         <span class="designer-name">SAHIBUL MUSA SIUM</span>
       </div>
     </div>
+    <!-- FOOTER -->
     <footer class="site-footer">
-      © 2025 Dakhil-26 "Final Stage Preparation Course" (BOM). All rights reserved.
+      © 2025 ALIM25 BOM Admission Course 1.0 (BOM). All rights reserved.
     </footer>
   </div>
+  <!-- মিশন সাব-সাবজেক্ট পেজ (নতুন যোগ করা) -->
+  <div id="mission-subjects-page" style="display: none;">
+    <header>
+      <nav class="nav container">
+        <a class="brand back-button" href="#" onclick="showMainPage()"><i class="fas fa-arrow-left"></i> <span class="bangla-font">সব সাবজেক্ট</span></a>
+      </nav>
+    </header>
+    <main class="container">
+      <h2 id="mission-title" class="bangla-font"><i class="fas fa-bullseye"></i> মিশন</h2>
+      <div class="subj-list" id="mission-subjects-list">
+        <!-- JS দিয়ে রেন্ডার হবে -->
+      </div>
+    </main>
+    <!-- OWNER & DESIGNER BLOCK -->
+    <div class="owner-wrap">
+      <div class="owner-message">
+         The guiding force behind this platform is
+      </div>
+      <div class="owner-name bangla-font">MD. RIAD HASAN <span style="font-weight:600; font-size:0.86rem; color:rgba(226,232,240,0.85); margin-left:8px;"><br>(CEO & Founder)</span></div>
+      <div class="owner-sub">Committed to better education and brighter futures</div>
+      <div class="designer-credit">
+        <span class="bangla-font" style="opacity:0.9;">design by</span>
+        <span class="designer-name">SAHIBUL MUSA SIUM</span>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      © 2025 ALIM-25 BOM Admission Course 1.0 (BOM). All rights reserved.
+    </footer>
+  </div>
+  <!-- ওয়ার্নিং মোডাল -->
   <div id="warning-modal" class="warning-modal">
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="bangla-font">লগইন সফল হয়েছে!</h2>
       </div>
       <div class="modal-body">
-        <p class="bangla-font">অনুগ্রহ করে নোট করুন: <br>BOM এর ওয়েবসাইটের এক্সেস তথ্য সর্বদা গোপনীয় রাখুন এবং কারোর সাথে পাসওয়ার্ড শেয়ার করবেন না।</p>
+        <p class="bangla-font">অনুগ্রহ করে নোট করুন:<br>BOM এর ওয়েবসাইটের এক্সেস তথ্য সর্বদা গোপনীয় রাখুন এবং কারোর সাথে পাসওয়ার্ড শেয়ার করবেন না।</p>
         <p class="bangla-font">যদি কোনো ব্যবহারকারীর পাসওয়ার্ড শেয়ার করতে দেখা যায়, তাহলে তাকে এই ওয়েবসাইট থেকে স্থায়ীভাবে নিষিদ্ধ করা হবে।</p>
       </div>
       <div class="modal-footer">
@@ -1909,1255 +1568,526 @@ body::-webkit-scrollbar{display:none;}
     </div>
   </div>
   <div id="notification" class="notification"></div>
-  <!-- Dashboard Modal -->
-  <div id="dashboard-modal" class="dashboard-modal">
-    <div class="modal-content">
-      <div class="modal-body" id="dashboard-body">
-        <!-- ডাইনামিক কনটেন্ট এখানে লোড হবে -->
-      </div>
-    </div>
-  </div>
-  <!-- Name Set Modal -->
-<div class="modal" id="nameModal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="hideNameModal()">×</button>
-    <div class="modal-intro">
-      <h2 class="bangla-font">নাম সেট করুন</h2>
-      <p class="bangla-font">আপনার নাম লিখুন। এটি সেভ হয়ে যাবে এবং পরবর্তীতে কমেন্ট ও রিপ্লাই দেখার জন্য ব্যবহৃত হবে।</p>
-      <div class="warning-message bangla-font">
-        দয়া করে আপনার পূর্ণ নাম ব্যবহার করুন, যাতে অন্য কারো সাথে নামের কোনো মিল না হয়। একটি স্বতন্ত্র এবং ব্যতিক্রমী নাম নির্বাচন করুন, যেন আপনার মতামত এবং উত্তর সঠিকভাবে সনাক্ত করা যায়।
-      </div>
-    </div>
-    <div class="form-section">
-      <form id="nameForm" onsubmit="saveName(event)">
-        <label class="bangla-font" for="userName">নাম</label>
-        <input type="text" id="userName" placeholder="আপনার পূর্ণ নাম লিখুন" required class="bangla-font">
-        <button type="submit" class="submit-button bangla-font">সেভ করুন</button>
-      </form>
-    </div>
-  </div>
-</div>
-<!-- Form Modal -->
-<div class="modal" id="formModal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="hideForm()">×</button>
-    <div class="modal-intro">
-      <h2 class="bangla-font">আপনার মতামত আমাদের কাছে মূল্যবান</h2>
-      <p class="bangla-font">প্রিয় শিক্ষার্থী, আমাদের শিক্ষামূলক ওয়েবসাইট আপনাদের শিক্ষা ও জ্ঞানার্জনের পথকে আরও সহজ ও ফলপ্রসূ করতে প্রতিশ্রুতিবদ্ধ। নিচের ফর্মটি পূরণ করুন।</p>
-    </div>
-    <div class="form-section">
-      <form id="myForm" onsubmit="submitForm(event)">
-        <label class="bangla-font" for="name">নাম</label>
-        <input type="text" name="name" id="name" placeholder="আপনার নাম" required class="bangla-font" readonly><br>
-        <label class="bangla-font" for="batch">ব্যাচ নাম</label>
-        <select name="batch" id="batch" required class="bangla-font">
-          <option value="" disabled selected class="bangla-font">ব্যাচ নির্বাচন করুন</option>
-          <option value="Dakhil-26" class="bangla-font">দাখিল-২৬</option>
-          </select><br>
-        <label class="bangla-font" for="message">মতামত/পরামর্শ/অভিযোগ</label>
-        <textarea name="message" id="message" placeholder="আপনার মতামত লিখুন" required class="bangla-font"></textarea>
-        <button type="submit" class="submit-button bangla-font" id="submitBtn">জমা দিন <span class="spinner"></span></button>
-      </form>
-    </div>
-  </div>
-</div>
-<!-- Submissions Modal -->
-<div class="modal" id="submissionsModal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="hideSubmissions()">×</button>
-    <div class="modal-intro">
-      <h2 class="bangla-font">সাবমিশন তালিকা</h2>
-      <p class="bangla-font">এখানে সকল সাবমিশন দেখুন।</p>
-    </div>
-    <div id="submissions-list" class="submissions-list"></div>
-  </div>
-</div>
-<div class="success-message" id="successMessage">ফর্ম সফলভাবে জমা হয়েছে!</div>
-<div id="notification" class="notification"></div>
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbwaqLOJtB2sRkH3gGmiyp-uhFlFiK2X35tbEjMX_4pk5DcC2AjxUaJeX2JpUJFCkCDi/exec";
+    // DOM হেল্পার ফাংশন
+    function $(sel, root = document) { return root.querySelector(sel); }
+    function $all(sel, root = document) { return Array.from(root.querySelectorAll(sel)); }
 
-function $(sel, root = document) { return root.querySelector(sel); }
-function $all(sel, root = document) { return Array.from(root.querySelectorAll(sel)); }
+    // পেজ স্টেট ম্যানেজমেন্ট
+    let currentSubject = null;
+    let highlightedClassTimestamp = null;
+    const loginPage = $('#login-page');
+    const mainPage = $('#main-page');
+    const subjectPage = $('#subject-page');
+    const missionSubjectsPage = $('#mission-subjects-page');
+    const warningModal = $('#warning-modal');
+    let allClasses = [];
 
-let currentSubject = null;
-let highlightedClassTimestamp = null;
-const loginPage = $('#login-page');
-const mainPage = $('#main-page');
-const subjectPage = $('#subject-page');
-const warningModal = $('#warning-modal');
-let allClasses = [];
-let groupedClassesCache = {};
+    // সাবজেক্টের তালিকা (মিশন এখানে আছে, কিন্তু সাব-সাবজেক্ট আলাদা)
+    const availableSubjects = ["বাংলা", "ইংরেজি", "জি.কে", "Solve ক্লাস", "ইক্সাম", "মিশন", "রেজাল্ট", "উত্তরপত্র ও শীট", "অন্যান্য"];
 
-const availableSubjects = [
-  "কুরআন মাজীদ ও তাজভীদ", "হাদিস শরীফ", "আরবি প্রথম পত্র", "আরবি দ্বিতীয় পত্র",
-  "আকাইদ ও ফিকহ", "বাংলা প্রথম পত্র", "বাংলা দ্বিতীয় পত্র", "ইংরেজি প্রথম পত্র",
-  "ইংরেজি দ্বিতীয় পত্র", "গণিত", "ইসলামের ইতিহাস", "তথ্য ও যোগাযোগ প্রযুক্তি",
-  "পদার্থবিজ্ঞান", "রসায়ন", "উচ্চতর গণিত", "জীববিজ্ঞান",
-  "বাংলাদেশ ও বিশ্বপরিচয়", "কৃষি শিক্ষা",
-  "মানতিক", "গার্হস্থ্য বিজ্ঞান", "পৌরনীতি ও নাগরিকতা", "মিশন",
-  "ইক্সাম", "ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "অন্যান্য"
-];
+    // মিশনের সাব-সাবজেক্টগুলো
+    const missionSubSubjects = [
+      "মিশন: DU,CU,RU,JNU,GST,NU",
+      "মিশন: Dhaka University Written",
+      "মিশন: ইসলামী বিশ্ববিদ্যালয়ের কুষ্টিয়া (ধর্মতত্ত্ব)",
+      "মিশন: চট্টগ্রাম বিশ্ববিদ্যালয় বি-২-উপ ইউনিট"
+    ];
 
-const LOGIN_EXPIRY_KEY = 'dakhil26_login_expiry';
-const IS_LOGGED_IN_KEY = 'dakhil26_is_logged_in';
-const USER_ROLE_KEY = 'dakhil26_user_role';
+    // localStorage keys
+    const LOGIN_EXPIRY_KEY = 'alim25_login_expiry';
+    const IS_LOGGED_IN_KEY = 'alim25_is_logged_in';
+    const USER_ROLE_KEY = 'alim25_user_role'; // New: To store user role (owner or user)
 
-function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+    // পেজ উপরে স্ক্রল করার ফাংশন
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
-function setLoginExpiry(role) {
-  const now = new Date();
-  const oneMonthFromNow = new Date(now.setMonth(now.getMonth() + 1));
-  localStorage.setItem(LOGIN_EXPIRY_KEY, oneMonthFromNow.getTime());
-  localStorage.setItem(IS_LOGGED_IN_KEY, 'true');
-  localStorage.setItem(USER_ROLE_KEY, role);
-}
+    // লগইন expiry সেট করা
+    function setLoginExpiry() {
+      const now = new Date();
+      const oneMonthFromNow = new Date(now.setMonth(now.getMonth() + 1));
+      localStorage.setItem(LOGIN_EXPIRY_KEY, oneMonthFromNow.getTime());
+      localStorage.setItem(IS_LOGGED_IN_KEY, 'true');
+    }
 
-function checkLoginExpiry() {
-  const expiryTime = localStorage.getItem(LOGIN_EXPIRY_KEY);
-  const isLoggedIn = localStorage.getItem(IS_LOGGED_IN_KEY);
-  
-  if (!expiryTime || !isLoggedIn || isLoggedIn !== 'true') {
-    return false;
-  }
-  
-  const now = new Date().getTime();
-  return now < parseInt(expiryTime);
-}
+    // লগইন expiry চেক করা
+    function checkLoginExpiry() {
+      const expiryTime = localStorage.getItem(LOGIN_EXPIRY_KEY);
+      const isLoggedIn = localStorage.getItem(IS_LOGGED_IN_KEY);
+      if (!expiryTime || !isLoggedIn) return false;
+      const now = new Date().getTime();
+      return now < parseInt(expiryTime);
+    }
 
-function getUserRole() {
-  return localStorage.getItem(USER_ROLE_KEY) || 'user';
-}
+    // ব্যবহারকারীর রোল চেক করা (owner or user)
+    function isOwner() {
+      return localStorage.getItem(USER_ROLE_KEY) === 'owner';
+    }
 
-function logout() {
-  localStorage.removeItem(LOGIN_EXPIRY_KEY);
-  localStorage.removeItem(IS_LOGGED_IN_KEY);
-  localStorage.removeItem(USER_ROLE_KEY);
-  loginPage.style.display = 'flex';
-  mainPage.style.display = 'none';
-  subjectPage.style.display = 'none';
-}
+    // লগআউট করা
+    function logout() {
+      localStorage.removeItem(LOGIN_EXPIRY_KEY);
+      localStorage.removeItem(IS_LOGGED_IN_KEY);
+      localStorage.removeItem(USER_ROLE_KEY); // New: Remove user role
+      loginPage.style.display = 'flex';
+      mainPage.style.display = 'none';
+      subjectPage.style.display = 'none';
+      missionSubjectsPage.style.display = 'none';
+    }
 
-function showWarningModal() {
-  warningModal.classList.add('show');
-}
+    // ওয়ার্নিং মোডাল দেখানোর ফাংশন
+    function showWarningModal() {
+      warningModal.classList.add('show');
+    }
 
-function closeWarningModal() {
-  warningModal.classList.remove('show');
-}
+    // ওয়ার্নিং মোডাল বন্ধ করার ফাংশন
+    function closeWarningModal() {
+      warningModal.classList.remove('show');
+    }
 
-function showNotification(message, isError = false, isWarning = false) {
-  const notification = $('#notification');
-  notification.innerHTML = `<i class="${isError ? 'fas fa-exclamation-circle' : isWarning ? 'fas fa-exclamation-triangle' : 'fas fa-check-circle'}"></i> ${message}`;
-  notification.className = 'notification ' + (isError ? 'error' : isWarning ? 'warning' : 'success');
-  notification.classList.add('show');
+    // নোটিফিকেশন দেখানোর ফাংশন
+    function showNotification(message, isError = false, isWarning = false) {
+      const notification = $('#notification');
+      notification.innerHTML = `<i class="${isError ? 'fas fa-exclamation-circle' : isWarning ? 'fas fa-exclamation-triangle' : 'fas fa-check-circle'}"></i> ${message}`;
+      notification.className = 'notification ' + (isError ? 'error' : isWarning ? 'warning' : 'success');
+      notification.classList.add('show');
+      setTimeout(() => notification.classList.remove('show'), 3000);
+    }
 
-  setTimeout(() => {
-    notification.classList.remove('show');
-  }, 3000);
-}
+    // পাসওয়ার্ড চেক করার ফাংশন
+    function checkPassword() {
+      const password = $('#password').value;
+      const errorElement = $('#error-message');
+      if (password === 'USERALIM25' || password === 'OWNERALIM25') {
+        loginPage.style.display = 'none';
+        mainPage.style.display = 'block';
+        setLoginExpiry();
+        localStorage.setItem(USER_ROLE_KEY, password === 'OWNERALIM25' ? 'owner' : 'user'); // New: Set user role
+        if (isOwner()) {
+          $('#add-class-btn').style.display = 'inline-flex'; // Show Add Class button for owner
+        }
+        showWarningModal();
+        loadInitialData();
+        scrollToTop();
+      } else {
+        errorElement.style.display = 'block';
+        setTimeout(() => errorElement.style.display = 'none', 3000);
+      }
+    }
 
-function checkPassword() {
-  const password = $('#password').value.trim();
-  const errorElement = $('#error-message');
-  
-  if (password === 'USERDAKHIL26') {
-    setLoginExpiry('user');
-    loginPage.style.display = 'none';
-    mainPage.style.display = 'block';
-    showWarningModal();
-    loadInitialData();
-    showDashboardButton();
-    scrollToTop();
-  } else if (password === 'OWNERDAKHIL26') {
-    setLoginExpiry('owner');
-    loginPage.style.display = 'none';
-    mainPage.style.display = 'block';
-    showWarningModal();
-    showAddClassButton();
-    loadInitialData();
-    scrollToTop();
-  } else {
-    errorElement.style.display = 'block';
-    setTimeout(() => {
-      errorElement.style.display = 'none';
-    }, 3000);
-  }
-}
+    // Enter কী চাপলে check password
+    $('#password').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') checkPassword();
+    });
 
-function showDashboardButton() {
-  const dashboardBtn = $('#dashboard-btn');
-  if (getUserRole() === 'user') {
-    dashboardBtn.style.display = 'inline-flex';
-  }
-}
+    // Timestamp থেকে তারিখ এবং সময় এক্সট্র্যাক্ট করার ফাংশন
+    function parseTimestamp(timestampStr) {
+      try {
+        const date = new Date(timestampStr);
+        if (isNaN(date.getTime())) {
+          throw new Error('Invalid date');
+        }
+        return date;
+      } catch (error) {
+        console.error('Timestamp parse error:', error);
+        return new Date(); // Fallback to current date if invalid
+      }
+    }
 
-function showAddClassButton() {
-  const addClassBtn = $('#add-class-btn');
-  if (addClassBtn && getUserRole() === 'owner') {
-    addClassBtn.style.display = 'inline-flex';
-  }
-}
-
-$('#password').addEventListener('keypress', function(e) {
-  if (e.key === 'Enter') {
-    checkPassword();
-  }
-});
-
-function getDateFromTimestamp(timestamp) {
-  if (!timestamp) return getTodayDate();
-
-  try {
-    const date = new Date(timestamp);
-    if (!isNaN(date)) {
+    function getDateFromTimestamp(timestampStr) {
+      const date = parseTimestamp(timestampStr);
       const year = date.getFullYear();
       const month = String(date.getMonth() + 1).padStart(2, '0');
       const day = String(date.getDate()).padStart(2, '0');
-      return `${day}-${month}-${year}`; // ফরম্যাট: DD-MM-YYYY
+      return `${year}-${month}-${day}`;
     }
-    return getTodayDate();
-  } catch (error) {
-    console.error("Timestamp parsing error:", error, timestamp);
-    return getTodayDate();
-  }
-}
 
-function getTimeFromTimestamp(timestamp) {
-  if (!timestamp) return '12:00 AM';
-
-  try {
-    const date = new Date(timestamp);
-    if (!isNaN(date)) {
-      return date.toLocaleTimeString('en-US', { 
-        timeZone: 'Asia/Dhaka', 
-        hour: 'numeric', 
-        minute: '2-digit', 
-        hour12: true 
-      });
+    function getTimeFromTimestamp(timestampStr) {
+      const date = parseTimestamp(timestampStr);
+      const hours = date.getHours() % 12 || 12;
+      const minutes = String(date.getMinutes()).padStart(2, '0');
+      const period = date.getHours() >= 12 ? 'PM' : 'AM';
+      return `${hours}:${minutes} ${period}`;
     }
-    return '12:00 AM';
-  } catch (error) {
-    console.error("Time parsing error:", error, timestamp);
-    return '12:00 AM';
-  }
-}
 
-function getTodayDate() {
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const day = String(today.getDate()).padStart(2, '0');
-  return `${day}-${month}-${year}`; // ফরম্যাট: DD-MM-YYYY
-}
-
-function formatDateToBangla(dateStr) {
-  if (!dateStr) return '';
-
-  try {
-    if (/^\d{2}-\d{2}-\d{4}$/.test(dateStr)) {
-      return dateStr; // ইতিমধ্যে DD-MM-YYYY ফরম্যাটে থাকলে রিটার্ন
+    function formatDate(dateStr) {
+      const [year, month, day] = dateStr.split('-');
+      return `${day}-${month}-${year.slice(2)}`;
     }
-    const [year, month, day] = dateStr.split('-');
-    return `${day}-${month}-${year}`; // ফরম্যাট: DD-MM-YYYY
-  } catch (error) {
-    console.error("Date formatting error:", error, dateStr);
-    return dateStr;
-  }
-}
 
-function findBestMatchingSubject(subjectFromSheet) {
-  if (!subjectFromSheet) return null;
-
-  const cleanSubject = subjectFromSheet.toString().trim();
-  for (const availableSubject of availableSubjects) {
-    if (cleanSubject === availableSubject) {
-      return availableSubject;
-    }
-  }
-  return cleanSubject;
-}
-
-async function fetchData() {
-  try {
-    showNotification("ডেটা লোড হচ্ছে...", false);
-    const res = await fetch(API_URL, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json'
+    // সাবজেক্ট ম্যাচিং (মিশনের সাব-সাবজেক্টগুলো চেক করে)
+    function findBestMatchingSubject(subjectFromSheet) {
+      if (missionSubSubjects.includes(subjectFromSheet)) {
+        return subjectFromSheet;
       }
-    });
-
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
+      return availableSubjects.includes(subjectFromSheet) ? subjectFromSheet : subjectFromSheet;
     }
 
-    const data = await res.json();
-    if (data && data.ok) {
-      showNotification("ডেটা সফলভাবে লোড হয়েছে!");
-      console.log("API Response:", data);
-      return data.rows || [];
-    } else {
-      throw new Error(data.error || "ডেটা লোড করতে সমস্যা");
-    }
-  } catch (error) {
-    console.error("ডেটা লোড করতে সমস্যা:", error);
-    showNotification("ডেটা লোড করা যায়নি: " + error.message, true);
-    return [];
-  }
-}
-
-function normalizeRows(rows) {
-  try {
-    // Sort all rows by timestamp ascending for global tracking ID
-    const sortedRows = rows.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
-
-    // Assign global tracking ID
-    sortedRows.forEach((row, index) => {
-      row.globalId = index + 1;
-    });
-
-    // Group by subject for display serial
-    const groupedBySubject = sortedRows.reduce((acc, row) => {
-      const subjectFromSheet = row.subject || 'Unknown Subject';
-      const matchedSubject = findBestMatchingSubject(subjectFromSheet) || subjectFromSheet;
-      if (!acc[matchedSubject]) {
-        acc[matchedSubject] = [];
-      }
-      acc[matchedSubject].push(row);
-      return acc;
-    }, {});
-
-    const specialFolders = ["মিশন", "ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "অন্যান্য"];
-
-    const normalizedRows = [];
-    Object.keys(groupedBySubject).forEach(subject => {
-      const subjectRows = groupedBySubject[subject].sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
-      subjectRows.forEach((row, index) => {
-        const timestamp = row.timestamp || '';
-        let link = row.link || '#';
-        if (specialFolders.includes(subject)) {
-          link = row.file || row.link || '#';
-        }
-        const title = row.title || (subject === 'মিশন' ? 'মিশন' : subject === 'ইক্সাম' ? 'ইক্সাম' : 'ক্লাস ভিডিও');
-        const date = getDateFromTimestamp(timestamp);
-        const time = getTimeFromTimestamp(timestamp);
-        const displaySerial = index + 1;
-        const type = specialFolders.includes(subject) ? 'special' : subject === 'মিশন' ? 'mission' : subject === 'ইক্সাম' ? 'exam' : 'class';
-
-        normalizedRows.push({
-          subject: subject,
-          originalSubject: row.subject,
-          link: link,
-          title: title,
-          date: date,
-          time: time,
-          displaySerial: displaySerial,
-          timestamp: timestamp,
-          globalId: row.globalId,
-          type: type
+    // ডেটা ফেচ করা
+    async function fetchData() {
+      showNotification("ডেটা লোড হচ্ছে...", false);
+      try {
+        const res = await fetch('https://script.google.com/macros/s/AKfycbzLWkqUJGkGNP5k3bCYM7mSbEbe6SVorTTQu-NpWa4VB2ZSpY_4N4VbIoxcW5EGSPHW3A/exec', {
+          method: 'GET',
+          headers: { 'Accept': 'application/json' }
         });
-      });
-    });
-
-    return normalizedRows;
-  } catch (error) {
-    console.error("Rows normalization error:", error);
-    return [];
-  }
-}
-
-function isExamTimeExpired(timestamp) {
-  if (!timestamp) return false;
-  try {
-    const examTime = new Date(timestamp).getTime();
-    const now = new Date().getTime();
-    const twentyFourHoursInMs = 24 * 60 * 60 * 1000;
-    return (now - examTime) > twentyFourHoursInMs;
-  } catch (error) {
-    console.error("Exam expiry check error:", error, timestamp);
-    return false;
-  }
-}
-
-function filterClassesByTimeRange(range) {
-  const now = new Date();
-  const today = getTodayDate(); // DD-MM-YYYY ফরম্যাটে আজকের তারিখ
-
-  if (range === 'today') {
-    return allClasses.filter(cls => cls && cls.date === today);
-  } else if (range === 'all') {
-    return allClasses;
-  }
-
-  const weekAgo = new Date(now.setDate(now.getDate() - 7));
-  const monthAgo = new Date(now.setMonth(now.getMonth() - 1));
-
-  return allClasses.filter(cls => {
-    if (!cls || !cls.date) return false;
-    const classDateParts = cls.date.split('-'); // DD-MM-YYYY ফরম্যাট
-    const classDate = new Date(`${classDateParts[2]}-${classDateParts[1]}-${classDateParts[0]}`);
-    
-    if (range === 'week') {
-      return classDate >= weekAgo && classDate <= new Date();
-    } else if (range === 'month') {
-      return classDate >= monthAgo && classDate <= new Date();
-    }
-    return true;
-  });
-}
-
-function groupClassesBySubject(classes) {
-  if (groupedClassesCache[JSON.stringify(classes)]) {
-    return groupedClassesCache[JSON.stringify(classes)];
-  }
-
-  const grouped = classes.reduce((acc, cls) => {
-    if (!cls || !cls.subject) return acc;
-    if (!acc[cls.subject]) {
-      acc[cls.subject] = [];
-    }
-    acc[cls.subject].push(cls);
-    return acc;
-  }, {});
-
-  // প্রতিটি সাবজেক্টের ক্লাসগুলোকে টাইমস্ট্যাম্প অনুযায়ী সাজানো (নতুন থেকে পুরানো)
-  Object.keys(grouped).forEach(subject => {
-    grouped[subject].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-  });
-
-  groupedClassesCache[JSON.stringify(classes)] = grouped;
-  return grouped;
-}
-
-function renderTodayClassesSummary(classes) {
-  const container = $('#today-classes-body');
-  const sortValue = $('#sort-classes').value;
-
-  if (!classes || classes.length === 0) {
-    container.innerHTML = `<tr><td colspan="3" class="bangla-font" style="text-align: center; padding: 20px;">আজকের জন্য কোন ক্লাস পাওয়া যায়নি</td></tr>`;
-    return;
-  }
-
-  let tableHTML = '';
-  classes.forEach(cls => {
-    if (!cls) return;
-    const displayValue = sortValue === 'today' ? cls.time : cls.date;
-    tableHTML += `
-      <tr data-subject="${cls.subject}" data-timestamp="${cls.timestamp}">
-        <td><span class="subject-badge bangla-font">${cls.subject}</span></td>
-        <td class="class-info bangla-font">${cls.title}</td>
-        <td class="bangla-font">${displayValue}</td>
-      </tr>
-    `;
-  });
-  container.innerHTML = tableHTML;
-
-  $all('#today-classes-body tr').forEach(row => {
-    row.addEventListener('click', () => {
-      const subject = row.getAttribute('data-subject');
-      highlightedClassTimestamp = row.getAttribute('data-timestamp');
-      showSubjectPage(subject, true);
-    });
-  });
-}
-
-function renderCards(rows, root) {
-  if (!rows || rows.length === 0) {
-    root.innerHTML = '<div class="empty-state"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg><p class="bangla-font">কোন ক্লাস পাওয়া যায়নি</p></div>';
-    return;
-  }
-
-  root.innerHTML = '';
-  rows.forEach(r => {
-    if (!r) return;
-
-    const specialFolders = ["ক্লাসের লেকচার শীট", "পরীক্ষার রেজাল্ট শীট", "অন্যান্য"];
-    let buttonText;
-    let isExpired = false;
-
-    if (specialFolders.includes(r.subject)) {
-      buttonText = "দেখুন";
-    } else if (r.subject === "মিশন") {
-      buttonText = "মিশন সম্পন্ন করুন";
-    } else if (r.subject === "ইক্সাম") {
-      buttonText = "পরীক্ষায় অংশগ্রহণ করুন";
-      isExpired = isExamTimeExpired(r.timestamp);
-    } else {
-      buttonText = "ক্লাস দেখুন";
-    }
-
-    const card = document.createElement('div');
-    card.className = 'card fade-in';
-    card.setAttribute('data-timestamp', r.timestamp);
-    if (highlightedClassTimestamp === r.timestamp) {
-      card.classList.add('highlight');
-      setTimeout(() => {
-        card.classList.remove('highlight');
-        highlightedClassTimestamp = null;
-      }, 5000);
-    }
-    const idPrefix = r.type === 'mission' ? 'm' : r.type === 'exam' ? 'e' : 'c';
-    const trackId = idPrefix + r.globalId;
-    const onclickAttr = `onclick="trackItem('${trackId}', '${r.type}')"`
-    card.innerHTML = `
-      <span class="card-badge bangla-font">ক্লাস ${r.displaySerial}</span>
-      <div class="subject"><i class="fas fa-book"></i> <span class="bangla-font">${r.subject}</span></div>
-      <div class="video-title bangla-font">${r.title}</div>
-      <div class="time"><i class="fas fa-clock"></i> ${r.time} | <span class="bangla-font">${r.date}</span></div>
-      ${r.subject === "ইক্সাম" && isExpired ? '<div class="exam-expiry-notice bangla-font"><i class="fas fa-exclamation-triangle"></i> পরীক্ষায় অংশগ্রহণ করার নির্দিষ্ট সময় শেষ হয়ে গেছে</div>' : ''}
-      <a class="btn" target="_blank" rel="noopener" href="${r.link}" ${onclickAttr}><i class="fas fa-play-circle"></i> <span class="bangla-font">${buttonText}</span></a>
-    `;
-    root.appendChild(card);
-  });
-}
-
-function filterTodayClasses(classes) {
-  const today = getTodayDate();
-  return classes.filter(cls => cls && cls.date === today);
-}
-
-async function loadInitialData() {
-  if (!checkLoginExpiry()) {
-    logout();
-    return;
-  }
-
-  const rows = await fetchData();
-  allClasses = normalizeRows(rows);
-  renderTodayClassesSummary(filterTodayClasses(allClasses));
-
-  showAddClassButton();
-  showDashboardButton();
-}
-
-function showSubjectPage(subject, fromTable = false) {
-  currentSubject = subject;
-  mainPage.style.display = 'none';
-  subjectPage.style.display = 'block';
-  $('#subject-title').innerHTML = `<i class="fas fa-book"></i> <span class="bangla-font">${subject}</span>`;
-  scrollToTop();
-
-  const classes = filterClassesByTimeRange('all');
-  const groupedClasses = groupClassesBySubject(classes);
-  const subjectClasses = groupedClasses[subject] || [];
-
-  const root = $('#classGrid');
-  renderCards(subjectClasses, root);
-
-  if (fromTable) {
-    const highlightedCard = $all('#classGrid .card').find(card => card.getAttribute('data-timestamp') === highlightedClassTimestamp);
-    if (highlightedCard) {
-      highlightedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }
-
-  $('#search').value = '';
-}
-
-function initializeEventListeners() {
-  $('#sort-classes').addEventListener('change', () => {
-    const range = $('#sort-classes').value;
-    const filteredClasses = filterClassesByTimeRange(range);
-    renderTodayClassesSummary(filteredClasses);
-  });
-
-  $('#search-subjects').addEventListener('input', () => {
-    const searchTerm = $('#search-subjects').value.trim().toLowerCase();
-    const pills = $all('.subject-link');
-    pills.forEach(pill => {
-      const subjectName = pill.getAttribute('data-name').toLowerCase();
-      pill.style.display = subjectName.includes(searchTerm) ? 'flex' : 'none';
-    });
-  });
-
-  $all('.subject-link').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const subject = link.getAttribute('data-name');
-      showSubjectPage(subject);
-    });
-  });
-
-  $('#search').addEventListener('input', () => {
-    const searchTerm = $('#search').value.trim().toLowerCase();
-    const classes = filterClassesByTimeRange('all');
-    const groupedClasses = groupClassesBySubject(classes);
-    const subjectClasses = groupedClasses[currentSubject] || [];
-    const filteredClasses = subjectClasses.filter(cls => cls.title.toLowerCase().includes(searchTerm));
-    
-    const sortOrder = $('#sort').value;
-    if (sortOrder === 'asc') {
-      filteredClasses.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
-    } else {
-      filteredClasses.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-    }
-    
-    renderCards(filteredClasses, $('#classGrid'));
-  });
-
-  $('#sort').addEventListener('change', () => {
-    const searchTerm = $('#search').value.trim().toLowerCase();
-    const classes = filterClassesByTimeRange('all');
-    const groupedClasses = groupClassesBySubject(classes);
-    const subjectClasses = groupedClasses[currentSubject] || [];
-    const filteredClasses = subjectClasses.filter(cls => cls.title.toLowerCase().includes(searchTerm));
-    
-    const sortOrder = $('#sort').value;
-    if (sortOrder === 'asc') {
-      filteredClasses.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
-    } else {
-      filteredClasses.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-    }
-    
-    renderCards(filteredClasses, $('#classGrid'));
-  });
-
-  $('.back-button').addEventListener('click', e => {
-    e.preventDefault();
-    subjectPage.style.display = 'none';
-    mainPage.style.display = 'block';
-    scrollToTop();
-    $('#search-subjects').value = '';
-    const pills = $all('.subject-link');
-    pills.forEach(pill => {
-      pill.style.display = 'flex';
-    });
-  });
-
-  $('#refresh-data-btn').addEventListener('click', async () => {
-    const rows = await fetchData();
-    allClasses = normalizeRows(rows);
-    groupedClassesCache = {};
-    renderTodayClassesSummary(filterClassesByTimeRange($('#sort-classes').value));
-    
-    if (subjectPage.style.display === 'block' && currentSubject) {
-      showSubjectPage(currentSubject);
-    }
-    
-    showNotification("ডেটা রিফ্রেশ হয়েছে!");
-  });
-}
-
-/* Dashboard Script */
-const STORAGE_KEYS = {
-  STUDENT_NAME: 'dakhil26_student_name',
-  JOIN_DATE: 'dakhil26_join_date',
-  LAST_LOGIN: 'dakhil26_last_login',
-  LAST_ACTIVITY: 'dakhil26_last_activity',
-  COMPLETED_ITEMS: 'dakhil26_completed_items',
-  NOTES: 'dakhil26_notes'
-};
-
-const motivationalQuotes = [
-  "প্রতিদিনের ক্লাস প্রতিদিন করুন, সাফল্য আপনার কাছে আসবে! 🌟",
-  "ছোট ছোট পদক্ষেপই বড় সাফল্যের পথ তৈরি করে! 💪",
-  "নিয়মিত পড়াশোনা আপনাকে লক্ষ্যের কাছে নিয়ে যাবে! 🚀",
-  "প্রতিটি ক্লাস আপনাকে এক ধাপ এগিয়ে নেয়! 🏆"
-];
-
-const badges = [
-  { name: 'Starter', threshold: 0, class: 'badge-starter', icon: '🏁' },
-  { name: 'Bronze Cup', threshold: 30, class: 'badge-bronze', icon: '🥉' },
-  { name: 'Silver Cup', threshold: 50, class: 'badge-silver', icon: '🥈' },
-  { name: 'Gold Cup', threshold: 65, class: 'badge-gold', icon: '🥇' },
-  { name: 'Platinum Trophy', threshold: 80, class: 'badge-platinum', icon: '🏆' }
-];
-
-function parseDate(dateStr) {
-  if (!dateStr) return new Date(0);
-  const [day, month, year] = dateStr.split('-').map(Number);
-  return new Date(year, month - 1, day);
-}
-
-function saveStudentData(name, joinDate, lastLogin, lastActivity, completedItems) {
-  localStorage.setItem(STORAGE_KEYS.STUDENT_NAME, name || 'শিক্ষার্থী');
-  localStorage.setItem(STORAGE_KEYS.JOIN_DATE, joinDate || getTodayDate());
-  localStorage.setItem(STORAGE_KEYS.LAST_LOGIN, lastLogin || new Date().toISOString());
-  localStorage.setItem(STORAGE_KEYS.LAST_ACTIVITY, lastActivity || new Date().toISOString());
-  localStorage.setItem(STORAGE_KEYS.COMPLETED_ITEMS, JSON.stringify(completedItems || []));
-}
-
-function getStudentData() {
-  return {
-    name: localStorage.getItem(STORAGE_KEYS.STUDENT_NAME) || 'শিক্ষার্থী',
-    joinDate: localStorage.getItem(STORAGE_KEYS.JOIN_DATE) || getTodayDate(),
-    lastLogin: localStorage.getItem(STORAGE_KEYS.LAST_LOGIN) || new Date().toISOString(),
-    lastActivity: localStorage.getItem(STORAGE_KEYS.LAST_ACTIVITY) || new Date().toISOString(),
-    completedItems: JSON.parse(localStorage.getItem(STORAGE_KEYS.COMPLETED_ITEMS)) || []
-  };
-}
-
-// Tracking function
-window.trackItem = function(id, type) {
-  const studentData = getStudentData();
-  let completed = studentData.completedItems;
-  if (completed.includes(id)) {
-    return; // Already completed
-  }
-
-  if (type === 'class') {
-    let scrolled = false;
-    const scrollListener = () => { scrolled = true; };
-    window.addEventListener('scroll', scrollListener);
-
-    const minTime = 0; // seconds
-    const maxTime = 0; // 7 minutes in seconds
-    const randomTime = Math.random() * (maxTime - minTime) + minTime;
-
-    setTimeout(() => {
-      window.removeEventListener('scroll', scrollListener);
-      if (!scrolled) {
-        completed.push(id);
-        saveStudentData(studentData.name, studentData.joinDate, new Date().toISOString(), new Date().toISOString(), completed);
-        showNotification(`${type} সম্পন্ন হয়েছে!`, false);
-      } else {
-        showNotification('পেজ স্ক্রল হয়েছে, সম্পন্ন মনে করা হয়নি।', true);
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        const data = await res.json();
+        return data.ok ? data.rows || [] : [];
+      } catch (error) {
+        showNotification("ডেটা লোড করা যায়নি: " + error.message, true);
+        return [];
       }
-    }, randomTime * 1000);
-  } else {
-    // For missions and exams, complete immediately
-    completed.push(id);
-    saveStudentData(studentData.name, studentData.joinDate, new Date().toISOString(), new Date().toISOString(), completed);
-    showNotification(`${type} সম্পন্ন হয়েছে!`, false);
-  }
-};
-
-function getItemsFromAllClasses() {
-  const items = {
-    classes: [],
-    missions: [],
-    exams: []
-  };
-
-  allClasses.forEach(cls => {
-    const idPrefix = cls.type === 'mission' ? 'm' : cls.type === 'exam' ? 'e' : 'c';
-    const trackId = idPrefix + cls.globalId;
-    const item = { id: trackId, addDate: cls.date };
-    if (cls.type === 'mission') {
-      items.missions.push(item);
-    } else if (cls.type === 'exam') {
-      items.exams.push(item);
-    } else {
-      items.classes.push(item);
-    }
-  });
-
-  return items;
-}
-
-function calculateStats(joinDate, completed) {
-  const joinDateObj = parseDate(joinDate);
-  const items = getItemsFromAllClasses();
-
-  function filterItems(itemList, isAfter) {
-    return itemList.filter(item => {
-      const addDateObj = parseDate(item.addDate);
-      return isAfter ? addDateObj >= joinDateObj : addDateObj < joinDateObj;
-    });
-  }
-
-  const afterClasses = filterItems(items.classes, true);
-  const beforeClasses = filterItems(items.classes, false);
-  const afterMissions = filterItems(items.missions, true);
-  const beforeMissions = filterItems(items.missions, false);
-  const afterExams = filterItems(items.exams, true);
-  const beforeExams = filterItems(items.exams, false);
-
-  const doneAfterClasses = afterClasses.filter(item => completed.includes(item.id)).length;
-  const doneBeforeClasses = beforeClasses.filter(item => completed.includes(item.id)).length;
-  const doneAfterMissions = afterMissions.filter(item => completed.includes(item.id)).length;
-  const doneBeforeMissions = beforeMissions.filter(item => completed.includes(item.id)).length;
-  const doneAfterExams = afterExams.filter(item => completed.includes(item.id)).length;
-  const doneBeforeExams = beforeExams.filter(item => completed.includes(item.id)).length;
-
-  const totalAll = items.classes.length + items.missions.length + items.exams.length;
-  const totalCompleted = completed.length;
-  const progress = totalAll > 0 ? (totalCompleted / totalAll) * 100 : 0;
-
-  return {
-    after: {
-      totalClasses: afterClasses.length,
-      doneClasses: doneAfterClasses,
-      pendingClasses: afterClasses.length - doneAfterClasses,
-      totalMissions: afterMissions.length,
-      doneMissions: doneAfterMissions,
-      pendingMissions: afterMissions.length - doneAfterMissions,
-      totalExams: afterExams.length,
-      doneExams: doneAfterExams,
-      pendingExams: afterExams.length - doneAfterExams
-    },
-    before: {
-      totalClasses: beforeClasses.length,
-      doneClasses: doneBeforeClasses,
-      pendingClasses: beforeClasses.length - doneBeforeClasses,
-      totalMissions: beforeMissions.length,
-      doneMissions: doneBeforeMissions,
-      pendingMissions: beforeMissions.length - doneBeforeMissions,
-      totalExams: beforeExams.length,
-      doneExams: doneBeforeExams,
-      pendingExams: beforeExams.length - doneBeforeExams
-    },
-    progress: progress.toFixed(1)
-  };
-}
-
-function getCurrentBadge(progress) {
-  for (let i = badges.length - 1; i >= 0; i--) {
-    if (progress >= badges[i].threshold) {
-      return badges[i];
-    }
-  }
-  return badges[0];
-}
-
-function saveNotes(notes) {
-  localStorage.setItem(STORAGE_KEYS.NOTES, JSON.stringify(notes));
-}
-
-function getNotes() {
-  return JSON.parse(localStorage.getItem(STORAGE_KEYS.NOTES)) || [];
-}
-
-function renderNotes() {
-  const notesList = $('#notes-list');
-  const notes = getNotes();
-  notesList.innerHTML = '';
-  notes.forEach((note, index) => {
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <span>${note}</span>
-      <button onclick="deleteNote(${index})">মুছে ফেলুন</button>
-    `;
-    notesList.appendChild(li);
-  });
-}
-
-window.deleteNote = function(index) {
-  let notes = getNotes();
-  notes.splice(index, 1);
-  saveNotes(notes);
-  renderNotes();
-};
-
-function showDashboard() {
-  const studentData = getStudentData();
-  const isNewUser = !localStorage.getItem(STORAGE_KEYS.STUDENT_NAME);
-  const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
-  const stats = calculateStats(studentData.joinDate, studentData.completedItems);
-  const currentBadge = getCurrentBadge(stats.progress);
-  const lastActivityDate = new Date(studentData.lastActivity);
-  const daysSinceActivity = (new Date() - lastActivityDate) / (1000 * 60 * 60 * 24);
-
-  const dashboardBody = $('#dashboard-body');
-  dashboardBody.innerHTML = `
-    ${isNewUser ? `
-      <div class="alert-box success bangla-font">
-        <i class="fas fa-info-circle"></i> আপনার নাম লিখুন এবং ড্যাশবোর্ড কাস্টমাইজ করুন!
-      </div>
-      <form class="name-input-form">
-        <input type="text" id="student-name-input" placeholder="আপনার নাম লিখুন" class="bangla-font">
-        <button type="submit" class="bangla-font">নাম সংরক্ষণ করুন</button>
-      </form>
-    ` : `
-      <header class="modal-header bangla-font">
-        <h2>স্বাগতম, ${studentData.name}!</h2>
-        <div class="badge-current ${currentBadge.class}" id="current-badge">${currentBadge.icon} ${currentBadge.name}</div>
-        <div id="close-btn" class="close-btn">✕</div>
-      </header>
-
-      <section class="motivation">
-        <p id="motivation-text" class="bangla-font">${randomQuote}</p>
-      </section>
-
-      <section class="stats after-join bangla-font">
-        <h2>জয়েন-এর পর</h2>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>আইটেম</th>
-              <th>মোট</th>
-              <th>সম্পন্ন</th>
-              <th>বাকি</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>ক্লাস</td>
-              <td class="total">${stats.after.totalClasses}</td>
-              <td class="done">${stats.after.doneClasses}</td>
-              <td class="pending">${stats.after.pendingClasses}</td>
-            </tr>
-            <tr>
-              <td>মিশন</td>
-              <td class="total">${stats.after.totalMissions}</td>
-              <td class="done">${stats.after.doneMissions}</td>
-              <td class="pending">${stats.after.pendingMissions}</td>
-            </tr>
-            <tr>
-              <td>পরীক্ষা</td>
-              <td class="total">${stats.after.totalExams}</td>
-              <td class="done">${stats.after.doneExams}</td>
-              <td class="pending">${stats.after.pendingExams}</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section class="stats before-join bangla-font">
-        <h2>জয়েন-এর আগে</h2>
-        <table class="stats-table">
-          <thead>
-            <tr>
-              <th>আইটেম</th>
-              <th>মোট</th>
-              <th>সম্পন্ন</th>
-              <th>বাকি</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>ক্লাস</td>
-              <td class="total">${stats.before.totalClasses}</td>
-              <td class="done">${stats.before.doneClasses}</td>
-              <td class="pending">${stats.before.pendingClasses}</td>
-            </tr>
-            <tr>
-              <td>মিশন</td>
-              <td class="total">${stats.before.totalMissions}</td>
-              <td class="done">${stats.before.doneMissions}</td>
-              <td class="pending">${stats.before.pendingMissions}</td>
-            </tr>
-            <tr>
-              <td>পরীক্ষা</td>
-              <td class="total">${stats.before.totalExams}</td>
-              <td class="done">${stats.before.doneExams}</td>
-              <td class="pending">${stats.before.pendingExams}</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section id="alarms" class="alarms bangla-font"></section>
-
-      <section class="progress-section bangla-font">
-        <h3>সম্মক অগ্রগতি</h3>
-        <div class="progress-bar">
-          <div class="progress-bar-fill" style="width: ${stats.progress}%"></div>
-        </div>
-        <p>${stats.progress}%</p>
-      </section>
-
-      <div class="badges-dropdown bangla-font">
-        <label for="badges-select">ব্যাজসমূহ:</label>
-        <select id="badges-select">
-          ${badges.map(badge => `
-            <option ${stats.progress >= badge.threshold ? '' : 'disabled'}>${badge.icon} ${badge.name} ${stats.progress >= badge.threshold ? '(প্রাপ্ত)' : '(লক)'}</option>
-          `).join('')}
-        </select>
-      </div>
-
-      <section class="notes-section bangla-font">
-        <h3>আমার নোটস</h3>
-        <textarea id="note-input" placeholder="নতুন নোট লিখুন..."></textarea>
-        <button id="add-note-btn">নোট যোগ করুন</button>
-        <ul id="notes-list"></ul>
-      </section>
-    `}
-  `;
-
-  if (isNewUser) {
-    const form = dashboardBody.querySelector('.name-input-form');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const nameInput = $('#student-name-input').value.trim();
-      if (nameInput) {
-        saveStudentData(nameInput, getTodayDate(), new Date().toISOString(), new Date().toISOString(), []);
-        showNotification('নাম সফলভাবে সংরক্ষিত হয়েছে!', false);
-        showDashboard();
-      } else {
-        showNotification('অনুগ্রহ করে একটি বৈধ নাম লিখুন', true);
-      }
-    });
-  } else {
-    // Update last login
-    localStorage.setItem(STORAGE_KEYS.LAST_LOGIN, new Date().toISOString());
-
-    // Alarms
-    const alarms = $('#alarms');
-    if (stats.before.pendingClasses + stats.before.pendingMissions + stats.before.pendingExams > 0) {
-      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> জয়েনের আগের ক্লাস, মিশন এবং পরীক্ষাগুলো নিজ দায়িত্বে সম্পন্ন করুন যতক্ষণ না সবগুলো শেষ হয়।</div>`;
-    }
-    if (daysSinceActivity > 7) {
-      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনি টানা ১ সপ্তাহের বেশি ক্লাস করেননি! আজকের ক্লাস বক্সে গিয়ে সপ্তাহের ক্লাস সিলেক্ট করে প্রতিটা ক্লাস করে নিন।</div>`;
-    }
-    if (daysSinceActivity > 30) {
-      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনি টানা ১ মাসের বেশি ক্লাস করেননি! আজকের ক্লাস বক্সে গিয়ে মাসের ক্লাস সিলেক্ট করে প্রতিটা ক্লাস করে নিন।</div>`;
-    }
-    if (stats.progress < 10 && !isNewUser) {
-      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> আপনার অগ্রগতি খুব কম! নিয়মিত ক্লাস করে অগ্রসর হোন।</div>`;
-    }
-    if (stats.after.pendingClasses > 5) {
-      alarms.innerHTML += `<div class="alert-box warning"><i class="fas fa-exclamation-triangle"></i> জয়েনের পরের ক্লাসগুলোতে অনেক বাকি! দ্রুত সম্পন্ন করুন।</div>`;
     }
 
-    // Close button
-    const closeBtn = $('#close-btn');
-    closeBtn.addEventListener('click', () => {
-      const dashboardModal = $('#dashboard-modal');
-      dashboardModal.classList.remove('show');
-    });
-
-    // Notes functionality
-    renderNotes();
-    const addNoteBtn = $('#add-note-btn');
-    addNoteBtn.addEventListener('click', () => {
-      const noteInput = $('#note-input');
-      const noteText = noteInput.value.trim();
-      if (noteText) {
-        let notes = getNotes();
-        notes.push(noteText);
-        saveNotes(notes);
-        renderNotes();
-        noteInput.value = '';
-        showNotification('নোট যোগ করা হয়েছে!', false);
-      } else {
-        showNotification('অনুগ্রহ করে নোট লিখুন', true);
-      }
-    });
-  }
-
-  const dashboardModal = $('#dashboard-modal');
-  dashboardModal.classList.add('show');
-}
-
-const dashboardBtn = $('#dashboard-btn');
-dashboardBtn.addEventListener('click', () => {
-  showDashboard();
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  if (checkLoginExpiry()) {
-    loginPage.style.display = 'none';
-    mainPage.style.display = 'block';
-    loadInitialData();
-    showAddClassButton();
-    showDashboardButton();
-  } else {
-    loginPage.style.display = 'flex';
-    mainPage.style.display = 'none';
-    subjectPage.style.display = 'none';
-  }
-  initializeEventListeners();
-});
-  </script>
-  <script>
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzEX1EuBWpSMlZ9zbXs1lAVQkOTdeV779SsD6SF6RllQGMYxcHJu30p5BPzW7O-PAbysg/exec";
-
-function $(sel){ return document.querySelector(sel); }
-
-function showNotification(message, isError=false){
-  const notification = $('#notification');
-  notification.innerHTML = `<i class="${isError?'fas fa-exclamation-circle':'fas fa-check-circle'}"></i> <span class="bangla-font">${message}</span>`;
-  notification.className=`notification ${isError?'error':'success'}`;
-  notification.classList.add('show');
-  setTimeout(()=>notification.classList.remove('show'),3000);
-}
-
-let storedName = localStorage.getItem('userName') || '';
-
-function showNameModal(){ $('#nameModal').style.display='flex'; }
-function hideNameModal(){ $('#nameModal').style.display='none'; }
-
-function saveName(event){
-  event.preventDefault();
-  const name = $('#userName').value.trim();
-  if (name) {
-    localStorage.setItem('userName', name);
-    storedName = name;
-    hideNameModal();
-    showForm();
-  } else {
-    showNotification("নাম লিখুন!", true);
-  }
-}
-
-function handleFormClick() {
-  if (!storedName) {
-    showNameModal();
-  } else {
-    showForm();
-  }
-}
-
-function showForm(){ 
-  $('#formModal').style.display='flex'; 
-  $('#myForm').reset(); 
-  $('#name').value = storedName;
-}
-
-function hideForm(){ $('#formModal').style.display='none'; }
-
-function showSubmissions(){ 
-  $('#submissionsModal').style.display='flex'; 
-  
-  // শুধু এই ১ লাইন যোগ করুন
-  $('#submissions-list').innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted)" class="bangla-font">লোড হচ্ছে...</div>';
-  
-  loadSubmissions(); 
+    // ডেটা নরমালাইজ
+    function normalizeRow(row) {
+      return {
+        subject: findBestMatchingSubject(row.subject || 'Unknown'),
+        link: row.link || '#',
+        title: row.title || 'ক্লাস',
+        date: getDateFromTimestamp(row.timestamp),
+        time: getTimeFromTimestamp(row.timestamp),
+        timestampObj: parseTimestamp(row.timestamp),
+      };
     }
 
-function hideSubmissions(){ $('#submissionsModal').style.display='none'; }
-
-function submitForm(event){
-  event.preventDefault();
-  const submitBtn = $('#submitBtn');
-  submitBtn.classList.add('loading');
-  submitBtn.disabled = true;
-  const form = $('#myForm');
-  const data = {
-    name: form.name.value.trim(),
-    batch: form.batch.value,
-    message: form.message.value.trim()
-  };
-
-  fetch(WEB_APP_URL,{
-    method:'POST',
-    body:JSON.stringify(data)
-  })
-  .then(res=>res.text())
-  .then(txt=>{
-    submitBtn.classList.remove('loading');
-    submitBtn.disabled = false;
-    if(txt.startsWith("Success")){
-      form.reset(); hideForm(); showSuccessMessage();
-    }else{
-      showNotification("ডেটা জমা হয়নি! আবার চেষ্টা করুন।", true);
-    }
-  })
-  .catch(()=>{
-    submitBtn.classList.remove('loading');
-    submitBtn.disabled = false;
-    showNotification("ডেটা জমা হয়নি! আবার চেষ্টা করুন।", true);
-  });
-}
-
-function showSuccessMessage(){
-  const successMessage = $('#successMessage');
-  successMessage.style.display='block';
-  setTimeout(()=>successMessage.style.display='none',3000);
-}
-
-function loadSubmissions() {
-  fetch(WEB_APP_URL + '?action=getSubmissions')
-    .then(res => res.json())
-    .then(data => {
-      const list = $('#submissions-list');
-      list.innerHTML = '';
-      
-      // শুধুমাত্র Dakhil-26 ব্যাচ ফিল্টার করুন
-      const dakhil26Submissions = data.filter(item => 
-        item.batch && item.batch.toString().toLowerCase().includes('dakhil-26')
-      );
-      
-      // নতুন থেকে পুরানো সাজানো
-      dakhil26Submissions.sort((a, b) => new Date(b.timestamp || b.time) - new Date(a.timestamp || a.time));
-      
-      if (dakhil26Submissions.length === 0) {
-        list.innerHTML = '<div style="text-align:center;padding:40px;color:var(--text-muted)" class="bangla-font">Dakhil-26 ব্যাচের কোন সাবমিশন নেই</div>';
+    // কার্ড রেন্ডার
+    function renderCards(rows, root) {
+      if (!rows || rows.length === 0) {
+        root.innerHTML = '<div class="empty-state" style="text-align: center; padding: 40px;"><i class="fas fa-clock" style="font-size: 2rem; color: var(--text-muted); margin-bottom: 15px;"></i><p class="bangla-font">কোন ক্লাস পাওয়া যায়নি</p></div>';
         return;
       }
-      
-      dakhil26Submissions.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'submission-item';
-        div.innerHTML = `
-          <div class="submission-name bangla-font">${item.name}</div>
-          <div class="submission-batch bangla-font">ব্যাচ: ${item.batch}</div>
-          <div class="submission-message bangla-font">${item.message}</div>
-          ${item.reply ? `<div class="submission-reply bangla-font">উত্তর: ${item.reply}</div>` : ''}
-          <div class="submission-time bangla-font">${item.time}</div>
-        `;
-        list.appendChild(div);
+
+      rows = sortByTime(rows, 'desc');
+      rows.forEach((r, idx) => {
+        r.serial = idx + 1;
       });
-    })
-    .catch(() => showNotification("সাবমিশন লোড হয়নি! আবার চেষ্টা করুন।", true));
+
+      root.innerHTML = '';
+      rows.forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'card fade-in';
+        card.setAttribute('data-timestamp', r.timestampObj.toISOString());
+        if (highlightedClassTimestamp === r.timestampObj.toISOString()) {
+          card.classList.add('highlight');
+          setTimeout(() => {
+            card.classList.remove('highlight');
+            highlightedClassTimestamp = null;
+          }, 5000);
+        }
+        let buttonText = 'ক্লাস দেখুন';
+        let isExpired = false;
+        if (r.subject === 'ইক্সাম') {
+          buttonText = 'পরীক্ষায় অংশগ্রহণ করুন';
+          isExpired = isExamTimeExpired(r.timestampObj);
+        } else if (missionSubSubjects.includes(r.subject)) {
+          buttonText = 'মিশন সম্পন্ন করুন';
+        } else if (['রেজাল্ট', 'উত্তরপত্র ও শীট', 'অন্যান্য'].includes(r.subject)) {
+          buttonText = 'দেখুন';
+        }
+        card.innerHTML = `
+          <span class="card-badge">#${r.serial}</span>
+          <div class="subject"><i class="fas fa-book"></i> <span class="bangla-font">${r.subject}</span></div>
+          <div class="class-title bangla-font"><i class="fas fa-info-circle"></i> ${r.title}</div>
+          <div class="time"><i class="fas fa-clock"></i> ${r.time} | <span class="bangla-font">${formatDate(r.date)}</span></div>
+          ${r.subject === 'ইক্সাম' && isExpired ? '<div class="exam-expiry-notice bangla-font"><i class="fas fa-exclamation-triangle"></i> পরীক্ষায় অংশগ্রহণ করার নির্দিষ্ট সময় শেষ হয়ে গেছে</div>' : ''}
+          <a class="btn" href="${r.link}" target="_blank"><i class="fas fa-play-circle"></i> <span class="bangla-font">${buttonText}</span></a>
+        `;
+        root.appendChild(card);
+        setTimeout(() => card.classList.add('visible'), 100);
+      });
     }
-$('#form-button').addEventListener('click', handleFormClick);
-$('#submissions-button').addEventListener('click',showSubmissions);
-window.addEventListener('click',(e)=>{ 
-  if(e.target==$('#nameModal')) hideNameModal(); 
-  if(e.target==$('#formModal')) hideForm(); 
-  if(e.target==$('#submissionsModal')) hideSubmissions(); 
-});
-</script>
-  <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Notice bar code
-  const noticeBar = document.querySelector('.notice-bar');
-  const noticeSpan = document.querySelector('.notice-bar span');
-  
-  if (noticeBar && noticeSpan) {
-    noticeBar.style.visibility = 'visible';
-    noticeBar.style.opacity = '1';
-    
-    setTimeout(() => {
-      noticeSpan.style.animation = 'none';
-      void noticeSpan.offsetWidth;
-      noticeSpan.style.animation = 'marquee 40s linear infinite 0s';
-    }, 10);
-  }
 
-  // Button visibility - with page reload check
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('refreshed')) {
-    // Already refreshed, proceed normally
-    setButtonVisibility();
-  } else {
-    // First load, add parameter and reload
-    urlParams.set('refreshed', 'true');
-    window.location.search = urlParams.toString();
-  }
+    // আজকের ক্লাস ফিল্টার
+    function filterTodayClasses(classes) {
+      const today = getDateFromTimestamp(new Date().toString());
+      return classes.filter(cls => cls && cls.date === today);
+    }
 
-  // Initialize Clock
-  updateClock();
-  setInterval(updateClock, 1000);
-});
+    function isExamTimeExpired(timestamp) {
+      if (!timestamp) return false;
+      try {
+        const examTime = new Date(timestamp).getTime();
+        const now = new Date().getTime();
+        const twentyFourHoursInMs = 24 * 60 * 60 * 1000;
+        return (now - examTime) > twentyFourHoursInMs;
+      } catch (error) {
+        console.error("Exam expiry check error:", error, timestamp);
+        return false;
+      }
+    }
 
-function updateClock() {
-  const now = new Date();
-  const timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-  const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    function filterClassesByTimeRange(range) {
+      const now = new Date();
+      const today = getDateFromTimestamp(now.toString());
 
-  const timeStr = now.toLocaleTimeString('bn-BD', timeOptions); // Bengali digits for time
-  const dateStr = now.toLocaleDateString('bn-BD', dateOptions); // Bengali date
+      if (range === 'today') {
+        return allClasses.filter(cls => cls && cls.date === today);
+      } else if (range === 'all') {
+        return allClasses;
+      }
 
-  const clockTime = document.getElementById('clock-time');
-  const clockDate = document.getElementById('clock-date');
+      let daysAgo = range === 'week' ? 7 : 30;
+      const agoDate = new Date(now.setDate(now.getDate() - daysAgo));
+      const agoStr = getDateFromTimestamp(agoDate.toString());
 
-  if (clockTime && clockDate) {
-    clockTime.textContent = timeStr;
-    clockDate.textContent = dateStr;
-  }
-}
+      return allClasses.filter(cls => {
+        if (!cls || !cls.date) return false;
+        return cls.date >= agoStr && cls.date <= today;
+      });
+    }
 
-function setButtonVisibility() {
-  const role = getUserRole();
-  const formButton = $('#form-button');
-  const submissionsButton = $('#submissions-button');
-  
-  // Reset both first
-  formButton.style.display = 'none';
-  submissionsButton.style.display = 'none';
-  
-  if (role === 'user') {
-    formButton.style.display = 'inline-flex';
-  } else if (role === 'owner') {
-    submissionsButton.style.display = 'inline-flex';
-  }
-}
-</script>
+    // আজকের ক্লাসের সারাংশ
+    function renderTodayClassesSummary(classes) {
+      const container = $('#today-classes-body');
+      if (!classes || classes.length === 0) {
+        container.innerHTML = `<tr><td colspan="3" class="bangla-font" style="text-align: center; padding: 20px;">আজকের জন্য কোন ক্লাস পাওয়া যায়নি</td></tr>`;
+        return;
+      }
+
+      let tableHTML = '';
+      classes.forEach(cls => {
+        if (!cls) return;
+        const displayTime = $('#sort-classes').value === 'today' ? cls.time : formatDate(cls.date);
+        tableHTML += `
+          <tr data-subject="${cls.subject}" data-timestamp="${cls.timestampObj.toISOString()}">
+            <td><span class="subject-badge bangla-font">${cls.subject}</span></td>
+            <td class="class-info bangla-font">${cls.title}</td>
+            <td class="bangla-font">${displayTime}</td>
+          </tr>
+        `;
+      });
+      container.innerHTML = tableHTML;
+
+      $all('#today-classes-body tr').forEach(row => {
+        row.addEventListener('click', () => {
+          const subject = row.getAttribute('data-subject');
+          highlightedClassTimestamp = row.getAttribute('data-timestamp');
+          showSubjectPage(subject);
+        });
+      });
+    }
+
+    // সময় অনুযায়ী সর্ট
+    function sortByTime(classes, order = 'desc') {
+      return classes.sort((a, b) => {
+        const timeA = a.timestampObj.getTime();
+        const timeB = b.timestampObj.getTime();
+        return order === 'desc' ? timeB - timeA : timeA - timeB;
+      });
+    }
+
+    // ডেটা রিফ্রেশ ফাংশন
+    async function refreshData() {
+      const refreshBtnText = $('#refresh-btn-text');
+      refreshBtnText.textContent = 'ডাটা রিফ্রেশ হচ্ছে...';
+      try {
+        const data = await fetchData();
+        allClasses = data.map(normalizeRow);
+        showNotification("ডেটা সফলভাবে রিফ্রেশ হয়েছে!", false);
+        const sortValue = $('#sort-classes').value;
+        const filteredClasses = filterClassesByTimeRange(sortValue);
+        renderTodayClassesSummary(filteredClasses);
+        if (currentSubject) {
+          const filteredClasses = allClasses.filter(cls => cls.subject === currentSubject);
+          renderCards(filteredClasses, $('#classGrid'));
+        }
+        if (mainPage.style.display === 'block') {
+          renderTodayClassesSummary(filteredClasses);
+        }
+        if (missionSubjectsPage.style.display === 'block') {
+          renderMissionSubjects();
+        }
+      } catch (error) {
+        showNotification("ডেটা রিফ্রেশ করা যায়নি: " + error.message, true);
+      } finally {
+        refreshBtnText.textContent = 'ডাটা রিফ্রেশ করুন';
+      }
+    }
+
+    // মিশন সাব-সাবজেক্ট রেন্ডার
+    function renderMissionSubjects() {
+      const container = $('#mission-subjects-list');
+      container.innerHTML = '';
+      missionSubSubjects.forEach(subject => {
+        const pill = document.createElement('a');
+        pill.className = 'pill subject-link';
+        pill.href = '#';
+        pill.dataset.name = subject;
+        pill.innerHTML = `
+          <span><i class="fas fa-bullseye"></i> <span class="bangla-font">${subject}</span></span>
+          <span class="go bangla-font">খুলুন</span>
+        `;
+        pill.addEventListener('click', (e) => {
+          e.preventDefault();
+          currentSubject = subject;
+          showSubjectPage(subject);
+        });
+        container.appendChild(pill);
+      });
+    }
+
+    // সাবজেক্ট পেজ দেখানো
+    function showSubjectPage(subject) {
+      mainPage.style.display = 'none';
+      missionSubjectsPage.style.display = 'none';
+      subjectPage.style.display = 'block';
+      $('#subject-title').innerHTML = `<i class="fas fa-book"></i> <span class="bangla-font">${subject}</span>`;
+      const filteredClasses = allClasses.filter(cls => cls.subject === subject);
+      renderCards(filteredClasses, $('#classGrid'));
+      if (highlightedClassTimestamp) {
+        const card = $(`#classGrid .card[data-timestamp="${highlightedClassTimestamp}"]`);
+        if (card) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        }
+      } else {
+        scrollToTop();
+      }
+    }
+
+    // মেইন পেজ দেখানো
+    function showMainPage() {
+      subjectPage.style.display = 'none';
+      missionSubjectsPage.style.display = 'none';
+      mainPage.style.display = 'block';
+      currentSubject = null;
+      const sortValue = $('#sort-classes').value;
+      const filteredClasses = filterClassesByTimeRange(sortValue);
+      renderTodayClassesSummary(filteredClasses);
+      scrollToTop();
+    }
+
+    // মিশন সাব-সাবজেক্ট পেজ দেখানো
+    function showMissionSubjectsPage() {
+      mainPage.style.display = 'none';
+      subjectPage.style.display = 'none';
+      missionSubjectsPage.style.display = 'block';
+      $('#mission-title').innerHTML = `<i class="fas fa-bullseye"></i> <span class="bangla-font">মিশন</span>`;
+      renderMissionSubjects();
+      scrollToTop();
+    }
+
+    // ইনিশিয়াল ডেটা লোড
+    async function loadInitialData() {
+      if (checkLoginExpiry()) {
+        loginPage.style.display = 'none';
+        mainPage.style.display = 'block';
+        if (isOwner()) {
+          $('#add-class-btn').style.display = 'inline-flex'; // Show Add Class button for owner
+        }
+        const data = await fetchData();
+        allClasses = data.map(normalizeRow);
+        const sortValue = $('#sort-classes').value;
+        const filteredClasses = filterClassesByTimeRange(sortValue);
+        renderTodayClassesSummary(filteredClasses);
+      } else {
+        logout();
+      }
+    }
+
+    // সার্চ ফাংশনালিটি
+    function setupSearch() {
+      const searchInput = $('#search-subjects');
+      const subjectLinks = $all('.subject-link', mainPage);
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        subjectLinks.forEach(link => {
+          const subject = link.dataset.name.toLowerCase();
+          link.style.display = subject.includes(query) ? 'flex' : 'none';
+        });
+      });
+
+      const subjectSearch = $('#search', subjectPage);
+      subjectSearch.addEventListener('input', () => {
+        const query = subjectSearch.value.toLowerCase();
+        const filteredClasses = allClasses.filter(cls => 
+          cls.subject === currentSubject && 
+          (cls.title.toLowerCase().includes(query) || cls.subject.toLowerCase().includes(query))
+        );
+        renderCards(filteredClasses, $('#classGrid'));
+      });
+    }
+
+    // সর্ট ফাংশনালিটি
+    function setupSort() {
+      const sortSelect = $('#sort');
+      sortSelect.addEventListener('change', () => {
+        const order = sortSelect.value;
+        const filteredClasses = allClasses.filter(cls => cls.subject === currentSubject);
+        renderCards(filteredClasses, $('#classGrid'));
+      });
+    }
+
+    // সাবজেক্ট লিঙ্কের জন্য ইভেন্ট লিসেনার
+    function setupSubjectLinks() {
+      $all('.subject-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const subject = link.dataset.name;
+          if (subject === 'মিশন') {
+            showMissionSubjectsPage();
+          } else {
+            currentSubject = subject;
+            showSubjectPage(subject);
+          }
+        });
+      });
+    }
+
+    // ব্যাক বাটনের জন্য ইভেন্ট লিসেনার
+    function setupBackButton() {
+      $all('.back-button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          showMainPage();
+        });
+      });
+    }
+
+    // Sort classes event listener
+    function setupSortClasses() {
+      const sortClasses = $('#sort-classes');
+      sortClasses.addEventListener('change', (e) => {
+        const range = e.target.value;
+        const filteredClasses = filterClassesByTimeRange(range);
+        renderTodayClassesSummary(filteredClasses);
+      });
+    }
+
+    // ইনিশিয়ালাইজেশন
+    function init() {
+      if (checkLoginExpiry()) {
+        loginPage.style.display = 'none';
+        mainPage.style.display = 'block';
+        if (isOwner()) {
+          $('#add-class-btn').style.display = 'inline-flex'; // Show Add Class button for owner
+        }
+        loadInitialData();
+      }
+      setupSearch();
+      setupSort();
+      setupSubjectLinks();
+      setupBackButton();
+      setupSortClasses();
+
+      // ফেড-ইন অ্যানিমেশন
+      const fadeInElements = $all('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      fadeInElements.forEach(el => observer.observe(el));
+    }
+
+    // ডকুমেন্ট লোড হলে ইনিশিয়ালাইজ
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
 </body>
 </html>
